@@ -7,7 +7,7 @@ import Subscribers from '../Subscribers/Subscribers'
 
 const Dashboard = () => {
     return (
-        <div class="Container">
+        <div className="Container">
             <Products />
             <Contacts />
             <Emails />

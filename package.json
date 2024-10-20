@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "nodemon ./app/BackEnd/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

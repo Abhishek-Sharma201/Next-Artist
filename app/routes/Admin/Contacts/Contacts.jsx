@@ -44,8 +44,6 @@ const Contacts = () => {
         setFilteredContacts(filtered);
     };
 
-
-
     const handleInputChange = (e) => {
         const query = e.target.value;
         setInput(query);
