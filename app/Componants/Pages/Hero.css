@@ -1,0 +1,410 @@
+.hero-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2.5rem;
+    /* padding: 0 3rem; */
+}
+
+.hero-section .hand-made-sketch {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.hero-section .hand-made-sketch .heading {
+    width: 100%;
+    height: max-content;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hero-section .hand-made-sketch .heading h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.hero-section .hand-made-sketch .heading h2 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.hero-section .hand-made-sketch .sketch {
+    margin-top: 2rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.hero-section .featured-products {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.hero-section .featured-products .head {
+    width: 90%;
+    height: 10dvh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-section .featured-products .head h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.hero-section .featured-products .head button {
+    width: 7dvw;
+    height: 6dvh;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    font-size: .8rem;
+    background: black;
+    color: white;
+}
+
+.hero-section .featured-products .featured-card-container {
+    width: 90%;
+    height: max-content;
+    /* background: lightblue; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    align-content: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.hero-section .my-album-section {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.hero-section .my-album-section .head {
+    align-self: flex-start;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.hero-section .my-album-section .content {
+    margin-top: 2rem;
+    width: 100%;
+    gap: 10px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section .my-album-section .content .text {
+    /* padding: 1rem; */
+    width: 35%;
+    height: 30dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.hero-section .my-album-section .content .text p {
+    width: 80%;
+    height: auto;
+    font-size: 1.2rem;
+}
+
+.hero-section .my-album-section .content .imgs {
+    width: 65%;
+    height: 100%;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+
+.hero-section .my-album-section .content .imgs .album-img {
+    object-fit: cover;
+    aspect-ratio: 2 / 2.5;
+    height: 100%;
+    width: 25%;
+    border-radius: 7px;
+}
+
+.hero-section .why-choose-us {
+    height: auto;
+    margin-top: 5rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+}
+
+.hero-section .why-choose-us .head {
+    align-self: flex-start;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.hero-section .why-choose-us .content {
+    margin-top: 2.5rem;
+    height: auto;
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-section .why-choose-us .svg-container {
+    gap: 10px;
+    height: auto;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hero-section .why-choose-us .svg-container h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.hero-section .testimonial {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    /* margin-bottom: 3rem; */
+}
+
+.hero-section .testimonial .head {
+    height: 20dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: rgba(173, 216, 230, 0.171);
+}
+
+.hero-section .testimonial .head h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.hero-section .testimonial .head h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.hero-section .testimonial .container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 10px;
+}
+
+.hero-section .testimonial .container .right {
+    padding: 1rem;
+    width: 60%;
+    height: 40dvh;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* background: red; */
+}
+
+.hero-section .testimonial .container .right p {
+    width: 100%;
+    height: auto;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.hero-section .testimonial .container .right .bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 1rem; */
+}
+
+.hero-section .testimonial .container .right .bottom .left h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.hero-section .testimonial .container .right .bottom .left h2 {
+    color: #FED255;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.hero-section .testimonial .container .right .bottom .left {
+    width: 80%;
+    gap: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.hero-section .testimonial .container .right .bottom .right {
+    width: 20%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.hero-section .testimonial .container .right .bottom .right button {
+    height: 6dvh;
+    width: 2.5dvw;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background: black;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section .testimonial .container .left {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-section .testimonial .container .left .img {
+    width: 70%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.hero-section .tamplate {
+    padding: 2rem;
+    width: 80%;
+    height: 90dvh;
+    background: url('../../assets/Drawings/img11.jpg') center center;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+
+.hero-section .tamplate .container {
+    align-self: flex-end;
+    padding: .5rem;
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.hero-section .tamplate .container h1 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 1000;
+}
+
+.hero-section .tamplate .container h3 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.hero-section .tamplate .container .input-submit {
+    width: 100%;
+    height: auto;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-radius: 8px;
+    padding: .4rem;
+}
+
+.hero-section .tamplate .container .input-submit input {
+    width: 60%;
+    height: auto;
+    padding: .3rem;
+    border: none;
+    outline: none;
+    color: rgb(0, 0, 0);
+    background: transparent;
+}
+
+.hero-section .tamplate .container .input-submit button {
+    width: 35%;
+    height: 7dvh;
+    font-size: .9rem;
+    padding: .3rem;
+    border: none;
+    outline: none;
+    color: white;
+    background: black;
+    border-radius: 8px;
+}

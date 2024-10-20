@@ -1,0 +1,21 @@
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: 6dvh;
+    width: clamp(6rem, 7rem, 8rem);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    background: var(--backgroundColor);
+    color: var(--color);
+    border-radius: var(--borderRadius);
+    font-weight: 100;
+    transition: all .5s;
+}
+
+button:hover {
+    background: var(--hoverColor); 
+}
+
+button:active {
+    scale: .9;
+}

@@ -1,0 +1,67 @@
+.pricingCard {
+    border-radius: 8px;
+    /* margin: 5rem 5rem; */
+    height: 50dvh;
+    width: 22dvw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(0, 0, 0);
+    overflow: hidden;
+    position: relative;
+}
+
+.pricingCard img {
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    object-fit: cover;
+    transition: all .5s;
+}
+
+.pricingCard:hover img {
+    height: 100%;
+}
+
+.pricingCard .cardDetails {
+    z-index: 99;
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.pricingCard .cardDetails .name {
+    color: white;
+    font-weight: 300;
+}
+
+.pricingCard .cardDetails .price {
+    transition: all .5s;
+    color: white;
+    font-weight: 300;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ff3def, 0 0 30px;
+}
+
+.pricingCard:hover .cardDetails .name {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px;
+}
+
+.pricingCard:hover .cardDetails .price {
+    letter-spacing: 2px;
+}
+
+.pricingCard .cardDetails .buyBtn {
+    border: none;
+    border-radius: 5px;
+    font-weight: 100;
+    height: 5dvh;
+    width: 4.5dvw;
+    background: rgb(0, 50, 126);
+    color: white;
+}

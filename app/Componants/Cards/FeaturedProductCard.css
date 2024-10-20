@@ -1,0 +1,64 @@
+.featuredProductCard {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    overflow: hidden;
+}
+
+.featuredProductCard .img-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    width: 90%;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.featuredProductCard .featuredProductCardImg {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.featuredProductCard .img-container .icon {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: .5rem;
+    left: 1rem;
+    background: rgba(0, 0, 0, 0.39);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.featuredProductCard .content {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.featuredProductCard .content .title {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.featuredProductCard .content .price {
+    font-size: .9rem;
+    font-weight: 400;
+}

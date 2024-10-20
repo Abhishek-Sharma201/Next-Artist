@@ -1,0 +1,41 @@
+.sideNav {
+    height: 100dvh;
+    width: 250px;
+    position: fixed;
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-right: .5px solid rgb(219, 219, 219);
+}
+
+.sideNav .list {
+    width: 100%;
+    height: max-content;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.sideNav .list .item {
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: .5rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgb(56, 56, 56);
+    border-bottom: .5px solid rgb(226, 226, 226);
+}
+
+.sideNav .list .item:hover {
+    background: rgb(245, 245, 245);
+}

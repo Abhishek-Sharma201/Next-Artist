@@ -1,0 +1,61 @@
+.featureCard {
+    border-radius: 8px;
+    /* margin: 5rem 5rem; */
+    padding: 20px;
+    height: 50dvh;
+    max-width: 18rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background: rgb(29, 28, 28);
+    /* background: linear-gradient(to bottom, black, white); */
+    /* background: url('https://t4.ftcdn.net/jpg/05/64/99/95/360_F_564999540_XdTvqLGDpneB3v4ifz0SZgzxMOFmfoVo.jpg') center center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.featureCard .cardIcon {
+    color: white;
+}
+
+.featureCard .cardTitle {
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    font-weight: 450;
+    font-size: 1.5rem;
+}
+
+.featureCard .cardDescription {
+    min-height: 5dvh;
+    min-width: 70%;
+    color: white;
+    font-weight: 250;
+    font-size: .9rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .featureCard {
+        min-width: 40dvw;
+        height: 40dvh;
+    }
+
+    .featureCard .cardDescription {
+        font-weight: 250;
+        font-size: .725rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .featureCard {
+        width: 70dvw;
+    }
+
+    .featureCard .cardDescription {
+        font-weight: 150;
+        font-size: .525rem;
+    }
+}

@@ -1,0 +1,62 @@
+.about {
+    height: auto;
+    width: 100%;
+    padding: 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about .head {
+    height: 10dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.about .head .route {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(37, 37, 37);
+}
+
+.about .top {
+    height: 10dvh;
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.about .top h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(17, 17, 17);
+}
+
+.about .container {
+    margin-top: 1rem;
+    gap: 4rem;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 5rem;
+}
+
+.about .container .box {
+    gap: 1rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}

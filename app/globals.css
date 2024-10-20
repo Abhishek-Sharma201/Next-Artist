@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    /* outline: .5px solid rgb(0, 0, 0); */
+    /* line-height: 1.5; */
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+input:focus {
+    background: transparent;
+}
+
+input:focus-visible {
+    background: transparent;
+}
+
+svg {
+    cursor: pointer;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Toastify__toast--success {
+    background-color: #000000 !important;
+    /* Background color */
+    color: #ffffff !important;
+    /* Text color */
+}
+
+.Toastify__toast--error {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.Toastify__toast--info {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.Toastify__toast--warning {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}

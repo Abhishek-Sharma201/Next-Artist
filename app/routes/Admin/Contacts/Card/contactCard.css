@@ -1,0 +1,53 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem;
+    height: max-content;
+    max-width: 350px;
+    width: 300px;
+    min-width: 250px;
+    border-radius: 6px;
+    background: #fff;
+    border: .5px solid rgb(190, 190, 190);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin-bottom: 0.5rem;
+}
+
+.card h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgb(22, 22, 22);
+}
+
+.card h3 {
+    font-size: .8rem;
+    font-weight: 500;
+    text-wrap: wrap;
+    color: rgb(63, 63, 63);
+}
+
+.card h3.gmail {
+    color: rgb(219, 62, 0);
+}
+
+.card h3.msg {
+    text-wrap: wrap;
+    width: 90%;
+}
+
+.card h4 {
+    font-size: .7rem;
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+}
+
+.card .timeStamp {
+    color: rgb(0, 180, 0);
+    position: absolute;
+    bottom: 7%;
+    left: 67%;
+}
