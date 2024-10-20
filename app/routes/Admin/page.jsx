@@ -4,8 +4,8 @@ import './style.css';
 import SideNav from '../../Componants/Nav/SideNav';
 import Dashboard from './Dashboard/Dashboard';
 import Emails from './Emails/Emails';
-import Contacts from './Contacts/Contacts';
-import Subscribers from './Subscribers/Subscribers';
+import ContactWrapper from './Contacts/ContactWrapper';
+import SubscribersWrapper from './Subscribers/SubscribersWrapper';
 import Products from './Products/Products'
 import { useRouter } from 'next/navigation';
 
@@ -26,11 +26,11 @@ const Admin = () => {
             case 'Dashboard':
                 return <Dashboard />;
             case 'Contacts':
-                return <Contacts />;
+                return <ContactWrapper />;
             case 'Products':
                 return <Products />;
             case 'Subscribers':
-                return <Subscribers />;
+                return <SubscribersWrapper />;
             case 'Emails':
                 return <Emails />;
             default:

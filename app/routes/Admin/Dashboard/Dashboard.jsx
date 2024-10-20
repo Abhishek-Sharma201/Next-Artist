@@ -1,17 +1,17 @@
 import React from 'react'
 import './style.css'
 import Products from '../Products/Products'
-import Contacts from '../Contacts/Contacts'
+import ContactWrapper from '../Contacts/ContactWrapper'
 import Emails from '../Emails/Emails'
-import Subscribers from '../Subscribers/Subscribers'
+import SubscribersWrapper from '../Subscribers/SubscribersWrapper'
 
 const Dashboard = () => {
     return (
         <div className="Container">
             <Products />
-            <Contacts />
+            <ContactWrapper />
             <Emails />
-            <Subscribers />
+            <SubscribersWrapper />
         </div>
     )
 }
