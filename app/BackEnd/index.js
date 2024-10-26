@@ -4,15 +4,18 @@ const cors = require("cors");
 const connectDB = require("./db/connectDB");
 const contactModel = require("./models/contact.model");
 const subscribeModel = require("./models/subscribe.model");
+const { apiURL } = require("./utils/constant");
 const app = express();
-const cors = require("cors");
 const port = 8100;
 dotenv.config();
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://next-artist.vercel.app"],
+  })
+);
 app.use(express.json());
-app.use(cors({ origin: "https://next-artist.vercel.app" }))
-app.use("/api/contactSubmit", async (req, res) => {
+app.post("/api/contactSubmit", async (req, res) => {
   const { name, email, phone, message } = req.body;
   const contactAlreadyExists = await contactModel.findOne({ email });
   if (contactAlreadyExists) {
@@ -30,7 +33,7 @@ app.use("/api/contactSubmit", async (req, res) => {
   res.status(201).json({ message: "Contact created successfully" });
 });
 
-app.use("/api/subs", async (req, res) => {
+app.post("/api/subs", async (req, res) => {
   const { email } = req.body;
   const subsAlreadyExists = await subscribeModel.findOne({ email });
   if (subsAlreadyExists) {
@@ -45,7 +48,7 @@ app.use("/api/subs", async (req, res) => {
   res.status(201).json({ message: "Subscribed successfully" });
 });
 
-app.use("/api/getContacts", async (req, res) => {
+app.get("/api/getContacts", async (req, res) => {
   try {
     const data = await contactModel.find();
     if (!data.length) {
@@ -60,7 +63,7 @@ app.use("/api/getContacts", async (req, res) => {
   }
 });
 
-app.use("/api/getSubscribers", async (req, res) => {
+app.get("/api/getSubscribers", async (req, res) => {
   try {
     const data = await subscribeModel.find();
     if (!data.length) {
