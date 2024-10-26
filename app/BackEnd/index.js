@@ -11,7 +11,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://next-artist.vercel.app"],
+    origin: [apiURL, "https://next-artist.vercel.app"],
   })
 );
 app.use(express.json());
