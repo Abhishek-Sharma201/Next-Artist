@@ -11,7 +11,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: [apiURL, "https://next-artist.vercel.app"],
+    origin: [apiURL, "https://raj-artist.vercel.app"],
   })
 );
 app.use(express.json());
