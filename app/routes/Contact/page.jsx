@@ -5,7 +5,7 @@ import Nav from "@/app/Componants/Nav/Nav";
 import Footer from "@/app/Componants/Footer/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { apiURL } from "@/app/BackEnd/utils/constant";
+import { apiURL } from "@/app/constants";
 
 const page = () => {
   const [formData, setFormData] = useState({

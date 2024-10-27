@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Masonry from "masonry-layout";
 import "./style.css";
-import { apiURL } from "@/app/BackEnd/utils/constant";
+import { apiURL } from "@/app/constants";
 import ContactCard from "./Card/contactCard";
 
 const Contacts = () => {
