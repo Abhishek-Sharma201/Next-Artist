@@ -20,7 +20,7 @@ const Page = () => {
   return (
     <div>
       <Nav background={true} />
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
       <Login />
     </div>
   );

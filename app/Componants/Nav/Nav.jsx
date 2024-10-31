@@ -80,11 +80,33 @@ const Nav = ({ background }) => {
           ) : (
             ""
           )}
+          {isNavOpened ? (
+            session ? (
+              <button
+                className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
+                onClick={async () => {
+                  await signOut();
+                  toast.warn("Logged Out");
+                }}
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                href={"/login"}
+                className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
+              >
+                Login
+              </Link>
+            )
+          ) : (
+            ""
+          )}
         </ul>
         <div className="icons">
           {session ? (
             <button
-            className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
+              className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
               onClick={async () => {
                 await signOut();
                 toast.warn("Logged Out");
@@ -93,9 +115,14 @@ const Nav = ({ background }) => {
               Logout
             </button>
           ) : (
-            <Link href={"/login"} className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md">Login</Link>
+            <Link
+              href={"/login"}
+              className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
+            >
+              Login
+            </Link>
           )}
-        </div> 
+        </div>
       </nav>
     </div>
   );

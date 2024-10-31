@@ -86,7 +86,7 @@ const page = () => {
   return (
     <>
       <Nav background={true} />
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
       <section className="contact">
         <div className="head">
           <h2 className="route">Home &gt;&gt; Contact</h2>
