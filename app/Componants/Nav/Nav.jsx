@@ -106,7 +106,7 @@ const Nav = ({ background }) => {
         <div className="icons">
           {session ? (
             <button
-              className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
+              className="text-white hover:border border-yellow-400 p-4 px-4 rounded-md"
               onClick={async () => {
                 await signOut();
                 toast.warn("Logged Out");
@@ -117,7 +117,7 @@ const Nav = ({ background }) => {
           ) : (
             <Link
               href={"/login"}
-              className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
+              className="text-white hover:border border-yellow-400 p-4 px-4 rounded-md"
             >
               Login
             </Link>
