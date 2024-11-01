@@ -3,6 +3,7 @@ import Masonry from "masonry-layout";
 import "./style.css";
 import { apiURL } from "@/app/constants";
 import ContactCard from "./Card/contactCard";
+import Loader from "@/app/Componants/Loader/Loader";
 
 const Contacts = () => {
   const [contacts, setContacts] = useState([]);
@@ -70,6 +71,17 @@ const Contacts = () => {
     }
   }, [filteredContacts]);
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      setIsLoading(true);
+      return () => {
+        window.removeEventListener("load");
+      };
+    });
+  }, [isLoading]);
+
   return (
     <div className="contact-container">
       <div className="head">
@@ -85,15 +97,19 @@ const Contacts = () => {
         />
       </div>
       <hr className="hr" />
-      <ul className="contact-grid">
-        {filteredContacts.length !== 0 ? (
-          filteredContacts.map((contact, index) => (
-            <ContactCard key={index} details={contact} />
-          ))
-        ) : (
-          <p>No contacts found.</p>
-        )}
-      </ul>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ul className="contact-grid">
+          {filteredContacts.length !== 0 ? (
+            filteredContacts.map((contact, index) => (
+              <ContactCard key={index} details={contact} />
+            ))
+          ) : (
+            <p>No contacts found.</p>
+          )}
+        </ul>
+      )}
     </div>
   );
 };
