@@ -3,6 +3,7 @@ import Masonry from "masonry-layout";
 import "./style.css";
 import { apiURL } from "@/app/constants";
 import ContactCard from "./Card/contactCard";
+import Loader from "@/app/Componants/Loader/Loader";
 
 const Contacts = () => {
   const [contacts, setContacts] = useState([]);
@@ -20,7 +21,7 @@ const Contacts = () => {
         setContacts(data.data);
         setFilteredContacts(data.data);
       }
-      console.log(`From FrontEnd: `, data);
+      setisLoading(false); // Set loading to false after data fetch
     } catch (error) {
       console.error("Error fetching contacts: ", error);
     }
@@ -70,6 +71,15 @@ const Contacts = () => {
     }
   }, [filteredContacts]);
 
+  const [isLoading, setisLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLoad = () => setisLoading(false);
+    window.addEventListener("load", handleLoad);
+
+    return () => window.removeEventListener("load", handleLoad); // Clean up the event listener
+  }, []);
+
   return (
     <div className="contact-container">
       <div className="head">
@@ -85,15 +95,19 @@ const Contacts = () => {
         />
       </div>
       <hr className="hr" />
-      <ul className="contact-grid">
-        {filteredContacts.length !== 0 ? (
-          filteredContacts.map((contact, index) => (
-            <ContactCard key={index} details={contact} />
-          ))
-        ) : (
-          <p>No contacts found.</p>
-        )}
-      </ul>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ul className="contact-grid">
+          {filteredContacts.length !== 0 ? (
+            filteredContacts.map((contact, index) => (
+              <ContactCard key={index} details={contact} />
+            ))
+          ) : (
+            <p>No contacts found.</p>
+          )}
+        </ul>
+      )}
     </div>
   );
 };

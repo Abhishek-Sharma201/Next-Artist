@@ -9,6 +9,10 @@
 # testing
 /coverage
 
+# logs
+/debug.log
+debug.log
+
 # next.js
 /.next/
 /out/
