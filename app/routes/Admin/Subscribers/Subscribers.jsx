@@ -3,6 +3,7 @@ import Masonry from "masonry-layout";
 import "./style.css";
 import { apiURL } from "@/app/constants";
 import ContactCard from "../Contacts/Card/contactCard";
+import Loader from "@/app/Componants/Loader/Loader";
 
 const Subscribrs = () => {
   const [contacts, setSubscribers] = useState([]);
@@ -33,6 +34,7 @@ const Subscribrs = () => {
         setSubscribers(data.data);
         setFilteredSubscribers(data.data);
       }
+      isLoading = false;
       console.log(`From FrontEnd: `, data);
     } catch (error) {
       console.error("Error fetching contacts: ", error);
@@ -74,6 +76,17 @@ const Subscribrs = () => {
     }
   }, [filteredSubscribers]);
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      setIsLoading(true);
+      return () => {
+        window.removeEventListener("load");
+      };
+    });
+  }, [isLoading]);
+
   return (
     <div className="contact-container">
       <div className="head">
@@ -89,15 +102,19 @@ const Subscribrs = () => {
         />
       </div>
       <hr className="hr" />
-      <ul className="contact-grid">
-        {filteredSubscribers.length !== 0 ? (
-          filteredSubscribers.map((contact, index) => (
-            <ContactCard key={index} details={contact} svg={SVG} />
-          ))
-        ) : (
-          <p>No contacts found.</p>
-        )}
-      </ul>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ul className="contact-grid">
+          {filteredSubscribers.length !== 0 ? (
+            filteredSubscribers.map((contact, index) => (
+              <ContactCard key={index} details={contact} svg={SVG} />
+            ))
+          ) : (
+            <p>No contacts found.</p>
+          )}
+        </ul>
+      )}
     </div>
   );
 };
