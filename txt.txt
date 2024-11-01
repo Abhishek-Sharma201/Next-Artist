@@ -1,5 +1,0 @@
-import Dashboard from './Dashboard/Dashboard';
-import Emails from './Emails/Emails';
-import Contacts from './Contacts/Contacts';
-import Subscribers from './Subscribers/Subscribers';
-import App from '../../page';
