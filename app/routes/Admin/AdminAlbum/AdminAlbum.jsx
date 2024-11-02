@@ -5,6 +5,8 @@ import { apiURL } from "@/app/constants";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Loader from "@/app/Componants/Loader/Loader";
+import AdminAlbumCard from "@/app/Componants/Cards/AdminAlbumCard";
+import { IMG_13, IMG_16 } from "@/app/utils";
 
 const AdminAlbum = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +65,7 @@ const AdminAlbum = () => {
 
   const fetchAlbum = async () => {
     try {
-    //   setIsLoading(true);
+      //   setIsLoading(true);
       const res = await fetch(`${apiURL}/api/getDrawing`, {
         method: "GET",
       });
@@ -102,10 +104,10 @@ const AdminAlbum = () => {
                 </div>
                 <div className="cards">
                   {album.map((albumItem, index) => (
-                    <AlbumCard
+                    <AdminAlbumCard
                       key={index}
-                      text={albumItem.type}
-                      img={
+                      type={albumItem.type}
+                      imgSrc={
                         albumItem.image
                           ? `data:${albumItem.image.contentType};base64,${btoa(
                               new Uint8Array(albumItem.image.data.data).reduce(
@@ -118,6 +120,11 @@ const AdminAlbum = () => {
                       }
                     />
                   ))}
+                  {/* <AdminAlbumCard
+                    type={"Neon Anime"}
+                    price={"1000"}
+                    imgSrc={IMG_16}
+                  /> */}
                 </div>
               </section>
             </div>
