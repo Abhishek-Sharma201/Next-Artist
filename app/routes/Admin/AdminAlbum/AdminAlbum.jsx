@@ -100,7 +100,7 @@ const AdminAlbum = () => {
                   <h1>Trending Products</h1>
                   <button className="see-all">See All</button>
                 </div>
-                <div className="">
+                <div className="cards">
                   {album.map((albumItem, index) => (
                     <AlbumCard
                       key={index}
