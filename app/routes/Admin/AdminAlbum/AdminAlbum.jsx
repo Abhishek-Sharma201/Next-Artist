@@ -6,7 +6,6 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Loader from "@/app/Componants/Loader/Loader";
 import AdminAlbumCard from "@/app/Componants/Cards/AdminAlbumCard";
-import { IMG_13, IMG_16 } from "@/app/utils";
 
 const AdminAlbum = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -89,10 +88,15 @@ const AdminAlbum = () => {
     fetchAlbum();
   }, []);
 
-  const deleteCard = async () => {
+  const deleteCard = async (id) => {
     try {
+      const result = await fetch(`${apiURL}/api/deleteDrawing/:id`, {
+        method: "DELETE",
+      });
+      if (!result.ok) throw new Error(`${result.error}`);
+      toast.warn("Card Deleted");
     } catch (error) {
-      toast.info(`Card deleted`);
+      toast.error(`${error.message}`);
     }
   };
 
