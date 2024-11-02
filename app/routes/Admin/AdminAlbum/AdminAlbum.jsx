@@ -38,17 +38,27 @@ const AdminAlbum = () => {
 
   const sendToast = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    const data = new FormData();
+    data.append("type", formData.type);
+    data.append("price", formData.price);
+    data.append("image", formData.image); // Ensure formData.image is a File object
+
     try {
-      const res = fetch(`${apiURL}/api/addDrawing`, {
+      const res = await fetch(`${apiURL}/api/addDrawing`, {
         method: "POST",
-        headers: { "Content-Type": "multipart/form-data" },
-        body: JSON.stringify(formData),
+        body: data,
       });
-      if (!res.ok) throw new Error(`${res.error}`);
-      toast.success("Data Posted");
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to upload data.");
+      }
+
+      const responseData = await res.json();
+      toast.success(responseData.message || "Data Posted");
     } catch (error) {
-      toast.error(`FrontEnd : ${error.message}`);
+      toast.error(`Error: ${error.message}`);
     }
   };
 
