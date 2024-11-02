@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import AlbumCard from "@/app/Componants/Cards/AlbumCard";
-import { apiURL, trendingProcuts } from "@/app/constants";
+import { apiURL } from "@/app/constants";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Loader from "@/app/Componants/Loader/Loader";
 
 const AdminAlbum = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const openForm = () => {
-    setIsOpen(true);
-  };
-  const close = () => {
-    setIsOpen(false);
-  };
+  const [album, setAlbum] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const openForm = () => setIsOpen(true);
+  const close = () => setIsOpen(false);
 
   const [formData, setFormData] = useState({
     type: "",
@@ -38,11 +37,10 @@ const AdminAlbum = () => {
 
   const sendToast = async (e) => {
     e.preventDefault();
-
     const data = new FormData();
     data.append("type", formData.type);
     data.append("price", formData.price);
-    data.append("image", formData.image); // Ensure formData.image is a File object
+    data.append("image", formData.image);
 
     try {
       const res = await fetch(`${apiURL}/api/addDrawing`, {
@@ -57,20 +55,29 @@ const AdminAlbum = () => {
 
       const responseData = await res.json();
       toast.success(responseData.message || "Data Posted");
+      fetchAlbum(); // Refresh albums after adding
     } catch (error) {
       toast.error(`Error: ${error.message}`);
     }
   };
 
-  const [isLoading, setIsLoading] = useState(false);
+  const fetchAlbum = async () => {
+    try {
+    //   setIsLoading(true);
+      const res = await fetch(`${apiURL}/api/getDrawing`, {
+        method: "GET",
+      });
+      const data = await res.json();
+      setAlbum(data);
+    } catch (error) {
+      toast.error(`${error.message}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const handleLoad = () => setIsLoading(true);
-    window.addEventListener("load", handleLoad);
-
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
+    fetchAlbum();
   }, []);
 
   return (
@@ -93,12 +100,31 @@ const AdminAlbum = () => {
                   <h1>Trending Products</h1>
                   <button className="see-all">See All</button>
                 </div>
+                <div className="">
+                  {album.map((albumItem, index) => (
+                    <AlbumCard
+                      key={index}
+                      text={albumItem.type}
+                      img={
+                        albumItem.image
+                          ? `data:${albumItem.image.contentType};base64,${btoa(
+                              new Uint8Array(albumItem.image.data.data).reduce(
+                                (data, byte) =>
+                                  data + String.fromCharCode(byte),
+                                ""
+                              )
+                            )}`
+                          : ""
+                      }
+                    />
+                  ))}
+                </div>
               </section>
             </div>
           </div>
         )}
       </div>
-      {isOpen ? (
+      {isOpen && (
         <div className="w-full h-[100dvh] fixed top-0 left-0 z-10 bg-black bg-opacity-70 flex flex-col items-center justify-center gap-4">
           <form
             onSubmit={sendToast}
@@ -182,7 +208,7 @@ const AdminAlbum = () => {
             </div>
           </form>
         </div>
-      ) : null}
+      )}
     </React.Fragment>
   );
 };
