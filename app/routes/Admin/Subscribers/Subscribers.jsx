@@ -6,7 +6,7 @@ import ContactCard from "../Contacts/Card/contactCard";
 import Loader from "@/app/Componants/Loader/Loader";
 
 const Subscribrs = () => {
-  const [contacts, setSubscribers] = useState([]);
+  const [subscribers, setSubscribers] = useState([]);
   const [input, setInput] = useState("");
   const [filteredSubscribers, setFilteredSubscribers] = useState([]);
   const SVG = (
@@ -43,7 +43,7 @@ const Subscribrs = () => {
   };
 
   const filterSubscribers = (query) => {
-    const filtered = contacts.filter((contact) => {
+    const filtered = subscribers.filter((contact) => {
       const { email } = contact;
 
       const lowerCaseEmail =

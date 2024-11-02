@@ -44,6 +44,8 @@ const AdminAlbum = () => {
     data.append("price", formData.price);
     data.append("image", formData.image);
 
+    setIsLoading(true);
+
     try {
       const res = await fetch(`${apiURL}/api/addDrawing`, {
         method: "POST",
@@ -56,22 +58,26 @@ const AdminAlbum = () => {
       }
 
       const responseData = await res.json();
-      console.log(responseData);
       toast.success(responseData.message || "Data Posted");
       fetchAlbum(); // Refresh albums after adding
+      setIsLoading(false);
     } catch (error) {
       toast.error(`Error: ${error.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const fetchAlbum = async () => {
     try {
-      //   setIsLoading(true);
+      setIsLoading(true);
       const res = await fetch(`${apiURL}/api/getDrawing`, {
         method: "GET",
       });
       const data = await res.json();
+      console.log(data);
       setAlbum(data);
+      setIsLoading(false);
     } catch (error) {
       toast.error(`${error.message}`);
     } finally {
@@ -89,6 +95,15 @@ const AdminAlbum = () => {
       toast.info(`Card deleted`);
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      setIsLoading(true);
+      return () => {
+        window.removeEventListener("load");
+      };
+    });
+  }, [isLoading]);
 
   return (
     <React.Fragment>
