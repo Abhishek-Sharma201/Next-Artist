@@ -56,6 +56,7 @@ const AdminAlbum = () => {
       }
 
       const responseData = await res.json();
+      console.log(responseData);
       toast.success(responseData.message || "Data Posted");
       fetchAlbum(); // Refresh albums after adding
     } catch (error) {
@@ -82,6 +83,13 @@ const AdminAlbum = () => {
     fetchAlbum();
   }, []);
 
+  const deleteCard = async () => {
+    try {
+    } catch (error) {
+      toast.info(`Card deleted`);
+    }
+  };
+
   return (
     <React.Fragment>
       <ToastContainer />
@@ -106,6 +114,8 @@ const AdminAlbum = () => {
                   {album.map((albumItem, index) => (
                     <AdminAlbumCard
                       key={index}
+                      onDelete={() => deleteCard}
+                      price={albumItem.price}
                       type={albumItem.type}
                       imgSrc={
                         albumItem.image
@@ -120,11 +130,6 @@ const AdminAlbum = () => {
                       }
                     />
                   ))}
-                  {/* <AdminAlbumCard
-                    type={"Neon Anime"}
-                    price={"1000"}
-                    imgSrc={IMG_16}
-                  /> */}
                 </div>
               </section>
             </div>
