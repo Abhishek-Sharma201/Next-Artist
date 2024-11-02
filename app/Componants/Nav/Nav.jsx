@@ -72,14 +72,17 @@ const Nav = ({ background }) => {
           <li className="navItem">
             <Link href="/routes/Contact">Contact</Link>
           </li>
-          {session?.user?.email === "abhishek.webdev001@gmail.com" ||
+          <li className="navItem">
+            <Link href="/routes/Admin">Admin</Link>
+          </li>
+          {/* {session?.user?.email === "abhishek.webdev001@gmail.com" ||
           session?.user?.email === "abhisheksharma52962@gmail.com" ? (
             <li className="navItem">
               <Link href="/routes/Admin">Admin</Link>
             </li>
           ) : (
             ""
-          )}
+          )} */}
           {isNavOpened ? (
             session ? (
               <button

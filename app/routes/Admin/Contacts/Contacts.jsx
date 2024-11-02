@@ -12,6 +12,7 @@ const Contacts = () => {
 
   const fetchContact = async () => {
     try {
+      setIsLoading(true);
       const res = await fetch(`${apiURL}/api/getContacts`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -24,6 +25,8 @@ const Contacts = () => {
       console.log(`From FrontEnd: `, data);
     } catch (error) {
       console.error("Error fetching contacts: ", error);
+    } finally {
+      setIsLoading(false); // Reset loading status
     }
   };
 
@@ -74,13 +77,13 @@ const Contacts = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("load", () => {
-      setIsLoading(true);
-      return () => {
-        window.removeEventListener("load");
-      };
-    });
-  }, [isLoading]);
+    const handleLoad = () => setIsLoading(true);
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
 
   return (
     <div className="contact-container">

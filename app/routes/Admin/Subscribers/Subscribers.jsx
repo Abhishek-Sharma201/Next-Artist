@@ -24,6 +24,7 @@ const Subscribrs = () => {
   );
 
   const fetchSubscribers = async () => {
+    setIsLoading(true); // Set loading to true before fetching
     try {
       const res = await fetch(`${apiURL}/api/getSubscribers`, {
         method: "GET",
@@ -34,10 +35,10 @@ const Subscribrs = () => {
         setSubscribers(data.data);
         setFilteredSubscribers(data.data);
       }
-      isLoading = false;
-      console.log(`From FrontEnd: `, data);
     } catch (error) {
       console.error("Error fetching contacts: ", error);
+    } finally {
+      setIsLoading(false); // Reset loading status
     }
   };
 
@@ -111,7 +112,7 @@ const Subscribrs = () => {
               <ContactCard key={index} details={contact} svg={SVG} />
             ))
           ) : (
-            <p>No contacts found.</p>
+            <p>No Subscribers found.</p>
           )}
         </ul>
       )}

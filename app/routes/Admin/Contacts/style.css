@@ -4,8 +4,9 @@
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
+    position: relative;
     gap: 2.5rem;
     /* padding: 1rem 3rem; */
     background: rgb(240, 240, 240);
