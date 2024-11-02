@@ -90,11 +90,12 @@ const AdminAlbum = () => {
 
   const deleteCard = async (id) => {
     try {
-      const result = await fetch(`${apiURL}/api/deleteDrawing/:id`, {
+      const result = await fetch(`${apiURL}/api/deleteDrawing/${id}`, {
         method: "DELETE",
       });
       if (!result.ok) throw new Error(`${result.error}`);
       toast.warn("Card Deleted");
+      fetchAlbum();
     } catch (error) {
       toast.error(`${error.message}`);
     }
@@ -133,7 +134,7 @@ const AdminAlbum = () => {
                   {album.map((albumItem, index) => (
                     <AdminAlbumCard
                       key={index}
-                      onDelete={() => deleteCard}
+                      onDelete={() => deleteCard(albumItem._id)}
                       price={albumItem.price}
                       type={albumItem.type}
                       imgSrc={
