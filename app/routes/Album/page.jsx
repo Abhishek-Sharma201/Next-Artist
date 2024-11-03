@@ -41,8 +41,8 @@ const albumPage = () => {
                       text={card.type}
                       img={
                         card.image
-                          ? `data:${albumItem.image.contentType};base64,${btoa(
-                              new Uint8Array(albumItem.image.data.data).reduce(
+                          ? `data:${card.image.contentType};base64,${btoa(
+                              new Uint8Array(card.image.data.data).reduce(
                                 (data, byte) =>
                                   data + String.fromCharCode(byte),
                                 ""
