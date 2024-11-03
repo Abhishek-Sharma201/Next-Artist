@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
-import AlbumCard from "@/app/Componants/Cards/AlbumCard";
-import { apiURL } from "@/app/constants";
+import { AlbumContext } from "@/app/context/AlbumContext";
+import AdminAlbumCard from "@/app/Componants/Cards/AdminAlbumCard";
+import Loader from "@/app/Componants/Loader/Loader";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-import Loader from "@/app/Componants/Loader/Loader";
-import AdminAlbumCard from "@/app/Componants/Cards/AdminAlbumCard";
+import { apiURL } from "@/app/constants";
 
 const AdminAlbum = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [album, setAlbum] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { album, setAlbum, fetchAlbum, isLoading } = useContext(AlbumContext);
 
   const openForm = () => setIsOpen(true);
   const close = () => setIsOpen(false);
@@ -43,8 +42,6 @@ const AdminAlbum = () => {
     data.append("price", formData.price);
     data.append("image", formData.image);
 
-    setIsLoading(true);
-
     try {
       const res = await fetch(`${apiURL}/api/addDrawing`, {
         method: "POST",
@@ -58,57 +55,28 @@ const AdminAlbum = () => {
 
       const responseData = await res.json();
       toast.success(responseData.message || "Data Posted");
-      fetchAlbum(); // Refresh albums after adding
-      setIsLoading(false);
+      fetchAlbum();
     } catch (error) {
       toast.error(`Error: ${error.message}`);
-    } finally {
-      setIsLoading(false);
     }
   };
-
-  const fetchAlbum = async () => {
-    try {
-      setIsLoading(true);
-      const res = await fetch(`${apiURL}/api/getDrawing`, {
-        method: "GET",
-      });
-      const data = await res.json();
-      console.log(data);
-      setAlbum(data);
-      setIsLoading(false);
-    } catch (error) {
-      toast.error(`${error.message}`);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchAlbum();
-  }, []);
 
   const deleteCard = async (id) => {
     try {
       const result = await fetch(`${apiURL}/api/deleteDrawing/${id}`, {
         method: "DELETE",
       });
-      if (!result.ok) throw new Error(`${result.error}`);
+      if (!result.ok) throw new Error("Failed to delete card.");
       toast.warn("Card Deleted");
       fetchAlbum();
     } catch (error) {
-      toast.error(`${error.message}`);
+      toast.error(`Error: ${error.message}`);
     }
   };
 
   useEffect(() => {
-    window.addEventListener("load", () => {
-      setIsLoading(true);
-      return () => {
-        window.removeEventListener("load");
-      };
-    });
-  }, [isLoading]);
+    fetchAlbum();
+  }, []);
 
   return (
     <React.Fragment>

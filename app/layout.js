@@ -1,7 +1,8 @@
 // 'use server'
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SessionWrapper from "./Componants/SessionWrapper"; 
+import SessionWrapper from "./Componants/SessionWrapper";
+import { AlbumProvider } from "./context/AlbumContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <SessionWrapper>
-        <body className={inter.className}>{children}</body>
+        <AlbumProvider>
+          <body className={inter.className}>{children}</body>
+        </AlbumProvider>
       </SessionWrapper>
     </html>
   );
