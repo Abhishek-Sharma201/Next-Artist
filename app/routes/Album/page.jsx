@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./style.css";
 import Nav from "../../Componants/Nav/Nav";
 import { bestSellerProcuts, trendingProcuts } from "@/app/constants";
@@ -12,6 +12,11 @@ import Loader from "@/app/Componants/Loader/Loader";
 
 const albumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
+
+  useEffect(() => {
+    fetchAlbum();
+    console.log(album);
+  });
   return (
     <>
       <Nav background={true} />
