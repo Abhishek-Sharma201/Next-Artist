@@ -16,7 +16,7 @@ const albumPage = () => {
   useEffect(() => {
     fetchAlbum();
     console.log(album);
-  });
+  }, []);
   return (
     <>
       <Nav background={true} />
@@ -32,6 +32,8 @@ const albumPage = () => {
               <button className="see-all">See All</button>
             </div>
             {isLoading ? (
+              <Loader />
+            ) : (
               <div className="cards">
                 {album.map((card) => {
                   return (
@@ -56,28 +58,8 @@ const albumPage = () => {
                   );
                 })}
               </div>
-            ) : (
-              ""
             )}
           </section>
-          {/* <section className="best-seller">
-            <div className="type">
-              <h1>Best seller</h1>
-              <button className="see-all">See All</button>
-            </div>
-            <div className="cards">
-              {bestSellerProcuts.map((card) => {
-                return (
-                  <AlbumCard
-                    key={card.id}
-                    price={card.price}
-                    text={card.text}
-                    img={card.img}
-                  />
-                );
-              })}
-            </div>
-          </section> */}
         </div>
         <Footer width={"100%"} />
       </div>
