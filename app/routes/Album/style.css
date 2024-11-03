@@ -1,162 +1,162 @@
 .album-section {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 5rem;
-    gap: 2rem;
-    /* background: lightcyan; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 5rem;
+  gap: 2rem;
+  /* background: lightcyan; */
 }
 
 .album-section .head {
-    height: 10dvh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+  height: 10dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .album-section .head h2 {
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.3rem;
-    color: rgb(29, 29, 29);
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: rgb(29, 29, 29);
 }
 
 .album-section .container {
-    width: 100%;
+  width: 100%;
 }
 
 .album-section .container .trending,
 .album-section .container .best-seller {
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .album-section .container .trending .type,
 .album-section .container .best-seller .type {
-    margin-top: 2rem;
-    height: 10dvh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  margin-top: 2rem;
+  height: 10dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .album-section .container .trending .type h1,
 .album-section .container .best-seller .type h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: rgb(24, 24, 24);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: rgb(24, 24, 24);
 }
 
 .album-section .container .trending .type button,
 .album-section .container .best-seller .type button {
-    width: 7dvw;
-    height: 6dvh;
-    border: none;
-    outline: none;
-    border-radius: 7px;
-    font-size: .8rem;
-    background: black;
-    color: white;
+  width: 7dvw;
+  height: 6dvh;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  background: black;
+  color: white;
 }
 
 .album-section .container .trending .cards,
 .album-section .container .best-seller .cards {
-    margin-top: 2rem;
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
 }
 
 /* RESPONSIVE */
 
 @media only screen and (max-width: 635px) {
-    .album-section {
-        padding: 1rem 2rem;
-        gap: 1rem;
-    }
+  .album-section {
+    padding: 1rem 2rem;
+    gap: 1rem;
+  }
 
-    .album-section .container .trending .type {
-        margin-top: 0;
-    }
+  .album-section .container .trending .type {
+    margin-top: 0;
+  }
 
-    .album-section .container .trending .type h1,
-    .album-section .container .best-seller .type h1 {
-        font-size: 1.7rem;
-        font-weight: 500;
-        color: rgb(24, 24, 24);
-    }
+  .album-section .container .trending .type h1,
+  .album-section .container .best-seller .type h1 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: rgb(24, 24, 24);
+  }
 
-    .album-section .container .trending .type button,
-    .album-section .container .best-seller .type button {
-        width: 25%;
-        height: 5dvh;
-    }
+  .album-section .container .trending .type button,
+  .album-section .container .best-seller .type button {
+    width: 25%;
+    height: 5dvh;
+  }
 
-    .album-section .container .trending .cards,
-    .album-section .container .best-seller .cards {
-        margin-top: 2rem;
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(auto, 1fr);
-        gap: 1rem;
-    }
+  .album-section .container .trending .cards,
+  .album-section .container .best-seller .cards {
+    margin-top: 2rem;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    gap: 1rem;
+  }
 }
 
-@media only screen and (min-device-width : 950px) and (max-device-width : 1024px) {
-    .album-section {
-        padding: 1rem 2rem;
-        gap: 1rem;
-    }
+@media only screen and (min-device-width: 950px) and (max-device-width: 1024px) {
+  .album-section {
+    padding: 1rem 2rem;
+    gap: 1rem;
+  }
 
-    .album-section .container .trending .type {
-        margin-top: 0;
-    }
+  .album-section .container .trending .type {
+    margin-top: 0;
+  }
 
-    .album-section .container .trending .cards,
-    .album-section .container .best-seller .cards {
-        margin-top: 2rem;
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(auto, 1fr);
-        gap: 1rem;
-    }
+  .album-section .container .trending .cards,
+  .album-section .container .best-seller .cards {
+    margin-top: 2rem;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    gap: 1rem;
+  }
 }
 
-@media only screen and (min-device-width : 635px) and (max-device-width : 950px) {
-    .album-section {
-        padding: 1rem 2rem;
-        gap: 1rem;
-    }
+@media only screen and (min-device-width: 635px) and (max-device-width: 950px) {
+  .album-section {
+    padding: 1rem 2rem;
+    gap: 1rem;
+  }
 
-    .album-section .container .trending .type {
-        margin-top: 0;
-    }
+  .album-section .container .trending .type {
+    margin-top: 0;
+  }
 
-    .album-section .container .trending .cards,
-    .album-section .container .best-seller .cards {
-        margin-top: 2rem;
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(auto, 1fr);
-        gap: 1rem;
-    }
+  .album-section .container .trending .cards,
+  .album-section .container .best-seller .cards {
+    margin-top: 2rem;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    gap: 1rem;
+  }
 }
