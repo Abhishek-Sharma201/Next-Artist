@@ -14,6 +14,7 @@ export const AlbumProvider = ({ children }) => {
       const res = await fetch(`${apiURL}/api/getDrawing`);
       const data = await res.json();
       setAlbum(data);
+      console.log(data);
     } catch (error) {
       console.error("Error fetching album:", error);
     } finally {
@@ -26,7 +27,9 @@ export const AlbumProvider = ({ children }) => {
   }, []);
 
   return (
-    <AlbumContext.Provider value={{ isLoading, fetchAlbum, album, setAlbum, setIsLoading }}>
+    <AlbumContext.Provider
+      value={{ isLoading, fetchAlbum, album, setAlbum, setIsLoading }}
+    >
       {children}
     </AlbumContext.Provider>
   );

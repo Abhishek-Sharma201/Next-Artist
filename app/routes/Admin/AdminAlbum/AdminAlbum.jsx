@@ -9,7 +9,7 @@ import { apiURL } from "@/app/constants";
 
 const AdminAlbum = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { album, setAlbum, fetchAlbum, isLoading } = useContext(AlbumContext);
+  const { album, fetchAlbum, isLoading } = useContext(AlbumContext);
 
   const openForm = () => setIsOpen(true);
   const close = () => setIsOpen(false);
@@ -56,6 +56,7 @@ const AdminAlbum = () => {
       const responseData = await res.json();
       toast.success(responseData.message || "Data Posted");
       fetchAlbum();
+      close();
     } catch (error) {
       toast.error(`Error: ${error.message}`);
     }
@@ -76,6 +77,7 @@ const AdminAlbum = () => {
 
   useEffect(() => {
     fetchAlbum();
+    console.log(album);
   }, []);
 
   return (
