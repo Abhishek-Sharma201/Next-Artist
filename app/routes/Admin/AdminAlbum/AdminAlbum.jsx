@@ -9,7 +9,8 @@ import { apiURL } from "@/app/constants";
 
 const AdminAlbum = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { album, fetchAlbum, isLoading } = useContext(AlbumContext);
+  const { album, fetchAlbum, isLoading, setIsLoading } =
+    useContext(AlbumContext);
 
   const openForm = () => setIsOpen(true);
   const close = () => setIsOpen(false);
@@ -64,14 +65,18 @@ const AdminAlbum = () => {
 
   const deleteCard = async (id) => {
     try {
+      setIsLoading(true);
       const result = await fetch(`${apiURL}/api/deleteDrawing/${id}`, {
         method: "DELETE",
       });
       if (!result.ok) throw new Error("Failed to delete card.");
-      toast.warn("Card Deleted");
       fetchAlbum();
+      toast.warn("Card Deleted");
+      setIsLoading(false);
     } catch (error) {
       toast.error(`Error: ${error.message}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 

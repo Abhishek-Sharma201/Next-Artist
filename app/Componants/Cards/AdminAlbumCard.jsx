@@ -13,7 +13,7 @@ const AdminAlbumCard = ({ type, imgSrc, price, onDelete }) => {
           priority={true}
         />
       </div>
-      <div className="h-[max-content] w-full mt-2 flex flex-col gap-1 overflow-hidden">
+      <div className="h-[max-content] w-full mt-2 flex flex-col gap-1">
         <h4 className="text-gray-800 font-semibold">₹{price}</h4>
         <h3 className="text-gray-700 font-medium truncate w-full">{type}</h3>
       </div>
