@@ -71,7 +71,7 @@ const AdminAlbum = () => {
       });
       if (!result.ok) throw new Error("Failed to delete card.");
       toast.warn("Card Deleted");
-      fetchAlbum();
+      await fetchAlbum();
       setIsLoading(false);
     } catch (error) {
       toast.error(`Error: ${error.message}`);
