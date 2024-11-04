@@ -64,14 +64,14 @@ const AdminAlbum = () => {
   };
 
   const deleteCard = async (id) => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const result = await fetch(`${apiURL}/api/deleteDrawing/${id}`, {
         method: "DELETE",
       });
       if (!result.ok) throw new Error("Failed to delete card.");
-      fetchAlbum();
       toast.warn("Card Deleted");
+      fetchAlbum();
       setIsLoading(false);
     } catch (error) {
       toast.error(`Error: ${error.message}`);
