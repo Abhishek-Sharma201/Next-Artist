@@ -28,8 +28,8 @@ const albumPage = () => {
         <div className="container">
           <section className="trending">
             <div className="type">
-              <h1>Trending Products</h1>
-              <button className="see-all">See All</button>
+              <h1>All Sketches</h1>
+              {/* <button className="see-all">See All</button> */}
             </div>
             {isLoading ? (
               <Loader />

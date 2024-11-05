@@ -15,7 +15,7 @@ const ShopBtn = ({ value, width, height, id, metaData }) => {
             style={{ width: width || '', height: height || '' }}
             onClick={handleClick}
         >
-            {value || 'Order Now'}
+            {value || 'View all'}
         </button>
     );
 };
