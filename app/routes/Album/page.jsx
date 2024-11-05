@@ -2,7 +2,6 @@
 import React, { useContext, useEffect } from "react";
 import "./style.css";
 import Nav from "../../Componants/Nav/Nav";
-import { bestSellerProcuts, trendingProcuts } from "@/app/constants";
 import AlbumCard from "@/app/Componants/Cards/AlbumCard";
 import Footer from "@/app/Componants/Footer/Footer";
 import { ToastContainer } from "react-toastify";
@@ -14,7 +13,7 @@ const albumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
-    fetchAlbum();
+    // fetchAlbum();
     console.log(album);
   }, []);
   return (
