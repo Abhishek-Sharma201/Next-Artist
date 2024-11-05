@@ -30,8 +30,7 @@
   width: 100%;
 }
 
-.album-section .container .trending,
-.album-section .container .best-seller {
+.album-section .container .trending {
   height: auto;
   width: 100%;
   display: flex;
@@ -40,8 +39,7 @@
   justify-content: center;
 }
 
-.album-section .container .trending .type,
-.album-section .container .best-seller .type {
+.album-section .container .trending .type {
   margin-top: 2rem;
   height: 10dvh;
   width: 100%;
@@ -50,15 +48,13 @@
   justify-content: space-between;
 }
 
-.album-section .container .trending .type h1,
-.album-section .container .best-seller .type h1 {
+.album-section .container .trending .type h1 {
   font-size: 2.5rem;
   font-weight: 600;
   color: rgb(24, 24, 24);
 }
 
-.album-section .container .trending .type button,
-.album-section .container .best-seller .type button {
+.album-section .container .trending .type button {
   width: 7dvw;
   height: 6dvh;
   border: none;
@@ -69,8 +65,7 @@
   color: white;
 }
 
-.album-section .container .trending .cards,
-.album-section .container .best-seller .cards {
+.album-section .container .trending .cards {
   margin-top: 2rem;
   width: 100%;
   height: auto;
@@ -92,21 +87,18 @@
     margin-top: 0;
   }
 
-  .album-section .container .trending .type h1,
-  .album-section .container .best-seller .type h1 {
+  .album-section .container .trending .type h1 {
     font-size: 1.7rem;
     font-weight: 500;
     color: rgb(24, 24, 24);
   }
 
-  .album-section .container .trending .type button,
-  .album-section .container .best-seller .type button {
+  .album-section .container .trending .type button {
     width: 25%;
     height: 5dvh;
   }
 
-  .album-section .container .trending .cards,
-  .album-section .container .best-seller .cards {
+  .album-section .container .trending .cards {
     margin-top: 2rem;
     width: 100%;
     height: auto;
@@ -127,8 +119,7 @@
     margin-top: 0;
   }
 
-  .album-section .container .trending .cards,
-  .album-section .container .best-seller .cards {
+  .album-section .container .trending .cards {
     margin-top: 2rem;
     width: 100%;
     height: auto;
@@ -149,8 +140,7 @@
     margin-top: 0;
   }
 
-  .album-section .container .trending .cards,
-  .album-section .container .best-seller .cards {
+  .album-section .container .trending .cards {
     margin-top: 2rem;
     width: 100%;
     height: auto;
