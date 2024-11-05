@@ -31,8 +31,10 @@
 
 .trendingCard .imgContainer .like-share {
   position: absolute;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
   bottom: 1rem;
-  transform: translate(-50%, -50%);
   height: 15%;
   width: 20dvh;
   display: flex;
