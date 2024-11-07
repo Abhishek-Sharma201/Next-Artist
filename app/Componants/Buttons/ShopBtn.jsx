@@ -2,10 +2,10 @@
 import React from "react";
 import "./ShopBtn.css";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
-const ShopBtn = ({ value, width, height, radius, id, metaData }) => {
+const ShopBtn = ({ value, width, height, radius, id, redirect }) => {
   const handleClick = () => {
-    console.log("Card data : ", metaData);
     toast.success(`Card id : ${id}`);
   };
 
@@ -19,7 +19,7 @@ const ShopBtn = ({ value, width, height, radius, id, metaData }) => {
       }}
       onClick={handleClick}
     >
-      {value || "View all"}
+      <Link href={redirect ? redirect : ""}>{value || "View all"}</Link>
     </button>
   );
 };

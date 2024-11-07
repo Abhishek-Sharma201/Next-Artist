@@ -1,18 +1,19 @@
 .shopBtn {
-    color: black;
-    font-weight: bold;
-    font-size: small;
-    padding: .5rem;
-    border-radius: 45px;
-    background: #FED255;
-    height: 5dvh;
-    /* max-width: 7dvw;
+  color: black;
+  font-weight: bold;
+  font-size: small;
+  /* padding: 0.5rem; */
+  border-radius: 45px;
+  background: #fed255;
+  height: 5dvh;
+  text-align: center;
+  /* max-width: 7dvw;
     min-width: max-content; */
 }
 
 @media only screen and (max-width: 768px) {
-    .shopBtn {
-        width: 100%;
-        font-size: 1rem;
-    }
+  .shopBtn {
+    width: 100%;
+    font-size: .8rem;
+  }
 }
