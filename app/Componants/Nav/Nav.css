@@ -1,204 +1,205 @@
 .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: max-content;
-    width: 100%;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: max-content;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
 }
 
 .navBar {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 10dvh;
-    background: transparent;
-    padding: 0 10px;
-    overflow: hidden;
-    z-index: 99;
-    /* margin-top: 1rem; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 10dvh;
+  background: transparent;
+  padding: 0 10px;
+  overflow: hidden;
+  z-index: 99;
+  /* margin-top: 1rem; */
 }
 
 .wrapper .backImg {
-    object-fit: cover;
-    height: 10dvh;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
+  object-fit: cover;
+  height: 10dvh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 .navLogo {
-    height: 100%;
-    width: 5dvw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: .725rem;
-    overflow: hidden;
-    z-index: 99;
+  height: 100%;
+  width: 5dvw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.725rem;
+  overflow: hidden;
+  z-index: 99;
 }
 
 .navLogo .logoImage {
-    object-fit: cover;
-    height: 30dvh;
-    width: 30dvw;
+  object-fit: cover;
+  height: 30dvh;
+  width: 30dvw;
 }
 
 .navList {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 80dvh;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80dvh;
+  height: 100%;
 }
 
 .navItem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    color: white;
-    cursor: pointer;
-    padding: 0 10px;
-    transition: all .5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: all 0.5s;
 }
 
 .navItem a {
-    display: inline-block;
-    text-decoration: none;
-    color: white;
-    font-size: .925rem;
-    transition: all .3s;
-    transform-origin: left;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-size: 0.925rem;
+  transition: all 0.3s;
+  transform-origin: left;
 }
 
 .navItem a:hover {
-    border-bottom: 1px solid #FED255;
+  border-bottom: 1px solid #fed255;
 }
 
 .navBar .icons {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 10dvw;
-    height: 100%;
-    z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 10dvw;
+  height: 100%;
+  z-index: 99;
 }
 
 .menu-btn {
-    height: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 99;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
 }
 
 .navBarOpened {
-    height: 100dvh;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.329);
-    z-index: 1000;
-    padding-top: 50px;
-    backdrop-filter: blur(5px);
-    transition: all .5s linear;
+  height: 100dvh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.329);
+  z-index: 1000;
+  padding-top: 50px;
+  backdrop-filter: blur(5px);
+  transition: all 0.5s linear;
 }
 
 .navBarOpened .navList {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 
 .navBarOpened .navItem {
-    padding: 20px 0;
+  padding: 20px 0;
 }
 
 .navBarOpened .menu-btn {
-    display: flex;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-
-    /* .navLogo {
+  /* .navLogo {
         width: 20dvw;
     } */
 
-    .navList {
-        display: none;
-    }
+  .navList {
+    display: none;
+  }
 
-    .navBarOpened {
-        justify-content: space-evenly;
-    }
+  .navBarOpened {
+    justify-content: space-evenly;
+  }
 
-    .navBarOpened .navList {
-        display: flex;
-        height: 30dvh;
-        justify-content: space-evenly;
-        width: fit-content;
-    }
+  .navBarOpened .navList {
+    display: flex;
+    height: 30dvh;
+    justify-content: space-evenly;
+    width: fit-content;
+  }
 
-    .navLogo {
-        height: fit-content;
-        width: fit-content;
-    }
+  .navLogo {
+    height: fit-content;
+    width: fit-content;
+  }
 
-    .menu-btn {
-        height: fit-content;
-        display: flex;
-    }
+  .menu-btn {
+    height: fit-content;
+    display: flex;
+  }
 
-    .navBar .icons {
-        display: none;
-    }
+  .navBar .icons {
+    display: none;
+  }
 
-    .navBar {
-        justify-content: space-between;
-    }
+  .navBar {
+    justify-content: space-between;
+  }
 
-    .navBarOpened {
-        align-items: flex-start;
-        justify-content: flex-start;
-    }
+  .navBarOpened {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 
-    .navBarOpened .navList {
-        margin-top: 3rem;
-        height: auto;
-        width: 20dvw;
-        justify-content: flex-start;
-    }
+  .navBarOpened .navList {
+    margin-top: 3rem;
+    height: auto;
+    width: 20dvw;
+    justify-content: flex-start;
+  }
 
-    .navBarOpened .navLogo {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        /* overflow: hidden; */
-    }
+  .navBarOpened .navLogo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    /* overflow: hidden; */
+  }
 
-    .navBarOpened .navLogo .logoImage {
-        object-fit: cover;
-        height: 10dvh;
-        width: 20dvw;
-    }
+  .navBarOpened .navLogo .logoImage {
+    object-fit: cover;
+    height: 10dvh;
+    width: 20dvw;
+  }
 
-    .navLogo .logoImage {
-        object-fit: cover;
-        height: 20dvh;
-        width: 20dvw;
-    }
+  .navLogo .logoImage {
+    object-fit: cover;
+    height: 20dvh;
+    width: 20dvw;
+  }
 }

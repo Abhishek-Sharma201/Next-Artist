@@ -1,286 +1,290 @@
 ::placeholder {
-    color: rgb(46, 46, 46);
+  color: rgb(46, 46, 46);
 }
 
 .contact {
-    height: auto;
-    width: 100%;
-    padding: 1rem 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+  height: auto;
+  width: 100%;
+  padding: 1rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .contact .head {
-    height: 10dvh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+  height: 10dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .contact .head .route {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: rgb(37, 37, 37);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(37, 37, 37);
 }
 
 .contact .get-in {
-    height: 15dvh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+  height: 15dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .contact .get-in h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: rgb(17, 17, 17);
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(17, 17, 17);
 }
 
 .contact .get-in h2 {
-    font-size: 1rem;
-    font-weight: 400;
-    color: rgb(37, 37, 37);
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgb(37, 37, 37);
 }
 
 .contact .container {
-    height: auto;
-    width: 100%;
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: space-around;
-    padding: .5rem 1rem;
+  height: auto;
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.5rem 1rem;
 }
 
 .contact .container .subscribe {
-    padding: 1rem;
-    gap: 2rem;
-    height: 100%;
-    width: 40dvw;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
+  padding: 1rem;
+  gap: 2rem;
+  height: 100%;
+  width: 40dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
 .contact .container .subscribe h1 {
-    font-size: 3.5rem;
-    font-weight: 600;
+  font-size: 3.5rem;
+  font-weight: 600;
 }
 
 .contact .container .subscribe h2 {
-    font-size: 1rem;
-    font-weight: 400;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .contact .container .subscribe .input-submit {
-    width: 30dvw;
-    height: auto;
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: space-between;
-    background: #FED255;
-    border-radius: 8px;
-    padding: .4rem;
+  width: 30dvw;
+  height: auto;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+  background: #fed255;
+  border-radius: 8px;
+  padding: 0.4rem;
 }
 
 .contact .container .subscribe .input-submit input {
-    width: 60%;
-    height: auto;
-    padding: .3rem;
-    border: none;
-    outline: none;
-    color: rgb(36, 36, 36);
-    background: transparent;
+  width: 60%;
+  height: auto;
+  padding: 0.3rem 1rem;
+  border: none;
+  outline: none;
+  color: rgb(49, 49, 49);
+  background: transparent;
+}
+
+.contact .container .subscribe .input-submit input::placeholder {
+  color: rgb(49, 49, 49);
 }
 
 .contact .container .subscribe .input-submit button {
-    width: 35%;
-    height: 9dvh;
-    font-size: 1rem;
-    font-weight: 400;
-    padding: .3rem;
-    border: none;
-    outline: none;
-    color: white;
-    background: black;
-    border-radius: 8px;
-    letter-spacing: .6px;
+  width: 35%;
+  height: 9dvh;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.3rem;
+  border: none;
+  outline: none;
+  color: white;
+  background: black;
+  border-radius: 8px;
+  letter-spacing: 0.6px;
 }
 
 .contact .container .subscribe h3 {
-    font-size: .8rem;
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: .3rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.3rem;
 }
 
 .contact .container .form {
-    padding: .5rem;
-    height: 100%;
-    width: 30dvw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+  padding: 0.5rem;
+  height: 100%;
+  width: 30dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .contact .container .form form {
-    height: 100%;
-    width: 100%;
-    gap: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .contact .container .form form .inp-box {
-    height: auto;
-    width: 100%;
-    padding: .5rem 1rem;
-    gap: 1rem;
-    border-radius: 30px;
-    border: .5px solid black;
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: flex-start;
+  height: auto;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+  border-radius: 30px;
+  border: 0.5px solid black;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .contact .container .form form .inp-box input {
-    width: 80%;
-    height: 6dvh;
-    font-size: 1rem;
-    font-weight: 400;
-    color: rgb(22, 22, 22);
+  width: 80%;
+  height: 6dvh;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgb(22, 22, 22);
 }
 
 .contact .container .form form textarea.message {
-    font-family: 'Poppins', sans-serif;
-    resize: none;
-    padding: 1rem;
-    height: 20dvh;
-    width: 100%;
-    font-size: 1rem;
-    font-weight: 400;
-    border-radius: 15px;
-    border: .5px solid black;
+  font-family: "Poppins", sans-serif;
+  resize: none;
+  padding: 1rem;
+  height: 20dvh;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 15px;
+  border: 0.5px solid black;
 }
 
 .contact .container .form form .send {
-    width: 100%;
-    height: 7dvh;
-    border-radius: 30px;
-    font-size: 1.1rem;
-    font-weight: 400;
-    background: #FED255;
+  width: 100%;
+  height: 7dvh;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  background: #fed255;
 }
 
 /* RESPONSIVE */
 
 @media only screen and (max-width: 768px) {
-    .contact {
-        padding: 1rem 2rem;
-    }
+  .contact {
+    padding: 1rem 2rem;
+  }
 
-    .contact .container {
-        flex-direction: column-reverse;
-        justify-content: space-between;
-        padding: .5rem 0;
-        padding-top: 1rem;
-    }
+  .contact .container {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    padding-top: 1rem;
+  }
 
-    .contact .container .subscribe {
-        gap: 1rem;
-        padding: 1rem 0;
-        width: 100%;
-    }
+  .contact .container .subscribe {
+    gap: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+  }
 
-    .contact .container .subscribe .input-submit button {
-        width: 35%;
-        height: 7dvh;
-    }
+  .contact .container .subscribe .input-submit button {
+    width: 35%;
+    height: 7dvh;
+  }
 
-    .contact .container .subscribe .input-submit {
-        width: 100%;
-    }
+  .contact .container .subscribe .input-submit {
+    width: 100%;
+  }
 
-    .contact .container .subscribe h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-    }
+  .contact .container .subscribe h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
 
-    .contact .container .form {
-        padding: 1rem 0;
-        width: 100%;
-    }
+  .contact .container .form {
+    padding: 1rem 0;
+    width: 100%;
+  }
 
-    .contact .get-in h2 {
-        text-align: center;
-        font-size: 0.8rem;
-    }
+  .contact .get-in h2 {
+    text-align: center;
+    font-size: 0.8rem;
+  }
 
-    .contact .container .subscribe h3 {
-        font-size: .9rem;
-        font-weight: 400;
-    }
+  .contact .container .subscribe h3 {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    .contact {
-        padding: 1rem 3rem;
-    }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .contact {
+    padding: 1rem 3rem;
+  }
 
-    .contact .container {
-        justify-content: space-between;
-        padding: .5rem 0;
-        padding-top: 1rem;
-        column-gap: 2rem;
-    }
+  .contact .container {
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    padding-top: 1rem;
+    column-gap: 2rem;
+  }
 
-    .contact .container .subscribe {
-        gap: 1.5rem;
-        padding: 1rem 0;
-        width: 50%;
-    }
+  .contact .container .subscribe {
+    gap: 1.5rem;
+    padding: 1rem 0;
+    width: 50%;
+  }
 
-    .contact .container .subscribe .input-submit button {
-        width: 35%;
-        height: 7dvh;
-    }
+  .contact .container .subscribe .input-submit button {
+    width: 35%;
+    height: 7dvh;
+  }
 
-    .contact .container .subscribe .input-submit {
-        width: 100%;
-    }
+  .contact .container .subscribe .input-submit {
+    width: 100%;
+  }
 
-    .contact .container .subscribe h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-    }
+  .contact .container .subscribe h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
 
-    .contact .container .form {
-        padding: 1rem 0;
-        width: 50%;
-    }
+  .contact .container .form {
+    padding: 1rem 0;
+    width: 50%;
+  }
 
-    .contact .get-in h2 {
-        text-align: center;
-        font-size: 1rem;
-    }
+  .contact .get-in h2 {
+    text-align: center;
+    font-size: 1rem;
+  }
 
-    .contact .container .subscribe h3 {
-        font-size: .9rem;
-        font-weight: 400;
-    }
+  .contact .container .subscribe h3 {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
 }

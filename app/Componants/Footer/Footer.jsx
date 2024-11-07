@@ -8,7 +8,7 @@ const Footer = ({ width }) => {
     <footer style={{ width: width ? `${width}` : "90%" }}>
       <div className="footerSections">
         <div className="footerLogo">
-          <div className="wrapper">
+          <div className="footer-wrapper">
             <div className="img">
               <Image
                 src={logoImage}
@@ -25,14 +25,14 @@ const Footer = ({ width }) => {
           <p>Talented sketch arist passionate about detailed illustrations.</p>
         </div>
         <div className="footerSection">
-          <h1>Visit link</h1>
+          <h1>Terms</h1>
           <div className="links">
             <a href="*">Privacy</a>
             <a href="*">Terms & Conditions</a>
           </div>
         </div>
         <div className="footerSection">
-          <h1>Company</h1>
+          <h1>Pages</h1>
           <div className="links">
             <a href="#feature">Contact</a>
             <a href="#about">About</a>

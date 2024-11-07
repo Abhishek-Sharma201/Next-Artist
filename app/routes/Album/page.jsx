@@ -29,6 +29,13 @@ const albumPage = () => {
             <div className="type">
               <h1>All Sketches</h1>
               {/* <button className="see-all">See All</button> */}
+              <input
+                type="text"
+                name="filter"
+                id="filter"
+                placeholder="Filter"
+                className="h-[5dvh] w-[250px] p-2 border-[.5px] bg-[#fff] border-zinc-700 text-zinc-900 font-medium text-[.8rem] placeholder:text-zinc-900 rounded-md"
+              />
             </div>
             {isLoading ? (
               <Loader />
