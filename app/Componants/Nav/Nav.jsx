@@ -75,18 +75,18 @@ const Nav = ({ background }) => {
           <li className="navItem">
             <Link href="/routes/Admin">Admin</Link>
           </li>
-          {/* {session?.user?.email === "abhishek.webdev001@gmail.com" ||
+          {session?.user?.email === "abhishek.webdev001@gmail.com" ||
           session?.user?.email === "abhisheksharma52962@gmail.com" ? (
             <li className="navItem">
               <Link href="/routes/Admin">Admin</Link>
             </li>
           ) : (
             ""
-          )} */}
+          )}
           {isNavOpened ? (
             session ? (
               <button
-                className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
+                className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md w-[80px]"
                 onClick={async () => {
                   await signOut();
                   toast.warn("Logged Out");
@@ -97,7 +97,7 @@ const Nav = ({ background }) => {
             ) : (
               <Link
                 href={"/login"}
-                className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md"
+                className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md w-[80px]"
               >
                 Login
               </Link>

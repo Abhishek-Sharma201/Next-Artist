@@ -13,7 +13,6 @@ const Banner = () => {
         priority={true}
         className="bannerImg"
       />
-      <Nav background={false} />
       <div className="container">
         <div className="left">
           <Image src={brushesImage} alt="img" className="image" />
@@ -29,11 +28,10 @@ const Banner = () => {
             </p>
             <button>Shop Now</button>
           </div>
-          
         </div>
         <div className="right">
-            <Image src={homeImage} alt="img" className="image" />
-          </div>
+          <Image src={homeImage} alt="img" className="image" />
+        </div>
       </div>
     </div>
   );
