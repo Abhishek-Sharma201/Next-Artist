@@ -32,7 +32,16 @@ const page = () => {
               return (
                 <div className="box" key={i}>
                   <Image
-                    src={v}
+                    src={
+                      v.image
+                        ? `data:${v.image.contentType};base64,${btoa(
+                            new Uint8Array(v.image.data.data).reduce(
+                              (data, byte) => data + String.fromCharCode(byte),
+                              ""
+                            )
+                          )}`
+                        : ""
+                    }
                     loading="lazy"
                     alt="collection-img"
                     className="collection-image"
