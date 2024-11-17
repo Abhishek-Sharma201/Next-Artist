@@ -9,7 +9,10 @@ const Login = () => {
         <button
           className="w-[320px] h-[7dvh] text-center gap-4 bg-zinc-100 text-zinc-700 font-[500] rounded flex items-center justify-center"
           onClick={async () => {
-            await signIn("github");
+            await signIn("github", {
+              redirect: true,
+              redirectTo: "/",
+            });
           }}
         >
           <svg
