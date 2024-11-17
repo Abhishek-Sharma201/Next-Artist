@@ -84,6 +84,8 @@
   }
 
   .album-section .container .trending .type {
+    flex-direction: column;
+    gap: 0.5rem;
     margin-top: 0;
   }
 
