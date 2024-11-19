@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import AlbumContext from "@/app/context/AlbumContext";
 import Image from "next/image";
 import Loader from "@/app/Componants/Loader/Loader";
