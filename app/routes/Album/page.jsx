@@ -16,6 +16,27 @@ const albumPage = () => {
     // fetchAlbum();
     console.log(album);
   }, []);
+
+  const handleShare = async (data) => {
+    const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Amazing Sketch!",
+          text: message,
+          url: window.location.href, // Current page URL or specific URL
+        });
+        console.log("Content shared successfully!");
+      } catch (error) {
+        console.error("Error sharing content:", error);
+      }
+    } else {
+      // Fallback for browsers that do not support Web Share API
+      alert("Sharing is not supported in your browser.");
+    }
+  };
+
   return (
     <>
       <Nav background={true} />
@@ -28,7 +49,6 @@ const albumPage = () => {
           <section className="trending">
             <div className="type">
               <h1>All Sketches</h1>
-              {/* <button className="see-all">See All</button> */}
               <input
                 type="text"
                 name="filter"
@@ -59,7 +79,13 @@ const albumPage = () => {
                           : ""
                       }
                       cardId={card._id}
-                      // metaData={card.metaData}
+                      onShare={() =>
+                        handleShare({
+                          text: card.type,
+                          price: card.price,
+                          id: card._id,
+                        })
+                      }
                     />
                   );
                 })}

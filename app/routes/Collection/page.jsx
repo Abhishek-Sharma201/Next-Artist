@@ -15,7 +15,7 @@ const page = () => {
   React.useEffect(() => {
     fetchAlbum();
     console.log(album);
-  });
+  }, []);
 
   return (
     <>
