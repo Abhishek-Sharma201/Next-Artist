@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AlbumContext from "@/app/context/AlbumContext";
 import Image from "next/image";
@@ -7,28 +7,32 @@ import Loader from "@/app/Componants/Loader/Loader";
 
 const AlbumDetails = ({ params }) => {
   const { album, fetchAlbum, isLoading } = useContext(AlbumContext);
+  const [card, setCard] = useState(null);
   const router = useRouter();
-  const { id } = params.id; // Retrieve the ID from the route query
+
+  const { id } = params; // Correct destructuring of params
 
   useEffect(() => {
+    // Fetch albums if not already fetched
     if (!album.length) {
       fetchAlbum();
+    } else {
+      findCard();
     }
   }, [album]);
 
-  // Check if `id` is undefined or loading
-  if (isLoading || !id) {
+  // Find the card by ID
+  const findCard = () => {
+    const foundCard = album.find((item) => item._id === id);
+    setCard(foundCard || null);
+  };
+
+  // Show loader while fetching data or finding the card
+  if (isLoading || !card) {
     return <Loader />;
   }
 
-  // Find the card in the album using the `id`
-  const card = album.find((item) => item._id === id);
-
-  if (!card) {
-    return <p>Card not found</p>;
-  }
-
-  // Construct image source
+  // Generate image source
   const imageSrc = card.image
     ? `data:${card.image.contentType};base64,${btoa(
         new Uint8Array(card.image.data.data).reduce(
