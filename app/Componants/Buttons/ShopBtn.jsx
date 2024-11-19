@@ -6,21 +6,21 @@ import Link from "next/link";
 
 const ShopBtn = ({ value, width, height, radius, id, redirect }) => {
   const handleClick = () => {
-    toast.success(`Card id : ${id}`);
+    toast.info(`Card id : ${id}`);
   };
 
   return (
-    <button
-      className="shopBtn"
+    <Link
+      href={redirect ? redirect : ""}
       style={{
         width: width || "",
         height: height || "",
         borderRadius: radius || "10px",
       }}
-      onClick={handleClick}
+      className="shopBtn"
     >
-      <Link href={redirect ? redirect : ""}>{value || "View all"}</Link>
-    </button>
+      <button onClick={handleClick}>{value || "View all"}</button>
+    </Link>
   );
 };
 

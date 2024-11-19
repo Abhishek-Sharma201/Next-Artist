@@ -2,18 +2,17 @@
   color: black;
   font-weight: bold;
   font-size: small;
-  /* padding: 0.5rem; */
   border-radius: 45px;
   background: #fed255;
   height: 5dvh;
+  width: 100%;
   text-align: center;
-  /* max-width: 7dvw;
-    min-width: max-content; */
+  align-content: center;
 }
 
 @media only screen and (max-width: 768px) {
   .shopBtn {
     width: 100%;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 }

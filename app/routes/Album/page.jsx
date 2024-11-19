@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AlbumContext from "@/app/context/AlbumContext";
 import Loader from "@/app/Componants/Loader/Loader";
+import { IMG_11 } from "@/app/utils";
 
 const albumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
