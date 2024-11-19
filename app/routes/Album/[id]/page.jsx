@@ -1,23 +1,14 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import React, { useContext, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import AlbumContext from "@/app/context/AlbumContext";
 import Image from "next/image";
 import Loader from "@/app/Componants/Loader/Loader";
 
-const AlbumDetails = () => {
+const AlbumDetails = ({ params }) => {
   const { album, fetchAlbum, isLoading } = useContext(AlbumContext);
-  const searchParams = useSearchParams(); // For extracting query parameters
-  const router = useRouter(); // For navigation
-  const [id, setId] = useState(null);
-
-  // Extract `id` from searchParams
-  useEffect(() => {
-    const queryId = searchParams.get("id"); // Extract `id` from query string
-    if (queryId) {
-      setId(queryId);
-    }
-  }, [searchParams]);
+  const router = useRouter();
+  const { id } = params.id; // Retrieve the ID from the route query
 
   useEffect(() => {
     if (!album.length) {
@@ -25,7 +16,7 @@ const AlbumDetails = () => {
     }
   }, [album]);
 
-  // Check if data is still loading
+  // Check if `id` is undefined or loading
   if (isLoading || !id) {
     return <Loader />;
   }
@@ -37,6 +28,7 @@ const AlbumDetails = () => {
     return <p>Card not found</p>;
   }
 
+  // Construct image source
   const imageSrc = card.image
     ? `data:${card.image.contentType};base64,${btoa(
         new Uint8Array(card.image.data.data).reduce(
