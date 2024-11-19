@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import AlbumContext from "@/app/context/AlbumContext";
 import Image from "next/image";
 import Loader from "@/app/Componants/Loader/Loader";
-import "./style.css";
+import "../style.css";
 
 const AlbumDetails = () => {
   const { album, fetchAlbum, isLoading } = useContext(AlbumContext);
