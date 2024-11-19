@@ -46,7 +46,7 @@ const AlbumCard = ({ text, price, img, cardId, metaData, onShare }) => {
           height={"6dvh"}
           metaData={metaData}
           value={"Get"}
-          redirect={`/routes/Album/${cardId}`}
+          redirect={`/routes/Album/?id=${cardId}`}
         />
       </div>
     </div>

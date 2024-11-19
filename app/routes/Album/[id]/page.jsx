@@ -1,21 +1,23 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useSearchParams, useRouter } from "next/navigation";
 import AlbumContext from "@/app/context/AlbumContext";
 import Image from "next/image";
 import Loader from "@/app/Componants/Loader/Loader";
 
 const AlbumDetails = () => {
   const { album, fetchAlbum, isLoading } = useContext(AlbumContext);
-  const router = useRouter();
+  const searchParams = useSearchParams(); // For extracting query parameters
+  const router = useRouter(); // For navigation
   const [id, setId] = useState(null);
 
-  // Use useEffect to ensure `id` is accessed after the router is mounted
+  // Extract `id` from searchParams
   useEffect(() => {
-    if (router.query.id) {
-      setId(router.query.id);
+    const queryId = searchParams.get("id"); // Extract `id` from query string
+    if (queryId) {
+      setId(queryId);
     }
-  }, [router.query]);
+  }, [searchParams]);
 
   useEffect(() => {
     if (!album.length) {
@@ -23,7 +25,7 @@ const AlbumDetails = () => {
     }
   }, [album]);
 
-  // Check if `id` or album data is loading
+  // Check if data is still loading
   if (isLoading || !id) {
     return <Loader />;
   }
