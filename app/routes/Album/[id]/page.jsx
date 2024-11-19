@@ -10,10 +10,9 @@ const AlbumDetails = ({ params }) => {
   const [card, setCard] = useState(null);
   const router = useRouter();
 
-  const { id } = params; // Correct destructuring of params
+  const { id } = params;
 
   useEffect(() => {
-    // Fetch albums if not already fetched
     if (!album.length) {
       fetchAlbum();
     } else {
@@ -21,7 +20,6 @@ const AlbumDetails = ({ params }) => {
     }
   }, [album]);
 
-  // Find the card by ID
   const findCard = () => {
     const foundCard = album.find((item) => item._id === id);
     setCard(foundCard || null);
@@ -44,13 +42,19 @@ const AlbumDetails = ({ params }) => {
 
   return (
     <div className="album-details">
-      <h1>{card.type}</h1>
-      <Image src={imageSrc} alt={card.type} width={400} height={300} />
-      <p>Price: ${card.price}</p>
-      <p>ID: {card._id}</p>
-      <button onClick={() => router.back()} className="back-btn">
-        Go Back
-      </button>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <h1>{card.type}</h1>
+          <Image src={imageSrc} alt={card.type} width={400} height={300} />
+          <p>Price: ${card.price}</p>
+          <p>ID: {card._id}</p>
+          <button onClick={() => router.back()} className="back-btn">
+            Go Back
+          </button>
+        </>
+      )}
     </div>
   );
 };
