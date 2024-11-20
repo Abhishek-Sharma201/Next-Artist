@@ -1,6 +1,10 @@
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Container = ({ data }) => {
+  const router = useRouter();
+
   return (
     <div className="w-full h-[max-content] p-4 flex items-center justify-between">
       <div className="h-[max-content] w-[max-content] rounded-lg flex flex-col items-center justify-center">
@@ -16,10 +20,12 @@ const Container = ({ data }) => {
           className="h-full w-full object-contain"
         />
       </div>
-      <div className="">
-        <h1>{data.type}</h1>
-        <p>Price: ${data.price}</p>
-        <p>ID: {data._id}</p>
+      <div className="h-full w-full flex flex-col items-start justify-center gap-4 p-4">
+        <h1 className="text-[1rem] font-[500] text-zinc-900">{data.type}</h1>
+        <p className="text-[.9rem] font-[400] text-zinc-800">
+          Price: ${data.price}
+        </p>
+        <p className="text-[.8rem] font-[400] text-zinc-800">ID: {data._id}</p>
         <button onClick={() => router.back()} className="back-btn">
           Go Back
         </button>
