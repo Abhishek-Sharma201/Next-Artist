@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -12,7 +14,7 @@ const Container = ({ data }) => {
         <Image
           src={`data:${data.image.contentType};base64,${btoa(
             new Uint8Array(data.image.data.data).reduce(
-              (data, byte) => data + String.fromCharCode(byte),
+              (v, byte) => v + String.fromCharCode(byte),
               ""
             )
           )}`}
