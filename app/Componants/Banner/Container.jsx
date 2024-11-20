@@ -26,7 +26,7 @@ const Container = ({ data }) => {
         <p className="text-[1.3rem] font-[400] text-zinc-800">
           Price: ₹{data.price}
         </p>
-        <h2 className="h-[max-content] w-{max-content} flex items-start justify-center gap-4 p-2">
+        <h2 className="h-[max-content] w-{max-content} flex items-start justify-center gap-2 p-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
