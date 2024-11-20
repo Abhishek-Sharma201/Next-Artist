@@ -36,7 +36,7 @@ const AlbumDetails = ({ params }) => {
   return (
     <>
       <Nav background={true} />
-      <div className="h-full w-screen flex flex-col items-center justify-center gap-4 py-8 px-20">
+      <div className="h-full w-screen flex flex-col items-center justify-center gap-4 py-8 px-12">
         {isLoading ? (
           <Loader />
         ) : (
