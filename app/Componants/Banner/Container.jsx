@@ -7,7 +7,7 @@ const Container = ({ data }) => {
   const router = useRouter();
 
   return (
-    <div className="w-full h-[max-content] p-4 flex items-center justify-center self-center gap-12">
+    <div className="w-full h-[max-content] p-4 flex flex-col lg:flex-row items-center justify-center self-center gap-12">
       <div className="h-[70dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
         <Image
           src={`data:${data.image.contentType};base64,${btoa(
@@ -26,7 +26,7 @@ const Container = ({ data }) => {
         <p className="text-[1.3rem] font-[400] text-zinc-800">
           Price: ₹{data.price}
         </p>
-        <h2 className="h-[max-content] w-{max-content} flex items-center justify-center gap-2 p-2">
+        <h2 className="h-[max-content] w-{max-content} flex items-start justify-center gap-2 py-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
