@@ -7,8 +7,8 @@ const Container = ({ data }) => {
   const router = useRouter();
 
   return (
-    <div className="w-full h-[max-content] p-4 flex items-center justify-center self-center gap-8">
-      <div className="h-[40dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
+    <div className="w-full h-[max-content] p-4 flex items-center justify-center self-center gap-12">
+      <div className="h-[60dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
         <Image
           src={`data:${data.image.contentType};base64,${btoa(
             new Uint8Array(data.image.data.data).reduce(
@@ -21,7 +21,7 @@ const Container = ({ data }) => {
           className="h-full w-full object-contain"
         />
       </div>
-      <div className="h-full w-full flex flex-col items-start justify-center gap-4 p-4">
+      <div className="h-full w-{max-content} flex flex-col items-start justify-center gap-4 p-4">
         <h1 className="text-[2.5rem] font-[500] text-zinc-900">{data.type}</h1>
         <p className="text-[1.3rem] font-[400] text-zinc-800">
           Price: ${data.price}
@@ -31,13 +31,15 @@ const Container = ({ data }) => {
           value={"Order on WhatsApp"}
           redirect={"routes/Album"}
           height={"7dvh"}
-          width={"10dvw"}
+          width={"15dvw"}
+          bg={"#189D0E"}
+          color={"white"}
         />
         <ShopBtn
           value={"Go Back"}
           redirect={"/routes/Album"}
           height={"7dvh"}
-          width={"10dvw"}
+          width={"15dvw"}
         />
       </div>
     </div>
