@@ -10,7 +10,7 @@ const Container = ({ data }) => {
 
   return (
     <div className="w-full h-[max-content] p-4 flex flex-col lg:flex-row items-center justify-center self-center gap-12">
-      <div className="h-[70dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
+      <div className="h-[50dvh] lg:h-[70dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
         <Image
           src={`data:${data.image.contentType};base64,${btoa(
             new Uint8Array(data.image.data.data).reduce(
@@ -47,7 +47,7 @@ const Container = ({ data }) => {
           value={"Order on WhatsApp"}
           redirect={`https://wa.me/918108812687`}
           height={"7dvh"}
-          width={"15dvw"}
+          width={"max-content"}
           bg={"#189D0E"}
           color={"white"}
         />
@@ -55,7 +55,7 @@ const Container = ({ data }) => {
           value={"Go Back"}
           redirect={"/routes/Album"}
           height={"7dvh"}
-          width={"15dvw"}
+          width={"max-content"}
         />
       </div>
     </div>
