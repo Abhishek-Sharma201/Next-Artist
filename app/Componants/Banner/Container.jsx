@@ -7,7 +7,7 @@ const Container = ({ data }) => {
   const router = useRouter();
 
   return (
-    <div className="w-full h-[max-content] p-4 flex items-center justify-between self-center">
+    <div className="w-full h-[max-content] p-4 flex items-center justify-center self-center gap-8">
       <div className="h-[40dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
         <Image
           src={`data:${data.image.contentType};base64,${btoa(
@@ -27,10 +27,18 @@ const Container = ({ data }) => {
           Price: ${data.price}
         </p>
         <p className="text-[.8rem] font-[400] text-zinc-800">ID: {data._id}</p>
-        {/* <button onClick={() => router.back()} className="back-btn">
-          Go Back
-        </button> */}
-        <ShopBtn value={"Go Back"} redirect={"/routes/Album"} />
+        <ShopBtn
+          value={"Order on WhatsApp"}
+          redirect={"routes/Album"}
+          height={"7dvh"}
+          width={"10dvw"}
+        />
+        <ShopBtn
+          value={"Go Back"}
+          redirect={"/routes/Album"}
+          height={"7dvh"}
+          width={"10dvw"}
+        />
       </div>
     </div>
   );
