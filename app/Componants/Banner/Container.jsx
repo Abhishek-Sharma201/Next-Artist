@@ -43,7 +43,7 @@ const Container = ({ data }) => {
         <p className="text-[.8rem] font-[400] text-zinc-800">ID: {data._id}</p>
         <ShopBtn
           value={"Order on WhatsApp"}
-          redirect={"routes/Album"}
+          redirect={`https://wa.me/918108812687`}
           height={"7dvh"}
           width={"15dvw"}
           bg={"#189D0E"}
