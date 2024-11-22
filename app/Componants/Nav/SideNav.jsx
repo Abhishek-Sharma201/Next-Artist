@@ -1,12 +1,24 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import "./SideNav.css";
 
 const SideNav = ({ initialTab, handleTabChange }) => {
+  const [activeTab, setActiveTab] = useState(initialTab);
+
+  const changeTab = (tabName) => {
+    setActiveTab(tabName);
+    handleTabChange(tabName);
+  };
+
+  const isActive = (tabName) => (activeTab === tabName ? "active" : "");
+
   return (
     <div className="sideNav">
       <ul className="list">
-        <li className="item" onClick={() => handleTabChange("Dashboard")}>
+        <li
+          className={`item ${isActive("Dashboard")}`}
+          onClick={() => changeTab("Dashboard")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -19,7 +31,10 @@ const SideNav = ({ initialTab, handleTabChange }) => {
           </svg>
           Dashboard
         </li>
-        <li className="item" onClick={() => handleTabChange("Home")}>
+        <li
+          className={`item ${isActive("Home")}`}
+          onClick={() => changeTab("Home")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -32,7 +47,10 @@ const SideNav = ({ initialTab, handleTabChange }) => {
           </svg>
           Home
         </li>
-        <li className="item" onClick={() => handleTabChange("Products")}>
+        <li
+          className={`item ${isActive("Products")}`}
+          onClick={() => changeTab("Products")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -46,7 +64,10 @@ const SideNav = ({ initialTab, handleTabChange }) => {
           </svg>
           Album
         </li>
-        <li className="item" onClick={() => handleTabChange("Contacts")}>
+        <li
+          className={`item ${isActive("Contacts")}`}
+          onClick={() => changeTab("Contacts")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -59,7 +80,10 @@ const SideNav = ({ initialTab, handleTabChange }) => {
           </svg>
           Contacts
         </li>
-        <li className="item" onClick={() => handleTabChange("Subscribers")}>
+        <li
+          className={`item ${isActive("Subscribers")}`}
+          onClick={() => changeTab("Subscribers")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -73,7 +97,10 @@ const SideNav = ({ initialTab, handleTabChange }) => {
           </svg>
           Subscribers
         </li>
-        <li className="item" onClick={() => handleTabChange("Emails")}>
+        <li
+          className={`item ${isActive("Emails")}`}
+          onClick={() => changeTab("Emails")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
