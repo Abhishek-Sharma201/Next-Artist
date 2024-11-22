@@ -13,7 +13,8 @@ const ShopBtn = ({
   redirect,
   bg,
   color,
-  padding,
+  paddingRight,
+  paddingLeft,
 }) => {
   const handleClick = () => {
     toast.info(`Card id : ${id}`);
