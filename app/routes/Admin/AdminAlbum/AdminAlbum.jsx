@@ -6,6 +6,7 @@ import Loader from "@/app/Componants/Loader/Loader";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { apiURL } from "@/app/constants";
+import Image from "next/image";
 
 const AdminAlbum = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,9 +56,9 @@ const AdminAlbum = () => {
       }
 
       const responseData = await res.json();
-      toast.success(responseData.message || "Data Posted");
-      fetchAlbum();
-      close();
+      toast.success(responseData.message || "Data Posted Successfully");
+      fetchAlbum(); // Refresh album data
+      close(); // Close form
     } catch (error) {
       toast.error(`Error: ${error.message}`);
     }
@@ -82,7 +83,6 @@ const AdminAlbum = () => {
 
   useEffect(() => {
     fetchAlbum();
-    console.log(album);
   }, []);
 
   return (
@@ -112,7 +112,7 @@ const AdminAlbum = () => {
                       onDelete={() => deleteCard(albumItem._id)}
                       price={albumItem.price}
                       type={albumItem.type}
-                      imgSrc={albumItem.image?.url || ""}
+                      imgSrc={albumItem.image.url}
                     />
                   ))}
                 </div>
