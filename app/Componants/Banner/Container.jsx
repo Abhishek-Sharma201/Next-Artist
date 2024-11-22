@@ -12,12 +12,7 @@ const Container = ({ data }) => {
     <div className="w-full h-[max-content] p-4 flex flex-col lg:flex-row items-center justify-center self-center gap-12">
       <div className="h-[50dvh] lg:h-[70dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
         <Image
-          src={`data:${data.image.contentType};base64,${btoa(
-            new Uint8Array(data.image.data.data).reduce(
-              (v, byte) => v + String.fromCharCode(byte),
-              ""
-            )
-          )}`}
+          src={data.image?.url || ""}
           alt={data.type}
           priority
           className="h-full w-full object-contain"

@@ -11,7 +11,7 @@ import {
   IMG_17,
 } from "../utils";
 
-export const apiURL = "https://next-artist-backend.onrender.com";
+export const apiURL = "https://next-artist-backend-1.onrender.com";
 
 export const FeaturedCardSection = [
   {

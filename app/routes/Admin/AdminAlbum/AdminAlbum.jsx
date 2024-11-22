@@ -112,17 +112,7 @@ const AdminAlbum = () => {
                       onDelete={() => deleteCard(albumItem._id)}
                       price={albumItem.price}
                       type={albumItem.type}
-                      imgSrc={
-                        albumItem.image
-                          ? `data:${albumItem.image.contentType};base64,${btoa(
-                              new Uint8Array(albumItem.image.data.data).reduce(
-                                (data, byte) =>
-                                  data + String.fromCharCode(byte),
-                                ""
-                              )
-                            )}`
-                          : ""
-                      }
+                      imgSrc={albumItem.image?.url || ""}
                     />
                   ))}
                 </div>

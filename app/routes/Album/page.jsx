@@ -8,13 +8,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AlbumContext from "@/app/context/AlbumContext";
 import Loader from "@/app/Componants/Loader/Loader";
-import { IMG_11 } from "@/app/utils";
 
 const albumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
-    // fetchAlbum();
+    fetchAlbum();
     console.log(album);
   }, []);
 
@@ -62,34 +61,22 @@ const albumPage = () => {
               <Loader />
             ) : (
               <div className="cards">
-                {album.map((card) => {
-                  return (
-                    <AlbumCard
-                      key={card.id}
-                      price={card.price}
-                      text={card.type}
-                      img={
-                        card.image
-                          ? `data:${card.image.contentType};base64,${btoa(
-                              new Uint8Array(card.image.data.data).reduce(
-                                (data, byte) =>
-                                  data + String.fromCharCode(byte),
-                                ""
-                              )
-                            )}`
-                          : ""
-                      }
-                      cardId={card._id}
-                      onShare={() =>
-                        handleShare({
-                          text: card.type,
-                          price: card.price,
-                          id: card._id,
-                        })
-                      }
-                    />
-                  );
-                })}
+                {album.map((card) => (
+                  <AlbumCard
+                    key={card._id}
+                    price={card.price}
+                    text={card.type}
+                    img={card.image?.url || ""}
+                    cardId={card._id}
+                    onShare={() =>
+                      handleShare({
+                        text: card.type,
+                        price: card.price,
+                        id: card._id,
+                      })
+                    }
+                  />
+                ))}
               </div>
             )}
           </section>
