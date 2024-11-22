@@ -4,7 +4,17 @@ import "./ShopBtn.css";
 import { toast } from "react-toastify";
 import Link from "next/link";
 
-const ShopBtn = ({ value, width, height, radius, id, redirect, bg, color }) => {
+const ShopBtn = ({
+  value,
+  width,
+  height,
+  radius,
+  id,
+  redirect,
+  bg,
+  color,
+  padding,
+}) => {
   const handleClick = () => {
     toast.info(`Card id : ${id}`);
   };
@@ -18,6 +28,8 @@ const ShopBtn = ({ value, width, height, radius, id, redirect, bg, color }) => {
         color: color || "",
         background: bg || "",
         borderRadius: radius || "10px",
+        paddingRight: paddingRight || "",
+        paddingLeft: paddingLeft || "",
       }}
       className="shopBtn"
     >

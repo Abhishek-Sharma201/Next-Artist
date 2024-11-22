@@ -45,12 +45,16 @@ const Container = ({ data }) => {
           width={"max-content"}
           bg={"#189D0E"}
           color={"white"}
+          paddingRight={".5rem"}
+          paddingLeft={".5rem"}
         />
         <ShopBtn
           value={"Go Back"}
           redirect={"/routes/Album"}
           height={"7dvh"}
           width={"max-content"}
+          paddingRight={".5rem"}
+          paddingLeft={".5rem"}
         />
       </div>
     </div>
