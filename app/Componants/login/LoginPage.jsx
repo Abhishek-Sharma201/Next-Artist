@@ -1,10 +1,34 @@
 "use client";
 import { signIn } from "next-auth/react";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const callbackSuccess = urlParams.get("callbackUrl");
+
+    if (callbackSuccess) {
+      toast.success("Login successful!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      router.replace("/"); // Redirect to the home page after the toast.
+    }
+  }, [router]);
+
   return (
     <>
+      <ToastContainer />
       <div className="h-[300px] w-full flex flex-col items-center justify-center self-center gap-4">
         <button
           className="w-[320px] h-[7dvh] text-center gap-4 bg-zinc-100 text-zinc-700 font-[500] rounded flex items-center justify-center"
