@@ -12,7 +12,7 @@ const page = () => {
                     <h2 className="route">Home &gt;&gt; About</h2>
                 </div>
                 <div className="top">
-                    <h1>Welcom to my Art world</h1>
+                    <h1>Welcome to my Art world</h1>
                 </div>
                 <div className="container">
                     <div className="box">
@@ -46,14 +46,14 @@ const page = () => {
                     <div className="box">
                         <h1 className="5">What Clients Say</h1>
                         <p className="text">
-                            "Raj's drawings are amazing! He captures every detail perfectly and his work is always top-notch. It’s been great working
+                            "Raj's drawings are amazing! He captures every detail perfectly and his work is always top-notch. {"It's"} been great working
                             with him." - A Happy Client
                         </p>
                     </div>
                     <div className="box">
                         <h1 className="6">Contact Me</h1>
                         <p className="text">
-                            Want to work together or have questions? Feel free to contact me at raj.artist@example.com or call (123) 456-7890.
+                            Want to work together or have questions? Feel free to contact me at raj.artist@example.com or call {"(123)"} 456-7890.
                             I look forward to hearing from you!
                         </p>
                     </div>

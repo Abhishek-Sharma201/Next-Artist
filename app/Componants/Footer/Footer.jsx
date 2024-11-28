@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.css";
 import Image from "next/image";
 import { logoImage } from "@/app/utils";
+import Link from "next/link";
 
 const Footer = ({ width }) => {
   return (
@@ -27,8 +28,8 @@ const Footer = ({ width }) => {
         <div className="footerSection">
           <h1>Terms</h1>
           <div className="links">
-            <a href="*">Privacy</a>
-            <a href="*">Terms & Conditions</a>
+            <Link href={"/routes/Privacy"}>Privacy</Link>
+            <Link href={"/routes/Terms"}>Terms & Conditions</Link>
           </div>
         </div>
         <div className="footerSection">
@@ -41,24 +42,26 @@ const Footer = ({ width }) => {
           </div>
         </div>
         <div className="footerSection">
-          <h1>About</h1>
+          <h1>Contact me</h1>
           <div className="links">
-            <a href="*">+91-0000000000</a>
-            <a href="*">name@gmail.com</a>
+            <Link href={"/routes/Contact"} className="text-[.9rem] font-[600]">
+              {"<Contact />"}
+            </Link>
+            <h3 className="">rajsketchartist@gmail.com</h3>
           </div>
         </div>
-        <div className="footerSection">
+        {/* <div className="footerSection">
           <h1>Address</h1>
           <div className="links">
             <a href="*" className="address">
               Plot No. 21 Rambhag, Complex, Kalyan, 420021
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="footerSocialsAndName">
         <div className="footerSocials">
-          <a href="*">
+          <Link href="https://www.linkedin.com/in/raj-naralkar-824855313?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -76,8 +79,8 @@ const Footer = ({ width }) => {
                 d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"
               ></path>
             </svg>
-          </a>
-          <a href="*">
+          </Link>
+          <Link href="https://www.youtube.com/@RajArtist001">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -92,8 +95,8 @@ const Footer = ({ width }) => {
               ></path>
               <path fill="#FFF" d="M20 31L20 17 32 24z"></path>
             </svg>
-          </a>
-          <a href="*">
+          </Link>
+          <Link href="https://www.instagram.com/raj_artist3095?igsh=Y2g1cGpjbnIxeHg5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -192,49 +195,8 @@ const Footer = ({ width }) => {
                 ></circle>
               </g>
             </svg>
-          </a>
-          <a href="*">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              width="30"
-              height="30"
-              viewBox="0 0 48 48"
-            >
-              <path
-                fill="#03A9F4"
-                d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"
-              ></path>
-            </svg>
-          </a>
-          <a href="*">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              width="30"
-              height="30"
-              viewBox="0 0 48 48"
-            >
-              <path
-                fill="#fbc02d"
-                d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-              ></path>
-              <path
-                fill="#e53935"
-                d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-              ></path>
-              <path
-                fill="#4caf50"
-                d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-              ></path>
-              <path
-                fill="#1565c0"
-                d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-              ></path>
-            </svg>
-          </a>
+          </Link>
+          {/*  */}
         </div>
         <h4 className="footerName">
           &copy; Raj Artist 2024 All rights reserved

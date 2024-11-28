@@ -10,8 +10,8 @@ const Dashboard = () => {
     <div className="Container">
       <AdminAlbum />
       <ContactWrapper />
-      <Emails />
       <SubscribersWrapper />
+      <Emails />
     </div>
   );
 };

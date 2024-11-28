@@ -3,6 +3,7 @@ import "./Banner.css";
 import Nav from "../Nav/Nav";
 import { bannerImage, brushesImage, homeImage } from "@/app/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -26,7 +27,9 @@ const Banner = () => {
               repudiandae sunt unde expedita debitis molestiae enim blanditiis
               voluptates assumenda repellat?
             </p>
-            <button>Shop Now</button>
+            <Link href={"/routes/Album"}>
+              <button>Get Now</button>
+            </Link>{" "}
           </div>
         </div>
         <div className="right">

@@ -117,14 +117,20 @@
 }
 
 .navBarOpened .navList {
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   width: 100%;
+  background: rgb(241, 241, 241);
   align-items: center;
 }
 
 .navBarOpened .navItem {
   padding: 20px 0;
+}
+
+.navBarOpened .navItem * {
+  color: rgb(18, 18, 18);
 }
 
 .navBarOpened .menu-btn {
@@ -136,10 +142,6 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  /* .navLogo {
-        width: 20dvw;
-    } */
-
   .navList {
     display: none;
   }
@@ -149,10 +151,18 @@
   }
 
   .navBarOpened .navList {
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding: 1rem 1rem;
     display: flex;
-    height: 30dvh;
-    justify-content: space-evenly;
-    width: fit-content;
+    height: auto;
+    width: 50dvw;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .navBarOpened .navList .navItem {
+    padding: 0;
   }
 
   .navLogo {
@@ -175,13 +185,6 @@
 
   .navBarOpened {
     align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .navBarOpened .navList {
-    margin-top: 3rem;
-    height: auto;
-    width: 20dvw;
     justify-content: flex-start;
   }
 

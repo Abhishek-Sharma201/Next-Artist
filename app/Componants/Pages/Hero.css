@@ -399,6 +399,12 @@
 
 /* RESPONSIVE */
 
+@media (width < 1085px) and (width > 760px) {
+  .hero-section .featured-products .featured-card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 760px) {
   .hero-section .hand-made-sketch .sketch {
     flex-direction: column;

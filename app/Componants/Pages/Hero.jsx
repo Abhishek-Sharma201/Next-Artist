@@ -120,7 +120,7 @@ const Hero = () => {
                 expressions,emotions, and moments through pencil and charcoal
                 artistry.
               </p>
-              <ShopBtn value={"View all"} width={"120px"} />
+              <ShopBtn value={"View all"} width={"120px"} redirect={"/routes/Album"} />
             </div>
             <div className="imgs">
               {myAlbumSectionsImgs.map((data) => {

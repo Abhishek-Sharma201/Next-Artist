@@ -28,7 +28,6 @@ const AlbumDetails = ({ params }) => {
     setCard(foundCard || null);
   };
 
-  // Show loader while fetching data or finding the card
   if (isLoading || !card) {
     return <Loader />;
   }
