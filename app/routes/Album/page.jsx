@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AlbumContext from "@/app/context/AlbumContext";
 import Loader from "@/app/Componants/Loader/Loader";
+import { IMG_11 } from "@/app/utils";
 
 const albumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
@@ -25,14 +26,13 @@ const albumPage = () => {
         await navigator.share({
           title: "Amazing Sketch!",
           text: message,
-          url: window.location.href, // Current page URL or specific URL
+          url: window.location.href,
         });
         console.log("Content shared successfully!");
       } catch (error) {
         console.error("Error sharing content:", error);
       }
     } else {
-      // Fallback for browsers that do not support Web Share API
       alert("Sharing is not supported in your browser.");
     }
   };
@@ -77,6 +77,20 @@ const albumPage = () => {
                     }
                   />
                 ))}
+                {/* <AlbumCard
+                  key={1}
+                  price={"$1000"}
+                  text={"Ball pen Sketch"}
+                  img={IMG_11}
+                  cardId={1}
+                  onShare={() =>
+                    handleShare({
+                      text: "Ball pen Sketch",
+                      price: "$1000",
+                      id: 1,
+                    })
+                  }
+                /> */}
               </div>
             )}
           </section>

@@ -111,6 +111,9 @@ const Nav = ({ background }) => {
             <Link href="/routes/Album">Album</Link>
           </li>
           <li className="navItem">
+            <Link href="/routes/Likes">Likes</Link>
+          </li>
+          <li className="navItem">
             <Link href="/routes/Collection">Collection</Link>
           </li>
           <li className="navItem">

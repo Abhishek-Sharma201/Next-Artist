@@ -35,10 +35,10 @@ const Footer = ({ width }) => {
         <div className="footerSection">
           <h1>Pages</h1>
           <div className="links">
-            <a href="#feature">Contact</a>
-            <a href="#about">About</a>
-            <a href="#contact">Pricing</a>
-            <a href="#album">Album</a>
+            <Link href={"/routes/Collection"}>Collections</Link>
+            <Link href={"/routes/Contact"}>Contact</Link>
+            <Link href={"/routes/About"}>About</Link>
+            <Link href={"/routes/Album"}>Album</Link>
           </div>
         </div>
         <div className="footerSection">

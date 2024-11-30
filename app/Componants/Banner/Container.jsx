@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import ShopBtn from "../Buttons/ShopBtn";
+import { IMG_11 } from "@/app/utils";
 
 const Container = ({ data }) => {
   const router = useRouter();
@@ -12,16 +13,17 @@ const Container = ({ data }) => {
     <div className="w-full h-[max-content] p-4 flex flex-col lg:flex-row items-center justify-center self-center gap-12">
       <div className="h-[50dvh] lg:h-[70dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
         <Image
-          src={data.image?.url || ""}
-          alt={data.type}
+          src={data?.image?.url || ""}
+          // src={IMG_11}
+          alt={data?.type}
           priority
           className="h-full w-full object-contain"
         />
       </div>
       <div className="h-full w-{max-content} flex flex-col items-start justify-center gap-4 p-4">
-        <h1 className="text-[2.5rem] font-[500] text-zinc-900">{data.type}</h1>
+        <h1 className="text-[2.5rem] font-[500] text-zinc-900">{data?.type}</h1>
         <p className="text-[1.3rem] font-[400] text-zinc-800">
-          Price: ₹{data.price}
+          Price: ₹{data?.price}
         </p>
         <h2 className="h-[max-content] w-{max-content} flex items-start justify-center gap-2 py-2">
           <svg
@@ -37,7 +39,7 @@ const Container = ({ data }) => {
           </svg>
           Available
         </h2>
-        <p className="text-[.8rem] font-[400] text-zinc-800">ID: {data._id}</p>
+        <p className="text-[.8rem] font-[400] text-zinc-800">ID: {data?._id}</p>
         <ShopBtn
           value={"Order on WhatsApp"}
           redirect={`https://wa.me/918108812687`}

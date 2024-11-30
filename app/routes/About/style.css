@@ -61,6 +61,12 @@
   justify-content: space-around;
 }
 
+.about .container .box h1 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all .3s;
+}
+
 /* RESPONSIVE */
 
 @media only screen and (max-width: 635px) {
