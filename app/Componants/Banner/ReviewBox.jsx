@@ -2,7 +2,7 @@ import React from "react";
 
 const ReviewBox = ({ data }) => {
   return (
-    <div className="h-[max-content] w-[300px] flex flex-col items-center justify-start gap-4">
+    <div className="h-[max-content] w-[300px] lg:w-[600px] md:w-[500px] flex flex-col items-center justify-start gap-4 mt-6">
       <div className="flex items-center justify-center gap-4 h-[max-content] w-[max-content]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -18,20 +18,56 @@ const ReviewBox = ({ data }) => {
         Other people Reviews
       </div>
       <div className="w-full h-[30dvh] p-2 flex flex-col items-center justify-start gap-2 overflow-y-auto overflow-x-hidden border border-l-0 border-r-0 border-t-zinc-300 border-b-zinc-300">
-        <div className="relative h-[max-content] w-[160px] flex flex-col items-start justify-center p-2 self-start bg-blue-500 text-white text-[.7rem] rounded-md gap-2">
+        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-start bg-blue-500 text-white text-[.7rem] rounded-md gap-2">
           <p>
             Other reviews
             <br />
-            <span className="text-[.6rem] text-gray-300 self-end">
+            <span className="text-[.6rem] text-gray-300 self-end lg:text-[.725rem] md:text-[.655rem]">
               timestamp
             </span>
           </p>
         </div>
-        <div className="relative h-[max-content] w-[160px] flex flex-col items-start justify-center p-2 self-end bg-zinc-900 text-white text-[.7rem] rounded-md gap-2">
+        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-end bg-zinc-900 text-white text-[.7rem] rounded-md gap-2">
           <p>
             My review
             <br />
-            <span className="text-[.6rem] text-gray-400 self-end">
+            <span className="text-[.6rem] text-gray-400 self-end lg:text-[.725rem] md:text-[.655rem]">
+              timestamp
+            </span>
+          </p>
+        </div>
+        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-start bg-blue-500 text-white text-[.7rem] rounded-md gap-2">
+          <p>
+            Other reviews
+            <br />
+            <span className="text-[.6rem] text-gray-300 self-end lg:text-[.725rem] md:text-[.655rem]">
+              timestamp
+            </span>
+          </p>
+        </div>
+        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-end bg-zinc-900 text-white text-[.7rem] rounded-md gap-2">
+          <p>
+            My review
+            <br />
+            <span className="text-[.6rem] text-gray-400 self-end lg:text-[.725rem] md:text-[.655rem]">
+              timestamp
+            </span>
+          </p>
+        </div>
+        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-start bg-blue-500 text-white text-[.7rem] rounded-md gap-2">
+          <p>
+            Other reviews
+            <br />
+            <span className="text-[.6rem] text-gray-300 self-end lg:text-[.725rem] md:text-[.655rem]">
+              timestamp
+            </span>
+          </p>
+        </div>
+        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-end bg-zinc-900 text-white text-[.7rem] rounded-md gap-2">
+          <p>
+            My review
+            <br />
+            <span className="text-[.6rem] text-gray-400 self-end lg:text-[.725rem] md:text-[.655rem]">
               timestamp
             </span>
           </p>
@@ -43,7 +79,7 @@ const ReviewBox = ({ data }) => {
           name="review"
           id="review"
           placeholder="Give your review here..."
-          className="w-full h-[6dvh] border shadow-md px-2 rounded-md text-[.9rem] text-zinc-900 placeholder:text-zinc-800 placeholder:text-[.8rem]"
+          className="w-full h-[6dvh] border shadow-sm px-2 rounded-md text-[.8rem] text-zinc-900 placeholder:text-zinc-800 placeholder:text-[.7rem]"
         />
         <button
           type="submit"
