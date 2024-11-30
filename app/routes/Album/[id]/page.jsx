@@ -14,15 +14,15 @@ const AlbumDetails = ({ params }) => {
   const [card, setCard] = useState(null);
   const router = useRouter();
   const ReviewData = { data: "Data" };
-  const [width, setWidth] = useState(window.innerWidth);
+  // const [width, setWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => setWidth(window.innerWidth);
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   const { id } = params;
 
@@ -50,7 +50,7 @@ const AlbumDetails = ({ params }) => {
         <div className="h-[10dvh] flex flex-col items-start justify-center">
           <h2 className="text-center font-[600] text-[1.3rem] text-zinc-800">
             Home &gt;&gt; Album &gt;&gt; {card?.type}
-            {`Device-Width == ${width}`}
+            {/* {`Device-Width == ${width}`} */}
           </h2>
         </div>
         {isLoading ? (
