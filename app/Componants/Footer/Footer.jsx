@@ -38,7 +38,7 @@ const Footer = ({ width }) => {
             <Link href={"/routes/Collection"}>Collections</Link>
             <Link href={"/routes/Contact"}>Contact</Link>
             <Link href={"/routes/About"}>About</Link>
-            <Link href={"/routes/Album"}>Album</Link>
+            <Link href={"/routes/Pricing"}>Pricing</Link>
           </div>
         </div>
         <div className="footerSection">

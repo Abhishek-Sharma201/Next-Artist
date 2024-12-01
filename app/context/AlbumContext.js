@@ -11,7 +11,7 @@ export const AlbumProvider = ({ children }) => {
   const fetchAlbum = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch(`${apiURL}/api/getDrawing`);
+      const res = await fetch(`${apiURL}/api/drawing/getDrawing`);
       const data = await res.json();
       setAlbum(data);
       console.log(data);

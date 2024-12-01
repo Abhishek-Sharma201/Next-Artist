@@ -26,7 +26,7 @@ const page = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${apiURL}/api/contactSubmit`, {
+      const response = await fetch(`${apiURL}/api/contact/contactSubmit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -64,7 +64,7 @@ const page = () => {
   const handleSubscribeSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiURL}/api/subs`, {
+      const response = await fetch(`${apiURL}/api/subscriber/addSubscriber`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(subsEmail),

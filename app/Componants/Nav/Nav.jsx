@@ -108,7 +108,7 @@ const Nav = ({ background }) => {
             <Link href="/routes/About">About</Link>
           </li>
           <li className="navItem">
-            <Link href="/routes/Album">Album</Link>
+            <Link href="/routes/Pricing">Pricing</Link>
           </li>
           <li className="navItem">
             <Link href="/routes/Likes">Likes</Link>

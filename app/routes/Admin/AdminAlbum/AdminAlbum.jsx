@@ -6,7 +6,6 @@ import Loader from "@/app/Componants/Loader/Loader";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { apiURL } from "@/app/constants";
-import Image from "next/image";
 
 const AdminAlbum = () => {
   const [isOpen, setIsOpen] = useState(false);

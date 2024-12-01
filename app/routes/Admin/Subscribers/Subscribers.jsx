@@ -26,7 +26,7 @@ const Subscribrs = () => {
   const fetchSubscribers = async () => {
     setIsLoading(true); // Set loading to true before fetching
     try {
-      const res = await fetch(`${apiURL}/api/getSubscribers`, {
+      const res = await fetch(`${apiURL}/api/subscriber/getSubscribers`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });

@@ -13,7 +13,7 @@ const Contacts = () => {
   const fetchContact = async () => {
     try {
       setIsLoading(true);
-      const res = await fetch(`${apiURL}/api/getContacts`, {
+      const res = await fetch(`${apiURL}/api/contact/getContacts`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
