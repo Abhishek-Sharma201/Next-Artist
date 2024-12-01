@@ -12,15 +12,19 @@ export const AlbumProvider = ({ children }) => {
     setIsLoading(true);
     try {
       const res = await fetch(`${apiURL}/api/drawing/getDrawings`);
-      const data = await res.json();
-      setAlbum(data);
-      console.log(data);
+      const { success, data, message } = await res.json();
+      if (success) {
+        setAlbum(data); // Set the fetched album data (even if it's empty)
+      } else {
+        console.error(message); // Handle error or no data found
+      }
     } catch (error) {
       console.error("Error fetching album:", error);
     } finally {
       setIsLoading(false);
     }
   };
+  
 
   useEffect(() => {
     fetchAlbum();
