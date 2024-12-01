@@ -44,7 +44,7 @@ const AdminAlbum = () => {
     data.append("image", formData.image);
 
     try {
-      const res = await fetch(`${apiURL}/api/drawing/addDrawing`, {
+      const res = await fetch(`${apiURL}/api/drawing/addDrawings`, {
         method: "POST",
         body: data,
       });
@@ -66,7 +66,7 @@ const AdminAlbum = () => {
   const deleteCard = async (id) => {
     setIsLoading(true);
     try {
-      const result = await fetch(`${apiURL}/api/drawing/deleteDrawing/${id}`, {
+      const result = await fetch(`${apiURL}/api/drawing/deleteDrawings/${id}`, {
         method: "DELETE",
       });
       if (!result.ok) throw new Error("Failed to delete card.");
