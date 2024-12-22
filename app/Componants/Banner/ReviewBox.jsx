@@ -1,12 +1,17 @@
 "use client";
 
 import { apiURL } from "@/app/constants";
+import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const ReviewBox = ({ reviews }) => {
+const ReviewBox = ({ reviews, id }) => {
+  const { data: session } = useSession();
+
   const [form, setForm] = useState({
     review: "",
+    user: session?.user?.name,
+    drawingId: id,
   });
 
   const handleChange = (e) => {
@@ -17,7 +22,7 @@ const ReviewBox = ({ reviews }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const res = await fetch(`${apiURL}/api/review/postReview`, {
         method: "POST",
@@ -33,6 +38,7 @@ const ReviewBox = ({ reviews }) => {
       console.log(`Error adding Review!`);
       toast.error("Error adding review");
     }
+    console.log(`From Data: ${form}`);
   };
 
   return (

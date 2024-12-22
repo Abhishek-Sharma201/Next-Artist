@@ -54,7 +54,7 @@ const AlbumDetails = ({ params }) => {
         ) : (
           <div className="flex flex-col items-center justify-center h-[max-content] w-full gap-4">
             <Container data={card} />
-            {r_isLoading ? <Loader /> : <ReviewBox data={reviews} />}
+            {r_isLoading ? <Loader /> : <ReviewBox data={reviews} id={id} />}
           </div>
         )}
       </div>
