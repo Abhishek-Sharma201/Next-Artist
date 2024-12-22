@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useState, useEffect } from "react";
+import { apiURL } from "../constants";
 
 export const ReviewContext = createContext();
 
@@ -13,7 +14,7 @@ const ReviewProvider = ({ children }) => {
   const fetchReviews = async (id) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/review/getReview/${id}`);
+      const response = await fetch(`${apiURL}/api/review/getReview/${id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch reviews");
       }
