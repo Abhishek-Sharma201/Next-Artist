@@ -39,7 +39,7 @@ const ReviewBox = ({ reviews, id }) => {
       console.log(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
     }
-    console.log(`From Data: ${form}`);
+    console.log(`Form Data: ${JSON.stringify(form)}`);
   };
 
   return (
