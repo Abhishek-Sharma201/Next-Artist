@@ -2,7 +2,7 @@
 
 import { apiURL } from "@/app/constants";
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const ReviewBox = ({ reviews, id }) => {
