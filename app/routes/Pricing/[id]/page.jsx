@@ -33,8 +33,8 @@ const AlbumDetails = ({ params }) => {
   };
 
   useEffect(() => {
-    fetchReviews();
-  }, [reviews]);
+    fetchReviews(id);
+  }, [id]);
 
   // if (isLoading || !card) {
   //   return <Loader />;

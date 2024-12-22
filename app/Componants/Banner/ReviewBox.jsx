@@ -18,7 +18,8 @@ const ReviewBox = ({ reviews }) => {
   const handleSubmit = async () => {
     try {
       const res = await fetch(`/api/review/postReview`, {
-        headers: { ContentType: "text/json" },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
       if (!res) throw new Error("Error in req");
@@ -46,61 +47,21 @@ const ReviewBox = ({ reviews }) => {
         Other people Reviews
       </div>
       <div className="w-full h-[30dvh] p-2 flex flex-col items-center justify-start gap-2 overflow-y-auto overflow-x-hidden border border-l-0 border-r-0 border-t-zinc-300 border-b-zinc-300">
-        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-start bg-blue-500 text-white text-[.7rem] rounded-md gap-2">
-          <p>
-            Other reviews
-            <br />
-            <span className="text-[.6rem] text-gray-300 self-end lg:text-[.725rem] md:text-[.655rem]">
-              timestamp
-            </span>
-          </p>
-        </div>
-        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-end bg-zinc-900 text-white text-[.7rem] rounded-md gap-2">
-          <p>
-            My review
-            <br />
+        {reviews?.map((review, index) => (
+          <div
+            key={index}
+            className={`relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 ${
+              review.isMine ? "bg-zinc-900" : "bg-blue-500"
+            } text-white text-[.7rem] rounded-md gap-2`}
+          >
+            <p>{review.content}</p>
             <span className="text-[.6rem] text-gray-400 self-end lg:text-[.725rem] md:text-[.655rem]">
-              timestamp
+              {review.timestamp}
             </span>
-          </p>
-        </div>
-        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-start bg-blue-500 text-white text-[.7rem] rounded-md gap-2">
-          <p>
-            Other reviews
-            <br />
-            <span className="text-[.6rem] text-gray-300 self-end lg:text-[.725rem] md:text-[.655rem]">
-              timestamp
-            </span>
-          </p>
-        </div>
-        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-end bg-zinc-900 text-white text-[.7rem] rounded-md gap-2">
-          <p>
-            My review
-            <br />
-            <span className="text-[.6rem] text-gray-400 self-end lg:text-[.725rem] md:text-[.655rem]">
-              timestamp
-            </span>
-          </p>
-        </div>
-        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-start bg-blue-500 text-white text-[.7rem] rounded-md gap-2">
-          <p>
-            Other reviews
-            <br />
-            <span className="text-[.6rem] text-gray-300 self-end lg:text-[.725rem] md:text-[.655rem]">
-              timestamp
-            </span>
-          </p>
-        </div>
-        <div className="relative h-[max-content] w-[160px] lg:w-[240px] lg:text-[.875rem] md:w-[200px] md:text-[.8rem] flex flex-col items-start justify-center p-2 self-end bg-zinc-900 text-white text-[.7rem] rounded-md gap-2">
-          <p>
-            My review
-            <br />
-            <span className="text-[.6rem] text-gray-400 self-end lg:text-[.725rem] md:text-[.655rem]">
-              timestamp
-            </span>
-          </p>
-        </div>
+          </div>
+        ))}
       </div>
+
       <form
         className="w-full h-[max-content] p-2 flex items-center justify-center gap-2"
         onSubmit={handleSubmit}
