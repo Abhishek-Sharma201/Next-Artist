@@ -21,25 +21,37 @@ const ReviewBox = ({ reviews, id }) => {
     });
   };
 
+  useEffect(() => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      user: session?.user?.name,
+      drawingId: id,
+    }));
+  }, [session, id]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!session) {
+      toast.error("You must be Logged in!");
+    }
     try {
       const res = await fetch(`${apiURL}/api/review/postReview`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (!res) throw new Error("Error in req");
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to post review");
+      }
+
       toast.success("Review added!");
-      setForm({
-        ...form,
-        review: "",
-      });
+      setForm({ ...form, review: "" });
     } catch (error) {
-      console.log(`Error adding Review!: ${error.message}`);
+      console.error(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
     }
-    console.log(`Form Data: ${JSON.stringify(form)}`);
   };
 
   return (
