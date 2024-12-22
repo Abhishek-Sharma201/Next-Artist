@@ -1,5 +1,6 @@
 "use client";
 
+import { apiURL } from "@/app/constants";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -15,15 +16,19 @@ const ReviewBox = ({ reviews }) => {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
-      const res = await fetch(`/api/review/postReview`, {
+      const res = await fetch(`${apiURL}/api/review/postReview`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
       if (!res) throw new Error("Error in req");
       toast.success("Review added!");
+      setForm({
+        review: "",
+      });
     } catch (error) {
       console.log(`Error adding Review!`);
       toast.error("Error adding review");
