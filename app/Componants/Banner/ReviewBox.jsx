@@ -9,7 +9,7 @@ const ReviewBox = ({ reviews, id }) => {
   const { data: session } = useSession();
 
   const [form, setForm] = useState({
-    review: "",
+    message: "",
     user: session?.user?.name,
     drawingId: id,
   });
@@ -47,7 +47,7 @@ const ReviewBox = ({ reviews, id }) => {
       }
 
       toast.success("Review added!");
-      setForm({ ...form, review: "" });
+      setForm({ ...form, message: "" });
     } catch (error) {
       console.error(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
@@ -93,10 +93,10 @@ const ReviewBox = ({ reviews, id }) => {
       >
         <input
           type="text"
-          name="review"
-          id="review"
+          name="message"
+          id="message"
           onChange={handleChange}
-          value={form.review}
+          value={form.message}
           placeholder="Give your review here..."
           className="w-full h-[6dvh] border shadow-sm px-2 rounded-md text-[.8rem] text-zinc-900 placeholder:text-zinc-800 placeholder:text-[.7rem]"
         />
