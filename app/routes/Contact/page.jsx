@@ -38,7 +38,7 @@ const page = () => {
       } else if (response.status === 201) {
         const result = await response.json();
         console.log(result.message);
-        toast.success("You're in the List");
+        toast.success("Submitted!");
       } else {
         toast.error("Unexpected response from the server");
       }

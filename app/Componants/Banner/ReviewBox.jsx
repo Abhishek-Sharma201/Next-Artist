@@ -32,10 +32,11 @@ const ReviewBox = ({ reviews, id }) => {
       if (!res) throw new Error("Error in req");
       toast.success("Review added!");
       setForm({
+        ...form,
         review: "",
       });
     } catch (error) {
-      console.log(`Error adding Review!`);
+      console.log(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
     }
     console.log(`From Data: ${form}`);
