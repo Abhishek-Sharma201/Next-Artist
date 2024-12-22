@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SessionWrapper from "./Componants/SessionWrapper";
 import { AlbumProvider } from "./context/AlbumContext";
+import ReviewProvider from "./context/ReviewContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <SessionWrapper>
         <AlbumProvider>
-          <body className={inter.className}>{children}</body>
+          <ReviewProvider>
+            <body className={inter.className}>{children}</body>
+          </ReviewProvider>
         </AlbumProvider>
       </SessionWrapper>
     </html>

@@ -1,6 +1,34 @@
-import React from "react";
+"use client";
 
-const ReviewBox = ({ data }) => {
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+
+const ReviewBox = ({ reviews }) => {
+  const [form, setForm] = useState({
+    review: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const res = await fetch(`/api/review/postReview`, {
+        headers: { ContentType: "text/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res) throw new Error("Error in req");
+      toast.success("Review added!");
+    } catch (error) {
+      console.log(`Error adding Review!`);
+      toast.error("Error adding review");
+    }
+  };
+
   return (
     <div className="h-[max-content] w-[300px] lg:w-[600px] md:w-[500px] flex flex-col items-center justify-start gap-4 mt-6">
       <div className="flex items-center justify-center gap-4 h-[max-content] w-[max-content]">
@@ -73,11 +101,16 @@ const ReviewBox = ({ data }) => {
           </p>
         </div>
       </div>
-      <form className="w-full h-[max-content] p-2 flex items-center justify-center gap-2">
+      <form
+        className="w-full h-[max-content] p-2 flex items-center justify-center gap-2"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           name="review"
           id="review"
+          onChange={handleChange}
+          value={form.review}
           placeholder="Give your review here..."
           className="w-full h-[6dvh] border shadow-sm px-2 rounded-md text-[.8rem] text-zinc-900 placeholder:text-zinc-800 placeholder:text-[.7rem]"
         />
