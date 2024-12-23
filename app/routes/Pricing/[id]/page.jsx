@@ -34,7 +34,7 @@ const AlbumDetails = ({ params }) => {
 
   useEffect(() => {
     fetchReviews(id);
-    console.log(`Review Data: ${reviews}`);
+    console.log(`Review Data: ${JSON.stringify(reviews)}`);
   }, [id]);
 
   // if (isLoading || !card) {
