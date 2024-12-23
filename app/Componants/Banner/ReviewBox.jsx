@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const ReviewBox = ({ reviews, id }) => {
+const ReviewBox = ({ reviews, id, fetchReview }) => {
   const { data: session } = useSession();
 
   const [form, setForm] = useState({
@@ -58,10 +58,14 @@ const ReviewBox = ({ reviews, id }) => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`${apiURL}/api/review/deleteReview/${id}`);
+      const res = await fetch(`${apiURL}/api/review/deleteReview/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
       if (!res) throw new Error("Error deleting review! from res.");
       toast.warning("Review deleted!");
       console.log(`Review deleted: ${id}`);
+      await fetchReview();
     } catch (error) {
       console.log(`Error deleted Review: ${id}`);
       toast.error("Error deleting review!");
