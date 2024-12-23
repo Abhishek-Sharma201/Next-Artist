@@ -6,12 +6,12 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const ReviewBox = ({ reviews, id, fetchReview }) => {
+const ReviewBox = ({ reviews = [], id, fetchReview }) => {
   const { data: session } = useSession();
 
   const [form, setForm] = useState({
     message: "",
-    user: session?.user?.name,
+    user: session?.user?.name || "",
     drawingId: id,
   });
 
@@ -25,7 +25,7 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
   useEffect(() => {
     setForm((prevForm) => ({
       ...prevForm,
-      user: session?.user?.name,
+      user: session?.user?.name || "",
       drawingId: id,
     }));
   }, [session, id]);
@@ -50,42 +50,32 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
 
       toast.success("Review added!");
       setForm({ ...form, message: "" });
+      await fetchReview(); // Refresh reviews
     } catch (error) {
       console.error(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (reviewId) => {
     try {
-      const res = await fetch(`${apiURL}/api/review/deleteReview/${id}`, {
+      const res = await fetch(`${apiURL}/api/review/deleteReview/${reviewId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
-      if (!res) throw new Error("Error deleting review! from res.");
+
+      if (!res.ok) {
+        throw new Error("Error deleting review! from res.");
+      }
+
       toast.warning("Review deleted!");
-      console.log(`Review deleted: ${id}`);
-      await fetchReview();
+      console.log(`Review deleted: ${reviewId}`);
+      await fetchReview(); // Refresh reviews
     } catch (error) {
-      console.log(`Error deleted Review: ${id}`);
+      console.error(`Error deleting Review: ${reviewId}`);
       toast.error("Error deleting review!");
     }
   };
-
-  const fakeReview = [
-    {
-      user: "test@1",
-      message: "Fake review -1",
-      createdAt: "2024-12-23T08:06:53.406Z",
-    },
-    {
-      user: "test@2",
-      message: "Fake review -2",
-      createdAt: "2024-12-23T08:06:53.406Z",
-    },
-  ];
-
-  const isMine = session?.user?.name !== reviews.user;
 
   return (
     <div className="h-[max-content] w-[300px] lg:w-[600px] md:w-[500px] flex flex-col items-center justify-start gap-4 mt-6">
@@ -104,38 +94,34 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
         Other People's Reviews
       </div>
       <div className="w-full h-[30dvh] p-2 flex flex-col items-center justify-start gap-2 overflow-y-auto overflow-x-hidden border border-l-0 border-r-0 border-t-zinc-300 border-b-zinc-300">
-        {reviews && reviews.length > 0 ? (
-          reviews.map((review, index) => (
+        {reviews.length > 0 ? (
+          reviews.map((review) => (
             <div
-              key={index}
+              key={review._id}
               className={`relative h-[max-content] w-[240px] lg:w-[300px] flex flex-col items-start justify-center p-3 ${
-                isMine ? "bg-zinc-900 self-end" : "bg-blue-500 self-start "
+                review.user === session?.user?.name
+                  ? "bg-zinc-900 self-end"
+                  : "bg-blue-500 self-start"
               } text-white rounded-md gap-[.1rem]`}
             >
               <h6 className="text-[.7rem] text-[#fed255] h-[max-content] w-full flex items-center justify-between">
                 {review.user}
-                {isMine ? (
+                {review.user === session?.user?.name && (
                   <svg
                     width="12"
                     height="12"
                     fill="#fed255"
-                    className="bi bi-trash"
+                    className="bi bi-trash cursor-pointer"
                     viewBox="0 0 16 16"
                     onClick={() => handleDelete(review._id)}
                   >
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
                   </svg>
-                ) : (
-                  ""
                 )}
               </h6>
               <p className="text-[.8rem]">{review.message}</p>
-              <span
-                className={`text-[.6rem] text-gray-400 self-end ${
-                  isMine ? "" : "text-white"
-                }`}
-              >
+              <span className="text-[.6rem] text-gray-400 self-end">
                 {new Date(review.createdAt).toDateString()}
               </span>
             </div>
@@ -144,7 +130,6 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
           <p className="text-zinc-500 text-sm">No reviews yet. Be the first!</p>
         )}
       </div>
-
       <form
         className="w-full h-[max-content] p-2 flex items-center justify-center gap-2"
         onSubmit={handleSubmit}
