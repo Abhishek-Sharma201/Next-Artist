@@ -9,6 +9,7 @@ import Footer from "@/app/Componants/Footer/Footer";
 import Container from "@/app/Componants/Banner/Container";
 import ReviewBox from "@/app/Componants/Banner/ReviewBox";
 import { ReviewContext } from "@/app/context/ReviewContext";
+import { ToastContainer } from "react-toastify";
 
 const AlbumDetails = ({ params }) => {
   const { reviews, fetchReviews, r_isLoading, error } =
@@ -43,6 +44,7 @@ const AlbumDetails = ({ params }) => {
 
   return (
     <div className="flex flex-col items-start justify-center">
+      <ToastContainer />
       <Nav background={true} />
       <div className="h-full w-full flex flex-col items-start justify-center gap-4 py-8 px-8 lg:px-20 overflow-hidden">
         <div className="h-[10dvh] flex flex-col items-start justify-center">
