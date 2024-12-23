@@ -80,9 +80,9 @@ const ReviewBox = ({ reviews, id }) => {
                 review.isMine ? "bg-zinc-900" : "bg-blue-500"
               } text-white rounded-md gap-2`}
             >
-              <p>{review.content}</p>
+              <p>{review.message}</p>
               <span className="text-[.8rem] text-gray-400 self-end">
-                {review.timestamp}
+                {review.createdAt}
               </span>
             </div>
           ))
