@@ -1,6 +1,7 @@
 "use client";
 
 import { apiURL } from "@/app/constants";
+import { extractTime } from "@/app/utils/extractTime";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -55,6 +56,21 @@ const ReviewBox = ({ reviews, id }) => {
     }
   };
 
+  const fakeReview = [
+    {
+      user: "test@1",
+      message: "Fake review -1",
+      createdAt: "2024-12-23T08:06:53.406Z",
+    },
+    {
+      user: "test@2",
+      message: "Fake review -2",
+      createdAt: "2024-12-23T08:06:53.406Z",
+    },
+  ];
+
+  const isMine = session?.user?.name !== reviews.user;
+
   return (
     <div className="h-[max-content] w-[300px] lg:w-[600px] md:w-[500px] flex flex-col items-center justify-start gap-4 mt-6">
       <div className="flex items-center justify-center gap-4 h-[max-content] w-[max-content]">
@@ -76,13 +92,18 @@ const ReviewBox = ({ reviews, id }) => {
           reviews.map((review, index) => (
             <div
               key={index}
-              className={`relative h-[max-content] w-[240px] lg:w-[300px] flex flex-col items-start justify-center p-2 ${
-                review.isMine ? "bg-zinc-900" : "bg-blue-500"
-              } text-white rounded-md gap-2`}
+              className={`relative h-[max-content] w-[240px] lg:w-[300px] flex flex-col items-start justify-center p-3 ${
+                isMine ? "bg-zinc-900 self-end" : "bg-blue-500 self-start "
+              } text-white rounded-md gap-[.1rem]`}
             >
-              <p>{review.message}</p>
-              <span className="text-[.8rem] text-gray-400 self-end">
-                {review.createdAt}
+              <h6 className="text-[.7rem] text-[#fed255]">{review.user}</h6>
+              <p className="text-[.8rem]">{review.message}</p>
+              <span
+                className={`text-[.6rem] text-gray-400 self-end ${
+                  isMine ? "" : "text-white"
+                }`}
+              >
+                {new Date(review.createdAt).toDateString()}
               </span>
             </div>
           ))
