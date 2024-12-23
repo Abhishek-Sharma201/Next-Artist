@@ -52,7 +52,7 @@ const Container = ({ data }) => {
         />
         <ShopBtn
           value={"Go Back"}
-          redirect={"/routes/Album"}
+          redirect={"/routes/Pricing"}
           height={"7dvh"}
           width={"max-content"}
           paddingRight={".5rem"}

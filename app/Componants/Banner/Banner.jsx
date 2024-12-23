@@ -27,7 +27,7 @@ const Banner = () => {
               repudiandae sunt unde expedita debitis molestiae enim blanditiis
               voluptates assumenda repellat?
             </p>
-            <Link href={"/routes/Album"}>
+            <Link href={"/routes/Pricing"}>
               <button>Get Now</button>
             </Link>{" "}
           </div>
