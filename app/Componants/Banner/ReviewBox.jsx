@@ -99,6 +99,7 @@ const ReviewBox = ({ reviews, id }) => {
           value={form.message}
           placeholder="Give your review here..."
           className="w-full h-[6dvh] border shadow-sm px-2 rounded-md text-[.8rem] text-zinc-900 placeholder:text-zinc-800 placeholder:text-[.7rem]"
+          required
         />
         <button
           type="submit"
