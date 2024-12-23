@@ -86,7 +86,6 @@ const AdminAlbum = () => {
 
   return (
     <React.Fragment>
-      <ToastContainer />
       <div className="album-container">
         <div className="head">
           <h2>AdminAlbum {">>"}</h2>

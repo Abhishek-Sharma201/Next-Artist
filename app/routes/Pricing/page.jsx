@@ -40,7 +40,6 @@ const albumPage = () => {
   return (
     <>
       <Nav background={true} />
-      <ToastContainer />
       <div className="album-section">
         <div className="head">
           <h2 className="route">Home &gt;&gt; Album</h2>
