@@ -96,12 +96,12 @@ const ReviewBox = ({ reviews, id }) => {
                 isMine ? "bg-zinc-900 self-end" : "bg-blue-500 self-start "
               } text-white rounded-md gap-[.1rem]`}
             >
-              <h6 className="text-[.7rem] text-[#fed255] flex items-center justify-between">
+              <h6 className="text-[.7rem] text-[#fed255] h-[max-content] w-full flex items-center justify-between">
                 {review.user}
                 {isMine ? (
                   <svg
-                    width="16"
-                    height="16"
+                    width="12"
+                    height="12"
                     fill="#fed255"
                     className="bi bi-trash"
                     viewBox="0 0 16 16"
