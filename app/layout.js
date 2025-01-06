@@ -14,14 +14,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <SessionWrapper>
-      <html lang="en">
-        <AlbumProvider>
-          <ReviewProvider>
-            <body className={inter.className}>{children}</body>
-          </ReviewProvider>
-        </AlbumProvider>
-      </html>
-    </SessionWrapper>
+    <html lang="en">
+      <body className={inter.className}>
+        <SessionWrapper>
+          <AlbumProvider>
+            <ReviewProvider>{children}</ReviewProvider>
+          </AlbumProvider>
+        </SessionWrapper>
+      </body>
+    </html>
   );
 }
