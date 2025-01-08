@@ -75,18 +75,18 @@ const LikesPage = () => {
             {likes.drawings && likes.drawings.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {likes.drawings.map((drawing) => (
-                  <div key={drawing._id} className="border p-4">
+                  <div key={drawing?._id} className="border p-4">
                     <img
-                      src={drawing.image.url || "/placeholder.jpg"} // Use the correct path to the image
-                      alt={drawing.type || "Untitled"} // Use 'type' for the title
+                      src={drawing?.image?.url || "/placeholder.jpg"} // Use the correct path to the image
+                      alt={drawing?.type || "Untitled"} // Use 'type' for the title
                       className="w-full h-auto"
                     />
                     <h3 className="text-lg font-bold mt-2">
-                      {drawing.type || "Untitled"}
+                      {drawing?.type || "Untitled"}
                     </h3>{" "}
                     {/* Display the type */}
                     <p className="text-sm text-gray-500">
-                      Price: ${drawing.price}
+                      Price: ${drawing?.price}
                     </p>{" "}
                     {/* Display the price */}
                   </div>
