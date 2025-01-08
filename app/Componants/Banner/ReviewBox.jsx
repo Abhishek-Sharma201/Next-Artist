@@ -48,9 +48,11 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
       });
       if (res.ok) {
         const newReview = await res.json();
-        toast.success("Review added! Reload please.");
+        toast.success("Review added! Reloading...");
         setForm({ ...form, message: "" });
         setLocalReviews((prevReviews) => [...prevReviews, newReview]);
+        // Reload the page
+        window.location.reload();
       } else {
         const errorData = await res.json();
         throw new Error(errorData.message || "Failed to post review");
