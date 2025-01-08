@@ -107,20 +107,22 @@ const LikesPage = () => {
                     <p className="text-sm text-gray-500">
                       Price: ${drawing?.price}
                     </p>
-                    <button
-                      onClick={() => handleDeleteLike(drawing._id)}
-                      className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                    >
-                      Remove
-                    </button>
-                    <button
-                      onClick={() =>
-                        router.push(`/routes/Pricing/${drawing._id}`)
-                      }
-                      className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-red-600"
-                    >
-                      Get
-                    </button>
+                    <div className="w-full h-[max-content] flex gap-4">
+                      <button
+                        onClick={() => handleDeleteLike(drawing._id)}
+                        className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                      >
+                        Remove
+                      </button>
+                      <button
+                        onClick={() =>
+                          router.push(`/routes/Pricing/${drawing._id}`)
+                        }
+                        className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                      >
+                        Get
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
