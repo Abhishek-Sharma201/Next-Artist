@@ -35,16 +35,14 @@ const LikesPage = () => {
     } catch (error) {
       console.error(`Error fetching likes: ${error.message}`);
       setIsLoading(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     fetchLikes();
   }, [userId]);
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <main>
@@ -54,23 +52,31 @@ const LikesPage = () => {
         <h1 className="text-[1.3rem] font-[500] text-zinc-800 self-start">
           Home {">>"} Likes
         </h1>
-        {likes.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {likes.map((like) => (
-              <div key={like._id} className="border p-4">
-                <img
-                  src={like.drawings[0]?.imageUrl || "/placeholder.jpg"}
-                  alt={like.drawings[0]?.title || "Untitled"}
-                  className="w-full h-auto"
-                />
-                <h3 className="text-lg font-bold mt-2">
-                  {like.drawings[0]?.title || "Untitled"}
-                </h3>
-              </div>
-            ))}
-          </div>
+        {isLoading ? (
+          <Loader />
         ) : (
-          <p className="text-red-600">You have not liked any drawings yet.</p>
+          <>
+            {likes.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {likes.map((like) => (
+                  <div key={like._id} className="border p-4">
+                    <img
+                      src={like.drawings[0]?.imageUrl || "/placeholder.jpg"}
+                      alt={like.drawings[0]?.title || "Untitled"}
+                      className="w-full h-auto"
+                    />
+                    <h3 className="text-lg font-bold mt-2">
+                      {like.drawings[0]?.title || "Untitled"}
+                    </h3>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-red-600">
+                You have not liked any drawings yet.
+              </p>
+            )}
+          </>
         )}
       </div>
 
