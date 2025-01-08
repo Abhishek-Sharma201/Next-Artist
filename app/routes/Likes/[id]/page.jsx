@@ -35,7 +35,7 @@ const LikesPage = () => {
       setIsLoading(false);
 
       // Now fetch all drawings
-      const drawingsRes = await fetch(`${apiURL}/api/drawing/getDrawing`);
+      const drawingsRes = await fetch(`${apiURL}/api/drawing/getDrawings`);
       const drawingsData = await drawingsRes.json();
 
       // Filter drawings based on the liked drawing IDs
