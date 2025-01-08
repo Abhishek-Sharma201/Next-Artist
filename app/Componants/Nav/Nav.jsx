@@ -123,7 +123,7 @@ const Nav = ({ background }) => {
             <Link href="/routes/Contact">Contact</Link>
           </li>
           <li className="navItem">
-            <Link href={`/routes/Like/${userId}`}>Like</Link>
+            <Link href={`/routes/Likes/${userId}`}>Like</Link>
           </li>
           {isAdmin && (
             <li className="navItem">
