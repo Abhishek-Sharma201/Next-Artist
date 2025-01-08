@@ -95,38 +95,36 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
               reviews.map((review, index) => (
                 <div
                   key={index}
-                  className={`relative h-[max-content] w-[240px] lg:w-[300px] flex ${
-                    review.userId === userId ? "flex-row-reverse" : "flex-row"
-                  } items-start justify-center p-3 text-white rounded-md gap-[.1rem] ${
-                    review.userId === userId ? "bg-zinc-900" : "bg-blue-500"
-                  }`}
+                  className={`relative h-[max-content] w-[240px] lg:w-[300px] flex flex-col items-start justify-center p-3 ${
+                    review.user === user
+                      ? "bg-zinc-900 self-end"
+                      : "bg-blue-500 self-start "
+                  } text-white rounded-md gap-[.1rem]`}
                 >
-                  <div className="flex flex-col">
-                    <h6 className="text-[.7rem] text-[#fed255] h-[max-content] w-full flex items-center justify-between">
-                      {review.user}
-                      {review.userId === userId && (
-                        <svg
-                          width="12"
-                          height="12"
-                          fill="#fed255"
-                          className="bi bi-trash cursor-pointer"
-                          viewBox="0 0 16 16"
-                          onClick={() => handleDelete(review._id)}
-                        >
-                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                        </svg>
-                      )}
-                    </h6>
-                    <p className="text-[.8rem]">{review.message}</p>
-                    <span
-                      className={`text-[.6rem] text-gray-400 self-end ${
-                        review.userId === userId ? "" : "text-white"
-                      }`}
-                    >
-                      {new Date(review.createdAt).toDateString()}
-                    </span>
-                  </div>
+                  <h6 className="text-[.7rem] text-[#fed255] h-[max-content] w-full flex items-center justify-between">
+                    {review.user}
+                    {review.userId === userId && (
+                      <svg
+                        width="12"
+                        height="12"
+                        fill="#fed255"
+                        className="bi bi-trash cursor-pointer"
+                        viewBox="0 0 16 16"
+                        onClick={() => handleDelete(review._id)}
+                      >
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                      </svg>
+                    )}
+                  </h6>
+                  <p className="text-[.8rem]">{review.message}</p>
+                  <span
+                    className={`text-[.6rem] text-gray-400 self-end ${
+                      review.user === user ? "" : "text-white"
+                    }`}
+                  >
+                    {new Date(review.createdAt).toDateString()}
+                  </span>
                 </div>
               ))
             ) : (
