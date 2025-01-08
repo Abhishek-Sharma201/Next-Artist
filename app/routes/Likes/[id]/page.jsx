@@ -31,6 +31,7 @@ const LikesPage = () => {
       }
       const data = await res.json();
       setLikes(data.likes || []);
+      console.log(`Likes: ${likes}`);
       setIsLoading(false);
     } catch (error) {
       console.error(`Error fetching likes: ${error.message}`);
