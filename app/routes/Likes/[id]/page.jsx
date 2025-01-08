@@ -20,11 +20,12 @@ const LikesPage = () => {
     }
 
     try {
+      // Pass userId directly in the URL for GET request
       const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
-        method: "GET",
+        method: "GET", // GET request doesn't need a body
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userId),
       });
+
       if (!res.ok) {
         throw new Error("Failed to fetch likes");
       }
