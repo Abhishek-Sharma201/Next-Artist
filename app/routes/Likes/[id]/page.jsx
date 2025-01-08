@@ -20,7 +20,11 @@ const LikesPage = () => {
     }
 
     try {
-      const res = await fetch(`${apiURL}/api/like/getLike/${userId}`);
+      const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userId),
+      });
       if (!res.ok) {
         throw new Error("Failed to fetch likes");
       }

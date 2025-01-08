@@ -41,7 +41,7 @@ const AlbumPage = () => {
     }
   };
 
-  const handleLike = async (data) => {
+  const handleLike = async (id) => {
     if (!userId) {
       toast.error("You need to log in to like a sketch.");
       return;
@@ -53,7 +53,7 @@ const AlbumPage = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           user: userId,
-          drawingId: data.id,
+          drawingId: id,
         }),
       });
 
@@ -106,11 +106,7 @@ const AlbumPage = () => {
                         id: card._id,
                       })
                     }
-                    onLike={() =>
-                      handleLike({
-                        id: card._id,
-                      })
-                    }
+                    onLike={() => handleLike(card._id)}
                   />
                 ))}
               </div>
