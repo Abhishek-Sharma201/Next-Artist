@@ -5,7 +5,7 @@ import { useAuth, useUser } from "@clerk/nextjs";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const ReviewBox = ({ reviews, id, fetchReview }) => {
+const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
   const { userId } = useAuth();
   const { user } = useUser();
   const [form, setForm] = useState({
@@ -50,10 +50,12 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
         throw new Error(errorData.message || "Failed to post review");
       }
 
+      const newReview = await res.json(); // Assuming the API response includes the new review
       toast.success("Review added!");
       setForm({ ...form, message: "" });
-      fetchReview(); // Refresh the reviews after adding one
-      console.log(`User: ${form.user}`);
+
+      // Update reviews locally
+      setReviews((prevReviews) => [...prevReviews, newReview]);
     } catch (error) {
       console.error(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
@@ -68,7 +70,11 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
       });
       if (!res.ok) throw new Error("Error deleting review!");
       toast.warning("Review deleted!");
-      fetchReview();
+
+      // Update reviews locally
+      setReviews((prevReviews) =>
+        prevReviews.filter((review) => review._id !== reviewId)
+      );
     } catch (error) {
       console.error(`Error deleting Review: ${reviewId}`);
       toast.error("Error deleting review!");
@@ -116,7 +122,7 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
                         onClick={() => handleDelete(review._id)}
                       >
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
                       </svg>
                     )}
                   </h6>
