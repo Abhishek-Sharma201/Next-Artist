@@ -20,7 +20,7 @@ const LikesPage = () => {
     }
 
     try {
-      // Pass userId directly in the URL for GET request
+      // Fetch the user's liked drawings
       const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
         method: "GET", // GET request doesn't need a body
         headers: { "Content-Type": "application/json" },
@@ -29,10 +29,25 @@ const LikesPage = () => {
       if (!res.ok) {
         throw new Error("Failed to fetch likes");
       }
+
       const data = await res.json();
       setLikes(data.likes || []);
-      console.log(`Likes: ${likes}`);
       setIsLoading(false);
+
+      // Now fetch all drawings
+      const drawingsRes = await fetch(`${apiURL}/api/drawing/getDrawing`);
+      const drawingsData = await drawingsRes.json();
+
+      // Filter drawings based on the liked drawing IDs
+      const likedDrawings = drawingsData.data.filter((drawing) =>
+        data.likes?.drawings.includes(drawing._id)
+      );
+
+      // Update state with the filtered liked drawings
+      setLikes((prevLikes) => ({
+        ...prevLikes,
+        drawings: likedDrawings,
+      }));
     } catch (error) {
       console.error(`Error fetching likes: ${error.message}`);
       setIsLoading(false);
@@ -57,18 +72,23 @@ const LikesPage = () => {
           <Loader />
         ) : (
           <>
-            {likes.length > 0 ? (
+            {likes.drawings && likes.drawings.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {likes.map((like) => (
-                  <div key={like._id} className="border p-4">
+                {likes.drawings.map((drawing) => (
+                  <div key={drawing._id} className="border p-4">
                     <img
-                      src={like.drawings[0]?.imageUrl || "/placeholder.jpg"}
-                      alt={like.drawings[0]?.title || "Untitled"}
+                      src={drawing.image.url || "/placeholder.jpg"} // Use the correct path to the image
+                      alt={drawing.type || "Untitled"} // Use 'type' for the title
                       className="w-full h-auto"
                     />
                     <h3 className="text-lg font-bold mt-2">
-                      {like.drawings[0]?.title || "Untitled"}
-                    </h3>
+                      {drawing.type || "Untitled"}
+                    </h3>{" "}
+                    {/* Display the type */}
+                    <p className="text-sm text-gray-500">
+                      Price: ${drawing.price}
+                    </p>{" "}
+                    {/* Display the price */}
                   </div>
                 ))}
               </div>
