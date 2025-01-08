@@ -1,15 +1,16 @@
 "use client";
 
 import { apiURL } from "@/app/constants";
-import { useAuth } from "@clerk/nextjs"; // Clerk's useAuth hook
+import { useAuth, useUser } from "@clerk/nextjs";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const ReviewBox = ({ reviews, id, fetchReview }) => {
-  const { userId, user } = useAuth(); // Get userId and user object from Clerk
+  const { userId } = useAuth();
+  const { user } = useUser();
   const [form, setForm] = useState({
     message: "",
-    user: user?.username || user?.firstName || "Anonymous",
+    user: user?.fullName || "Anonymous",
     drawingId: id,
   });
 
