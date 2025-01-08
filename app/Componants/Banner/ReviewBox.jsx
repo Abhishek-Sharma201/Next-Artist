@@ -48,7 +48,7 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
       });
       if (res.ok) {
         const newReview = await res.json();
-        toast.success("Review added!");
+        toast.success("Review added! Reload please.");
         setForm({ ...form, message: "" });
         setLocalReviews((prevReviews) => [...prevReviews, newReview]);
       } else {
