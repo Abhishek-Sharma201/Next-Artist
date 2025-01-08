@@ -13,11 +13,13 @@ import {
   useUser,
   SignOutButton,
   SignUpButton,
+  useAuth,
 } from "@clerk/nextjs";
 
 import "./Nav.css";
 
 const Nav = ({ background }) => {
+  const { userId } = useAuth();
   const [isNavOpened, setIsNavOpened] = useState(false);
   const router = useRouter();
   const { user } = useUser();
@@ -121,7 +123,7 @@ const Nav = ({ background }) => {
             <Link href="/routes/Contact">Contact</Link>
           </li>
           <li className="navItem">
-            <Link href="/routes/Like">Like</Link>
+            <Link href={`/routes/Like/${userId}`}>Like</Link>
           </li>
           {isAdmin && (
             <li className="navItem">
