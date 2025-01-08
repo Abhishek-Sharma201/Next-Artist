@@ -24,7 +24,7 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
   useEffect(() => {
     setForm((prevForm) => ({
       ...prevForm,
-      user: user?.username || user?.firstName || "Anonymous",
+      user: user?.fullName || "Anonymous",
       drawingId: id,
     }));
   }, [user, id]);
@@ -50,6 +50,7 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
       toast.success("Review added!");
       setForm({ ...form, message: "" });
       fetchReview(); // Refresh the reviews after adding one
+      console.log(`User: ${form.user}`);
     } catch (error) {
       console.error(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
