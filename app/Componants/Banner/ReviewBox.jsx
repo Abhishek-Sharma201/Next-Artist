@@ -106,7 +106,7 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
                 >
                   <h6 className="text-[.7rem] text-[#fed255] h-[max-content] w-full flex items-center justify-between">
                     {review.user}
-                    {review.userId === userId && (
+                    {review.user === user?.fullName && (
                       <svg
                         width="12"
                         height="12"

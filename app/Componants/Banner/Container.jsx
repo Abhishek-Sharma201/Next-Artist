@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import ShopBtn from "../Buttons/ShopBtn";
-import { IMG_11 } from "@/app/utils";
 
 const Container = ({ data }) => {
   const router = useRouter();
@@ -14,7 +13,6 @@ const Container = ({ data }) => {
       <div className="h-[50dvh] lg:h-[70dvh] w-[max-content] rounded-lg overflow-hidden  flex flex-col items-center justify-center">
         <Image
           src={data?.image?.url || ""}
-          // src={IMG_11}
           alt={data?.type}
           priority
           className="h-full w-full object-contain"
@@ -42,7 +40,7 @@ const Container = ({ data }) => {
         <p className="text-[.8rem] font-[400] text-zinc-800">ID: {data?._id}</p>
         <ShopBtn
           value={"Order on WhatsApp"}
-          redirect={`https://wa.me/918108812687`}
+          redirect={`https://wa.me/919702556495`}
           height={"7dvh"}
           width={"max-content"}
           bg={"#189D0E"}

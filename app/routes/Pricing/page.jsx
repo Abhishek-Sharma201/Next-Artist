@@ -1,22 +1,24 @@
 "use client";
+
 import React, { useContext, useEffect } from "react";
 import "./style.css";
 import Nav from "../../Componants/Nav/Nav";
 import AlbumCard from "@/app/Componants/Cards/AlbumCard";
 import Footer from "@/app/Componants/Footer/Footer";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AlbumContext from "@/app/context/AlbumContext";
 import Loader from "@/app/Componants/Loader/Loader";
-import { IMG_11 } from "@/app/utils";
+import { apiURL } from "@/app/constants";
+import { useAuth } from "@clerk/nextjs";
 
-const albumPage = () => {
+const AlbumPage = () => {
+  const { userId } = useAuth();
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
     fetchAlbum();
-    console.log(album);
-  }, []);
+  }, [fetchAlbum]);
 
   const handleShare = async (data) => {
     const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
@@ -28,12 +30,41 @@ const albumPage = () => {
           text: message,
           url: window.location.href,
         });
-        console.log("Content shared successfully!");
+        toast.success("Content shared successfully!");
       } catch (error) {
         console.error("Error sharing content:", error);
+        toast.error("Failed to share content!");
       }
     } else {
-      alert("Sharing is not supported in your browser.");
+      toast.error("Sharing is not supported in your browser.");
+    }
+  };
+
+  const handleLike = async (data) => {
+    if (!userId) {
+      toast.error("You need to log in to like a sketch.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${apiURL}/api/like/postLike`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: userId,
+          drawingId: data.id,
+        }),
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        toast.success(result.message || "Liked successfully!");
+      } else {
+        toast.error(result.message || "Failed to like the sketch!");
+      }
+    } catch (error) {
+      console.error(`Error liking sketch: ${error.message}`);
+      toast.error("An error occurred while liking the sketch.");
     }
   };
 
@@ -74,30 +105,22 @@ const albumPage = () => {
                         id: card._id,
                       })
                     }
+                    onLike={() =>
+                      handleLike({
+                        id: card._id,
+                      })
+                    }
                   />
                 ))}
-                {/* <AlbumCard
-                  key={1}
-                  price={"$1000"}
-                  text={"Ball pen Sketch"}
-                  img={IMG_11}
-                  cardId={1}
-                  onShare={() =>
-                    handleShare({
-                      text: "Ball pen Sketch",
-                      price: "$1000",
-                      id: 1,
-                    })
-                  }
-                /> */}
               </div>
             )}
           </section>
         </div>
         <Footer width={"100%"} />
       </div>
+      <ToastContainer />
     </>
   );
 };
 
-export default albumPage;
+export default AlbumPage;

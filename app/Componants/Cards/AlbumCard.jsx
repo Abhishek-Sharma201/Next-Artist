@@ -4,7 +4,7 @@ import React from "react";
 import "./AlbumCard.css";
 import ShopBtn from "../Buttons/ShopBtn";
 
-const AlbumCard = ({ text, price, img, cardId, metaData, onShare }) => {
+const AlbumCard = ({ text, price, img, cardId, metaData, onShare, onLike }) => {
   return (
     <div className="trendingCard">
       <div className="imgContainer">
@@ -22,18 +22,25 @@ const AlbumCard = ({ text, price, img, cardId, metaData, onShare }) => {
             </svg>
           </button>
           <div className="line"></div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="bi bi-heart"
-            viewBox="0 0 16 16"
-          >
-            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-          </svg>
+          <button onClick={onLike}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-heart"
+              viewBox="0 0 16 16"
+            >
+              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+            </svg>
+          </button>
         </div>
-        <Image loading="lazy" alt="albumcardimg" className="cardImg" src={img} />
+        <Image
+          loading="lazy"
+          alt="albumcardimg"
+          className="cardImg"
+          src={img}
+        />
       </div>
       <div className="content">
         <div className="price">
