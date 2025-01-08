@@ -96,7 +96,7 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
                 <div
                   key={index}
                   className={`relative h-[max-content] w-[240px] lg:w-[300px] flex flex-col items-start justify-center p-3 ${
-                    review.user === user
+                    review.user === user?.fullName
                       ? "bg-zinc-900 self-end"
                       : "bg-blue-500 self-start "
                   } text-white rounded-md gap-[.1rem]`}
@@ -120,7 +120,7 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
                   <p className="text-[.8rem]">{review.message}</p>
                   <span
                     className={`text-[.6rem] text-gray-400 self-end ${
-                      review.user === user ? "" : "text-white"
+                      review.user === user?.fullName ? "" : "text-white"
                     }`}
                   >
                     {new Date(review.createdAt).toDateString()}
