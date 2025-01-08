@@ -29,6 +29,9 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
     }));
   }, [user, id]);
 
+  // Filter reviews based on the drawingId (id)
+  const filteredReviews = reviews.filter((review) => review.drawingId === id);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userId) {
@@ -91,8 +94,8 @@ const ReviewBox = ({ reviews, id, fetchReview }) => {
             Other People's Reviews
           </div>
           <div className="w-full h-[30dvh] p-2 flex flex-col items-center justify-start gap-2 overflow-y-auto overflow-x-hidden border border-l-0 border-r-0 border-t-zinc-300 border-b-zinc-300">
-            {reviews && reviews.length > 0 ? (
-              reviews.map((review, index) => (
+            {filteredReviews.length > 0 ? (
+              filteredReviews.map((review, index) => (
                 <div
                   key={index}
                   className={`relative h-[max-content] w-[240px] lg:w-[300px] flex flex-col items-start justify-center p-3 ${
