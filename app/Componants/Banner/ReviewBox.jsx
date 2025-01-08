@@ -33,6 +33,7 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
   const filteredReviews = reviews.filter((review) => review.drawingId === id);
 
   const handleSubmit = async (e) => {
+    toast.success("Review added successfully!");
     e.preventDefault();
     if (!userId) {
       toast.error("You must be logged in!");
@@ -63,6 +64,7 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
   };
 
   const handleDelete = async (reviewId) => {
+    toast.warn("Review deleted!");
     try {
       const res = await fetch(`${apiURL}/api/review/deleteReview/${reviewId}`, {
         method: "DELETE",
