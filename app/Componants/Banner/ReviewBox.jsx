@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
   const { userId } = useAuth();
   const { user } = useUser();
+  const [localReviews, setLocalReviews] = useState(reviews || []);
   const [form, setForm] = useState({
     message: "",
     user: user?.fullName || "Anonymous",
@@ -29,11 +30,11 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
     }));
   }, [user, id]);
 
-  // Filter reviews based on the drawingId (id)
-  const filteredReviews = reviews.filter((review) => review.drawingId === id);
+  useEffect(() => {
+    setLocalReviews(reviews); // Sync local state with props
+  }, [reviews]);
 
   const handleSubmit = async (e) => {
-    toast.success("Review added successfully!");
     e.preventDefault();
     if (!userId) {
       toast.error("You must be logged in!");
@@ -51,12 +52,12 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
         throw new Error(errorData.message || "Failed to post review");
       }
 
-      const newReview = await res.json(); // Assuming the API response includes the new review
+      const newReview = await res.json(); // Ensure the API returns the created review
       toast.success("Review added!");
       setForm({ ...form, message: "" });
 
-      // Update reviews locally
-      setReviews((prevReviews) => [...prevReviews, newReview]);
+      // Update local reviews
+      setLocalReviews((prevReviews) => [...prevReviews, newReview]);
     } catch (error) {
       console.error(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
@@ -64,7 +65,6 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
   };
 
   const handleDelete = async (reviewId) => {
-    toast.warn("Review deleted!");
     try {
       const res = await fetch(`${apiURL}/api/review/deleteReview/${reviewId}`, {
         method: "DELETE",
@@ -73,8 +73,8 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
       if (!res.ok) throw new Error("Error deleting review!");
       toast.warning("Review deleted!");
 
-      // Update reviews locally
-      setReviews((prevReviews) =>
+      // Update local reviews
+      setLocalReviews((prevReviews) =>
         prevReviews.filter((review) => review._id !== reviewId)
       );
     } catch (error) {
@@ -82,6 +82,10 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
       toast.error("Error deleting review!");
     }
   };
+
+  const filteredReviews = localReviews.filter(
+    (review) => review.drawingId === id
+  );
 
   return (
     <div className="h-[max-content] w-[300px] lg:w-[600px] md:w-[500px] flex flex-col items-center justify-start gap-4 mt-6">
