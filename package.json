@@ -9,14 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "cors": "^2.8.5",
+    "@clerk/nextjs": "^6.9.6",
     "dotenv": "^16.4.5",
     "masonry-layout": "^4.2.2",
-    "mongo": "^0.1.0",
-    "mongodb": "^6.8.0",
-    "mongoose": "^8.6.1",
     "next": "14.2.4",
-    "next-auth": "^4.24.11",
     "react": "^18",
     "react-dom": "^18",
     "react-router-dom": "^6.26.1",

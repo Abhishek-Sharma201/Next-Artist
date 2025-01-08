@@ -1,34 +1,41 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import { bannerImage, logoImage } from "@/app/utils";
 import Link from "next/link";
-import "./Nav.css";
 import { useRouter } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
 import { toast } from "react-toastify";
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+  SignOutButton,
+  SignUpButton,
+} from "@clerk/nextjs";
+
+import "./Nav.css";
 
 const Nav = ({ background }) => {
-  const { data: session } = useSession();
-  const router = useRouter();
   const [isNavOpened, setIsNavOpened] = useState(false);
+  const router = useRouter();
+  const { user } = useUser();
 
-  const toggleNav = () => {
-    setIsNavOpened(!isNavOpened);
-  };
+  const toggleNav = () => setIsNavOpened(!isNavOpened);
 
-  useEffect(() => {
-    if (session) {
-      console.log(`${session?.user?.name}`);
-    }
-  });
+  const isAdmin = user?.emailAddresses.some(
+    (email) =>
+      email.emailAddress === "abhishek.webdev001@gmail.com" ||
+      email.emailAddress === "abhisheksharma52962@gmail.com"
+  );
 
   return (
     <div className="wrapper">
       <Image
         className="backImg"
         src={bannerImage}
-        style={{ display: background ? `block` : "none" }}
+        style={{ display: background ? "block" : "none" }}
         priority={true}
         alt="backImg"
       />
@@ -52,36 +59,36 @@ const Nav = ({ background }) => {
               viewBox="0 0 48 48"
             >
               <linearGradient
-                id="wRKXFJsqHCxLE9yyOYHkza_fYgQxDaH069W_gr1"
-                x1="9.858"
-                x2="38.142"
-                y1="9.858"
-                y2="38.142"
+                id="hbE9Evnj3wAjjA2RX0We2a_OZuepOQd0omj_gr1"
+                x1="7.534"
+                x2="27.557"
+                y1="7.534"
+                y2="27.557"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0" stop-color="#f44f5a"></stop>
-                <stop offset=".443" stop-color="#ee3d4a"></stop>
-                <stop offset="1" stop-color="#e52030"></stop>
+                <stop offset="0" stopColor="#f44f5a"></stop>
+                <stop offset=".443" stopColor="#ee3d4a"></stop>
+                <stop offset="1" stopColor="#e52030"></stop>
               </linearGradient>
               <path
-                fill="url(#wRKXFJsqHCxLE9yyOYHkza_fYgQxDaH069W_gr1)"
-                d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+                fill="url(#hbE9Evnj3wAjjA2RX0We2a_OZuepOQd0omj_gr1)"
+                d="M42.42,12.401c0.774-0.774,0.774-2.028,0-2.802L38.401,5.58c-0.774-0.774-2.028-0.774-2.802,0	L24,17.179L12.401,5.58c-0.774-0.774-2.028-0.774-2.802,0L5.58,9.599c-0.774,0.774-0.774,2.028,0,2.802L17.179,24L5.58,35.599	c-0.774,0.774-0.774,2.028,0,2.802l4.019,4.019c0.774,0.774,2.028,0.774,2.802,0L42.42,12.401z"
               ></path>
+              <linearGradient
+                id="hbE9Evnj3wAjjA2RX0We2b_OZuepOQd0omj_gr2"
+                x1="27.373"
+                x2="40.507"
+                y1="27.373"
+                y2="40.507"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0" stopColor="#a8142e"></stop>
+                <stop offset=".179" stopColor="#ba1632"></stop>
+                <stop offset=".243" stopColor="#c21734"></stop>
+              </linearGradient>
               <path
-                d="M33.192,28.95L28.243,24l4.95-4.95c0.781-0.781,0.781-2.047,0-2.828l-1.414-1.414	c-0.781-0.781-2.047-0.781-2.828,0L24,19.757l-4.95-4.95c-0.781-0.781-2.047-0.781-2.828,0l-1.414,1.414	c-0.781,0.781-0.781,2.047,0,2.828l4.95,4.95l-4.95,4.95c-0.781,0.781-0.781,2.047,0,2.828l1.414,1.414	c0.781,0.781,2.047,0.781,2.828,0l4.95-4.95l4.95,4.95c0.781,0.781,2.047,0.781,2.828,0l1.414-1.414	C33.973,30.997,33.973,29.731,33.192,28.95z"
-                opacity=".05"
-              ></path>
-              <path
-                d="M32.839,29.303L27.536,24l5.303-5.303c0.586-0.586,0.586-1.536,0-2.121l-1.414-1.414	c-0.586-0.586-1.536-0.586-2.121,0L24,20.464l-5.303-5.303c-0.586-0.586-1.536-0.586-2.121,0l-1.414,1.414	c-0.586,0.586-0.586,1.536,0,2.121L20.464,24l-5.303,5.303c-0.586,0.586-0.586,1.536,0,2.121l1.414,1.414	c0.586,0.586,1.536,0.586,2.121,0L24,27.536l5.303,5.303c0.586,0.586,1.536,0.586,2.121,0l1.414-1.414	C33.425,30.839,33.425,29.889,32.839,29.303z"
-                opacity=".07"
-              ></path>
-              <path
-                fill="#fff"
-                d="M31.071,15.515l1.414,1.414c0.391,0.391,0.391,1.024,0,1.414L18.343,32.485	c-0.391,0.391-1.024,0.391-1.414,0l-1.414-1.414c-0.391-0.391-0.391-1.024,0-1.414l14.142-14.142	C30.047,15.124,30.681,15.124,31.071,15.515z"
-              ></path>
-              <path
-                fill="#fff"
-                d="M32.485,31.071l-1.414,1.414c-0.391,0.391-1.024,0.391-1.414,0L15.515,18.343	c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414c0.391-0.391,1.024-0.391,1.414,0l14.142,14.142	C32.876,30.047,32.876,30.681,32.485,31.071z"
+                fill="url(#hbE9Evnj3wAjjA2RX0We2b_OZuepOQd0omj_gr2)"
+                d="M24,30.821L35.599,42.42c0.774,0.774,2.028,0.774,2.802,0l4.019-4.019	c0.774-0.774,0.774-2.028,0-2.802L30.821,24L24,30.821z"
               ></path>
             </svg>
           ) : (
@@ -111,62 +118,32 @@ const Nav = ({ background }) => {
             <Link href="/routes/Pricing">Pricing</Link>
           </li>
           <li className="navItem">
-            <Link href="/routes/Likes">Likes</Link>
-          </li>
-          <li className="navItem">
-            <Link href="/routes/Collection">Collection</Link>
-          </li>
-          <li className="navItem">
             <Link href="/routes/Contact">Contact</Link>
           </li>
-          {session?.user?.email === "abhishek.webdev001@gmail.com" ||
-          session?.user?.email === "abhisheksharma52962@gmail.com" ? (
+          <li className="navItem">
+            <Link href="/routes/Like">Like</Link>
+          </li>
+          {isAdmin && (
             <li className="navItem">
               <Link href="/routes/Admin">Admin</Link>
             </li>
-          ) : (
-            ""
           )}
-          {isNavOpened ? (
-            session ? (
-              <button
-                className="text-white hover:border border-yellow-400 p-2 px-4 rounded-md w-[80px]"
-                onClick={async () => {
-                  await signOut();
-                  toast.warn("Logged Out");
-                }}
-              >
+          <SignedOut>
+            <SignUpButton>
+              <button className="p-4 bg-blue-600 text-white hover:bg-blue-500 rounded-md">
+                Login
+              </button>
+            </SignUpButton>
+          </SignedOut>
+          <UserButton />
+          <SignedIn>
+            <SignOutButton>
+              <button className="p-4 bg-red-600 text-white hover:bg-red-500 rounded-md">
                 Logout
               </button>
-            ) : (
-              <button className="text-white bg-yellow-400 p-2 px-4 rounded-md w-[80px]">
-                <Link href={"/login"}>Login</Link>
-              </button>
-            )
-          ) : (
-            ""
-          )}
+            </SignOutButton>
+          </SignedIn>
         </ul>
-        <div className="icons">
-          {session ? (
-            <button
-              className="text-white hover:border border-yellow-400 p-4 px-4 rounded-md"
-              onClick={async () => {
-                await signOut();
-                toast.warn("Logged Out");
-              }}
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              href={"/login"}
-              className="text-white bg-yellow-500 py-[.7rem] px-6 rounded-md"
-            >
-              Login
-            </Link>
-          )}
-        </div>
       </nav>
     </div>
   );
