@@ -199,7 +199,8 @@ const Footer = ({ width }) => {
           {/*  */}
         </div>
         <h4 className="footerName">
-          &copy; Raj Artist 2024 All rights reserved
+          &copy; {new Date().toLocaleDateString()} Raj Artist All rights
+          reserved
         </h4>
       </div>
     </footer>

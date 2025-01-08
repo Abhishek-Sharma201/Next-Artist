@@ -6,8 +6,10 @@ import Loader from "@/app/Componants/Loader/Loader";
 import { useAuth } from "@clerk/nextjs";
 import Nav from "@/app/Componants/Nav/Nav";
 import Footer from "@/app/Componants/Footer/Footer";
+import { useRouter } from "next/navigation";
 
 const LikesPage = () => {
+  const router = useRouter();
   const { userId } = useAuth();
   const [likes, setLikes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -109,7 +111,15 @@ const LikesPage = () => {
                       onClick={() => handleDeleteLike(drawing._id)}
                       className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                     >
-                      Delete Like
+                      Remove
+                    </button>
+                    <button
+                      onClick={() =>
+                        router.push(`/routes/Pricing/${drawing._id}`)
+                      }
+                      className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-red-600"
+                    >
+                      Get
                     </button>
                   </div>
                 ))}
