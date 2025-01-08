@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { apiURL } from "@/app/constants";
 import Loader from "@/app/Componants/Loader/Loader";
-import { useAuth } from "@clerk/nextjs"; // Assuming Clerk is used for authentication
+import { useAuth } from "@clerk/nextjs";
 import Nav from "@/app/Componants/Nav/Nav";
 import Footer from "@/app/Componants/Footer/Footer";
 
 const LikesPage = () => {
-  const { userId } = useAuth(); // Get userId from Clerk
+  const { userId } = useAuth();
   const [likes, setLikes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,9 +20,8 @@ const LikesPage = () => {
     }
 
     try {
-      // Fetch the user's liked drawings
       const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
-        method: "GET", // GET request doesn't need a body
+        method: "GET",
         headers: { "Content-Type": "application/json" },
       });
 
@@ -34,16 +33,13 @@ const LikesPage = () => {
       setLikes(data.likes || []);
       setIsLoading(false);
 
-      // Now fetch all drawings
       const drawingsRes = await fetch(`${apiURL}/api/drawing/getDrawings`);
       const drawingsData = await drawingsRes.json();
 
-      // Filter drawings based on the liked drawing IDs
       const likedDrawings = drawingsData.data.filter((drawing) =>
         data.likes?.drawings.includes(drawing._id)
       );
 
-      // Update state with the filtered liked drawings
       setLikes((prevLikes) => ({
         ...prevLikes,
         drawings: likedDrawings,
@@ -53,6 +49,28 @@ const LikesPage = () => {
       setIsLoading(false);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleDeleteLike = async (drawingId) => {
+    try {
+      const res = await fetch(`${apiURL}/api/like/deleteLike`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, drawingId }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to delete like");
+      }
+
+      const data = await res.json();
+      console.log(data.message);
+
+      // Refresh likes after deletion
+      fetchLikes();
+    } catch (error) {
+      console.error(`Error deleting like: ${error.message}`);
     }
   };
 
@@ -77,18 +95,22 @@ const LikesPage = () => {
                 {likes.drawings.map((drawing) => (
                   <div key={drawing?._id} className="border p-4">
                     <img
-                      src={drawing?.image?.url || "/placeholder.jpg"} // Use the correct path to the image
-                      alt={drawing?.type || "Untitled"} // Use 'type' for the title
+                      src={drawing?.image?.url || "/placeholder.jpg"}
+                      alt={drawing?.type || "Untitled"}
                       className="w-full h-auto"
                     />
                     <h3 className="text-lg font-bold mt-2">
                       {drawing?.type || "Untitled"}
-                    </h3>{" "}
-                    {/* Display the type */}
+                    </h3>
                     <p className="text-sm text-gray-500">
                       Price: ${drawing?.price}
-                    </p>{" "}
-                    {/* Display the price */}
+                    </p>
+                    <button
+                      onClick={() => handleDeleteLike(drawing._id)}
+                      className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                    >
+                      Delete Like
+                    </button>
                   </div>
                 ))}
               </div>
