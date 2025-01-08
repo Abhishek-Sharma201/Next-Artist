@@ -46,18 +46,15 @@ const ReviewBox = ({ reviews, id, fetchReview, setReviews }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-
-      if (!res.ok) {
+      if (res.ok) {
+        const newReview = await res.json();
+        toast.success("Review added!");
+        setForm({ ...form, message: "" });
+        setLocalReviews((prevReviews) => [...prevReviews, newReview]);
+      } else {
         const errorData = await res.json();
         throw new Error(errorData.message || "Failed to post review");
       }
-
-      const newReview = await res.json(); // Ensure the API returns the created review
-      toast.success("Review added!");
-      setForm({ ...form, message: "" });
-
-      // Update local reviews
-      setLocalReviews((prevReviews) => [...prevReviews, newReview]);
     } catch (error) {
       console.error(`Error adding Review!: ${error.message}`);
       toast.error("Error adding review");
