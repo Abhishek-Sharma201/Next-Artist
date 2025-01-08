@@ -17,8 +17,9 @@ const AlbumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
+    // Only call fetchAlbum once on component mount
     fetchAlbum();
-  }, [fetchAlbum]);
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const handleShare = async (data) => {
     const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
