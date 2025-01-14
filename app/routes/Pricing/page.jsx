@@ -9,20 +9,17 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AlbumContext from "@/app/context/AlbumContext";
 import Loader from "@/app/Componants/Loader/Loader";
+import { apiURL } from "@/app/constants";
 import { useAuth } from "@clerk/nextjs";
-import useLikes from "@/app/hooks/useLikes"; // Import the custom hook
 
 const AlbumPage = () => {
   const { userId } = useAuth();
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
-  // Use the custom hook for likes management
-  const { likes, toggleLike } = useLikes(userId);
-
-  // Fetch album data
   useEffect(() => {
+    // Only call fetchAlbum once on component mount
     fetchAlbum();
-  }, [fetchAlbum]);
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const handleShare = async (data) => {
     const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
@@ -41,6 +38,34 @@ const AlbumPage = () => {
       }
     } else {
       toast.error("Sharing is not supported in your browser.");
+    }
+  };
+
+  const handleLike = async (id) => {
+    if (!userId) {
+      toast.error("You need to log in to like a sketch.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${apiURL}/api/like/postLike`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: userId,
+          drawingId: id,
+        }),
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        toast.success(result.message || "Liked successfully!");
+      } else {
+        toast.error(result.message || "Failed to like the sketch!");
+      }
+    } catch (error) {
+      console.error(`Error liking sketch: ${error.message}`);
+      toast.error("An error occurred while liking the sketch.");
     }
   };
 
@@ -74,8 +99,6 @@ const AlbumPage = () => {
                     text={card.type}
                     img={card.image?.url || ""}
                     cardId={card._id}
-                    isLiked={likes.includes(card._id)} // Check if liked
-                    onLike={() => toggleLike(card._id)} // Use the custom hook's toggleLike
                     onShare={() =>
                       handleShare({
                         text: card.type,
@@ -83,6 +106,7 @@ const AlbumPage = () => {
                         id: card._id,
                       })
                     }
+                    onLike={() => handleLike(card._id)}
                   />
                 ))}
               </div>
