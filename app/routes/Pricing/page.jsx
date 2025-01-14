@@ -15,11 +15,14 @@ import { useAuth } from "@clerk/nextjs";
 const AlbumPage = () => {
   const { userId } = useAuth();
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
-  const [likes, setLikes] = useState(new Set()); // Store liked drawing IDs
+  const [likes, setLikes] = useState([]);
 
+  // Fetch album and load likes from localStorage
   useEffect(() => {
     fetchAlbum();
-  }, []); // Fetch the album on mount
+    const storedLikes = JSON.parse(localStorage.getItem("likes")) || [];
+    setLikes(storedLikes);
+  }, []);
 
   const handleLike = async (id) => {
     if (!userId) {
@@ -28,6 +31,14 @@ const AlbumPage = () => {
     }
 
     try {
+      // Toggle like in local state
+      const updatedLikes = likes.includes(id)
+        ? likes.filter((likeId) => likeId !== id)
+        : [...likes, id];
+      setLikes(updatedLikes);
+      localStorage.setItem("likes", JSON.stringify(updatedLikes));
+
+      // Sync with the backend
       const res = await fetch(`${apiURL}/api/like/postLike`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,19 +49,37 @@ const AlbumPage = () => {
       });
 
       const result = await res.json();
-      if (res.ok) {
-        setLikes((prevLikes) =>
-          prevLikes.has(id)
-            ? new Set([...prevLikes].filter((likeId) => likeId !== id))
-            : new Set(prevLikes).add(id)
-        );
-        toast.success(result.message || "Liked successfully!");
+      if (!res.ok) {
+        toast.error(result.message || "Failed to update like status!");
+        // Rollback local state if the backend fails
+        setLikes(likes);
+        localStorage.setItem("likes", JSON.stringify(likes));
       } else {
-        toast.error(result.message || "Failed to like the sketch!");
+        toast.success(result.message || "Like updated!");
       }
     } catch (error) {
       console.error(`Error liking sketch: ${error.message}`);
-      toast.error("An error occurred while liking the sketch.");
+      toast.error("An error occurred while updating the like status.");
+    }
+  };
+
+  const handleShare = async (data) => {
+    const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Amazing Sketch!",
+          text: message,
+          url: window.location.href,
+        });
+        toast.success("Content shared successfully!");
+      } catch (error) {
+        console.error("Error sharing content:", error);
+        toast.error("Failed to share content!");
+      }
+    } else {
+      toast.error("Sharing is not supported in your browser.");
     }
   };
 
@@ -84,8 +113,15 @@ const AlbumPage = () => {
                     text={card.type}
                     img={card.image?.url || ""}
                     cardId={card._id}
-                    isLiked={likes.has(card._id)} // Pass liked state
+                    isLiked={likes.includes(card._id)} // Check if liked
                     onLike={() => handleLike(card._id)}
+                    onShare={() =>
+                      handleShare({
+                        text: card.type,
+                        price: card.price,
+                        id: card._id,
+                      })
+                    }
                   />
                 ))}
               </div>
