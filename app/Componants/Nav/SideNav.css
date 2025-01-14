@@ -1,14 +1,23 @@
 .sideNav {
-  height: 100dvh;
+  height: 100vh;
   width: 250px;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; /* Visible by default on large screens */
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   border-right: 0.5px solid rgb(219, 219, 219);
   background-color: #fff;
   z-index: 99;
+  transition: left 0.3s ease; /* Smooth slide-in/out */
+}
+
+.sideNav.hidden {
+  left: -250px; /* Hide the sidenav on small screens */
+}
+
+.sideNav.open {
+  left: 0; /* Hide the sidenav on small screens */
 }
 
 .sideNav .list {
@@ -36,4 +45,10 @@
   background-color: #007bff;
   color: white;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .sideNav {
+    left: -250px; /* Hidden by default */
+  }
 }

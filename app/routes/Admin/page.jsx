@@ -12,6 +12,27 @@ import { useRouter } from "next/navigation";
 const Admin = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("Dashboard");
+  const [isSideNavOpen, setIsSideNavOpen] = useState(true); // Initially open for large screens
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsSmallScreen(true);
+        setIsSideNavOpen(false); // Close sidenav on small screens by default
+      } else {
+        setIsSmallScreen(false);
+        setIsSideNavOpen(true); // Keep sidenav open on large screens
+      }
+    };
+
+    // Initial check and event listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleTabChange = (tab) => {
     if (tab === "Home") {
@@ -21,7 +42,9 @@ const Admin = () => {
     }
   };
 
-  // RELOAD
+  const toggleSideNav = () => {
+    setIsSideNavOpen((prev) => !prev); // Toggle the sidenav state
+  };
 
   const renderComponent = () => {
     switch (activeTab) {
@@ -42,8 +65,24 @@ const Admin = () => {
 
   return (
     <div className="wrapper">
-      <SideNav initialTab={activeTab} handleTabChange={handleTabChange} />
-      <div className="content">{renderComponent()}</div>
+      {isSmallScreen && (
+        <button className="toggle-button" onClick={toggleSideNav}>
+          {isSideNavOpen ? "Close" : "Menu"}
+        </button>
+      )}
+      <SideNav
+        className={`sideNav ${isSideNavOpen ? "open" : "hidden"}`}
+        initialTab={activeTab}
+        handleTabChange={handleTabChange}
+      />
+      <div
+        className={`content ${isSideNavOpen ? "" : "full-width"}`}
+        onClick={() =>
+          isSmallScreen && isSideNavOpen && setIsSideNavOpen(false)
+        }
+      >
+        {renderComponent()}
+      </div>
     </div>
   );
 };

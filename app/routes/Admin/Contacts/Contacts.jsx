@@ -87,7 +87,7 @@ const Contacts = () => {
 
   return (
     <div className="contact-container">
-      <div className="head">
+      <div className="head flex flex-col lg:flex-row">
         <h2>Contacts {">>"}</h2>
         <input
           type="text"

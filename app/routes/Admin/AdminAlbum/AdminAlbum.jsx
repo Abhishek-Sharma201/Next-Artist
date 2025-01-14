@@ -87,7 +87,7 @@ const AdminAlbum = () => {
   return (
     <React.Fragment>
       <div className="album-container">
-        <div className="head">
+        <div className="head flex flex-col lg:flex-row">
           <h2>AdminAlbum {">>"}</h2>
           <button className="add" onClick={openForm}>
             + Add
@@ -99,10 +99,6 @@ const AdminAlbum = () => {
           <div className="album-section">
             <div className="container">
               <section className="trending">
-                <div className="type">
-                  <h1>Trending Products</h1>
-                  <button className="see-all">See All</button>
-                </div>
                 <div className="cards">
                   {album.map((albumItem, index) => (
                     <AdminAlbumCard

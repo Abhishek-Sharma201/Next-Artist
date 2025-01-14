@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
 import Nav from "../../Componants/Nav/Nav";
 import AlbumCard from "@/app/Componants/Cards/AlbumCard";
@@ -15,31 +15,11 @@ import { useAuth } from "@clerk/nextjs";
 const AlbumPage = () => {
   const { userId } = useAuth();
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
+  const [likes, setLikes] = useState(new Set()); // Store liked drawing IDs
 
   useEffect(() => {
-    // Only call fetchAlbum once on component mount
     fetchAlbum();
-  }, []); // Empty dependency array ensures this runs only once on mount
-
-  const handleShare = async (data) => {
-    const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
-
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: "Amazing Sketch!",
-          text: message,
-          url: window.location.href,
-        });
-        toast.success("Content shared successfully!");
-      } catch (error) {
-        console.error("Error sharing content:", error);
-        toast.error("Failed to share content!");
-      }
-    } else {
-      toast.error("Sharing is not supported in your browser.");
-    }
-  };
+  }, []); // Fetch the album on mount
 
   const handleLike = async (id) => {
     if (!userId) {
@@ -59,6 +39,11 @@ const AlbumPage = () => {
 
       const result = await res.json();
       if (res.ok) {
+        setLikes((prevLikes) =>
+          prevLikes.has(id)
+            ? new Set([...prevLikes].filter((likeId) => likeId !== id))
+            : new Set(prevLikes).add(id)
+        );
         toast.success(result.message || "Liked successfully!");
       } else {
         toast.error(result.message || "Failed to like the sketch!");
@@ -99,13 +84,7 @@ const AlbumPage = () => {
                     text={card.type}
                     img={card.image?.url || ""}
                     cardId={card._id}
-                    onShare={() =>
-                      handleShare({
-                        text: card.type,
-                        price: card.price,
-                        id: card._id,
-                      })
-                    }
+                    isLiked={likes.has(card._id)} // Pass liked state
                     onLike={() => handleLike(card._id)}
                   />
                 ))}

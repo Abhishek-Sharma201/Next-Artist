@@ -90,7 +90,7 @@ const Subscribrs = () => {
 
   return (
     <div className="contact-container">
-      <div className="head">
+      <div className="head flex flex-col lg:flex-row">
         <h2>Subscribers {">>"}</h2>
         <input
           type="text"
