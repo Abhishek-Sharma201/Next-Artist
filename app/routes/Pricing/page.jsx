@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
 import Nav from "../../Componants/Nav/Nav";
 import AlbumCard from "@/app/Componants/Cards/AlbumCard";
@@ -14,6 +14,7 @@ import { useAuth } from "@clerk/nextjs";
 
 const AlbumPage = () => {
   const { userId } = useAuth();
+  const [likes, setLikes] = useState([]);
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
@@ -60,6 +61,20 @@ const AlbumPage = () => {
       const result = await res.json();
       if (res.ok) {
         toast.success(result.message || "Liked successfully!");
+
+        // Get existing likes from localStorage
+        const existingLikes = JSON.parse(localStorage.getItem("likes")) || [];
+
+        // Add the new like to the array
+        if (!existingLikes.includes(id)) {
+          existingLikes.push(id);
+        }
+
+        // Save the updated array back to localStorage
+        localStorage.setItem("likes", JSON.stringify(existingLikes));
+
+        // Update the state to reflect the changes
+        setLikes(existingLikes);
       } else {
         toast.error(result.message || "Failed to like the sketch!");
       }
