@@ -29,7 +29,8 @@ const Nav = ({ background }) => {
   const isAdmin = user?.emailAddresses.some(
     (email) =>
       email.emailAddress === "abhishek.webdev001@gmail.com" ||
-      email.emailAddress === "abhisheksharma52962@gmail.com"
+      email.emailAddress === "abhisheksharma52962@gmail.com" ||
+      email.emailAddress === "rajsketchartist@gmail.com"
   );
 
   return (
