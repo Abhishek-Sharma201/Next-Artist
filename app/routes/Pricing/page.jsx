@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "./style.css";
 import Nav from "../../Componants/Nav/Nav";
 import AlbumCard from "@/app/Componants/Cards/AlbumCard";
@@ -9,59 +9,20 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AlbumContext from "@/app/context/AlbumContext";
 import Loader from "@/app/Componants/Loader/Loader";
-import { apiURL } from "@/app/constants";
 import { useAuth } from "@clerk/nextjs";
+import useLikes from "@/app/hooks/useLikes"; // Import the custom hook
 
 const AlbumPage = () => {
   const { userId } = useAuth();
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
-  const [likes, setLikes] = useState([]);
 
-  // Fetch album and load likes from localStorage
+  // Use the custom hook for likes management
+  const { likes, toggleLike } = useLikes(userId);
+
+  // Fetch album data
   useEffect(() => {
     fetchAlbum();
-    const storedLikes = JSON.parse(localStorage.getItem("likes")) || [];
-    setLikes(storedLikes);
-  }, []);
-
-  const handleLike = async (id) => {
-    if (!userId) {
-      toast.error("You need to log in to like a sketch.");
-      return;
-    }
-
-    try {
-      // Toggle like in local state
-      const updatedLikes = likes.includes(id)
-        ? likes.filter((likeId) => likeId !== id)
-        : [...likes, id];
-      setLikes(updatedLikes);
-      localStorage.setItem("likes", JSON.stringify(updatedLikes));
-
-      // Sync with the backend
-      const res = await fetch(`${apiURL}/api/like/postLike`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user: userId,
-          drawingId: id,
-        }),
-      });
-
-      const result = await res.json();
-      if (!res.ok) {
-        toast.error(result.message || "Failed to update like status!");
-        // Rollback local state if the backend fails
-        setLikes(likes);
-        localStorage.setItem("likes", JSON.stringify(likes));
-      } else {
-        toast.success(result.message || "Like updated!");
-      }
-    } catch (error) {
-      console.error(`Error liking sketch: ${error.message}`);
-      toast.error("An error occurred while updating the like status.");
-    }
-  };
+  }, [fetchAlbum]);
 
   const handleShare = async (data) => {
     const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
@@ -114,7 +75,7 @@ const AlbumPage = () => {
                     img={card.image?.url || ""}
                     cardId={card._id}
                     isLiked={likes.includes(card._id)} // Check if liked
-                    onLike={() => handleLike(card._id)}
+                    onLike={() => toggleLike(card._id)} // Use the custom hook's toggleLike
                     onShare={() =>
                       handleShare({
                         text: card.type,
