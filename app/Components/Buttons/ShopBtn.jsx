@@ -30,7 +30,7 @@ const ShopBtn = ({
       }}
       className="shopBtn"
     >
-      <button onClick={handleClick}>{value || "View all"}</button>
+      <button>{value || "View all"}</button>
     </Link>
   );
 };
