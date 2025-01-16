@@ -1,6 +1,13 @@
 import React from "react";
 
-const SideNav = ({ initialTab, handleTabChange, isOpen, onClose }) => {
+const SideNav = ({
+  initialTab,
+  handleTabChange,
+  isOpen,
+  onClose,
+  toggleSideNav,
+  isSideNavOpen,
+}) => {
   const changeTab = (tabName) => {
     handleTabChange(tabName);
     onClose();
@@ -17,6 +24,12 @@ const SideNav = ({ initialTab, handleTabChange, isOpen, onClose }) => {
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
+      <button
+        className="absolute top-2 right-2 z-50 bg-blue-500 text-white px-4 py-2 rounded shadow-md focus:outline-none md:hidden"
+        onClick={toggleSideNav}
+      >
+        {isSideNavOpen ? "Close" : "Menu"}
+      </button>
       <ul className="flex flex-col gap-4 p-4">
         <li
           className={`flex items-center gap-3 p-2 rounded cursor-pointer transition-colors ${isActive(

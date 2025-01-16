@@ -63,18 +63,13 @@ const Admin = () => {
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
-      <button
-        className="fixed top-2 left-2 z-50 bg-blue-500 text-white px-4 py-2 rounded shadow-md focus:outline-none md:hidden"
-        onClick={toggleSideNav}
-      >
-        {isSideNavOpen ? "Close" : "Menu"}
-      </button>
-
       <SideNav
         initialTab={activeTab}
         handleTabChange={handleTabChange}
         isOpen={isSideNavOpen}
         onClose={closeSideNav}
+        toggleSideNav={toggleSideNav}
+        isSideNavOpen={isSideNavOpen}
       />
       <div
         className={`flex-grow p-4 transition-all duration-300 ${
