@@ -63,6 +63,12 @@ const Admin = () => {
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
+      <button
+        className="absolute top-2 right-2 z-50 bg-blue-500 text-white px-4 py-2 rounded shadow-md focus:outline-none md:hidden"
+        onClick={toggleSideNav}
+      >
+        {isSideNavOpen ? "Close" : "Menu"}
+      </button>
       <SideNav
         initialTab={activeTab}
         handleTabChange={handleTabChange}
