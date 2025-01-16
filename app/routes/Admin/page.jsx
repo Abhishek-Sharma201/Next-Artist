@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "./style.css";
 import SideNav from "../../Components/Nav/SideNav";
 import Dashboard from "./Dashboard/Dashboard";
 import Emails from "./Emails/Emails";
@@ -64,19 +63,26 @@ const Admin = () => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="flex h-screen w-full overflow-hidden">
       {isSmallScreen && (
-        <button className="toggle-button" onClick={toggleSideNav}>
+        <button
+          className="fixed top-2 left-2 z-50 bg-blue-500 text-white px-4 py-2 rounded shadow-md focus:outline-none"
+          onClick={toggleSideNav}
+        >
           {isSideNavOpen ? "Close" : "Menu"}
         </button>
       )}
       <SideNav
-        className={`sideNav ${isSideNavOpen ? "open" : "close"}`}
+        className={`transition-transform duration-300 ${
+          isSideNavOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
         initialTab={activeTab}
         handleTabChange={handleTabChange}
       />
       <div
-        className={`content ${isSideNavOpen ? "" : "w-full"}`}
+        className={`flex-grow p-4 transition-all duration-300 ${
+          isSideNavOpen && !isSmallScreen ? "ml-64" : "ml-0"
+        }`}
         onClick={() =>
           isSmallScreen && isSideNavOpen && setIsSideNavOpen(false)
         }
