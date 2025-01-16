@@ -37,7 +37,6 @@ const Container = ({ data }) => {
           </svg>
           Available
         </h2>
-        <p className="text-[.8rem] font-[400] text-zinc-800">ID: {data?._id}</p>
         <ShopBtn
           value={"Order on WhatsApp"}
           redirect={`https://wa.me/919702556495`}

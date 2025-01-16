@@ -33,21 +33,18 @@ const page = () => {
       });
       if (response.status === 409) {
         const result = await response.json();
-        console.log(result.message);
+
         toast.warning("Contact already exists!");
       } else if (response.status === 201) {
         const result = await response.json();
-        console.log(result.message);
+
         toast.success("Submitted!");
       } else {
         toast.error("Unexpected response from the server");
       }
     } catch (error) {
-      console.log(`Error sending Data to BackEnd: ${error.message}`);
       toast.error("Failed to send data");
     }
-
-    console.log(formData);
   };
 
   const [subsEmail, setSubsEmail] = useState({
@@ -71,15 +68,13 @@ const page = () => {
       });
       if (response.status == 409) {
         toast.warning("Subs already exists");
-        console.log("Subs already exists");
       } else if (response.status == 201) {
         toast.success("Subscribed");
-        console.log("Subscribed");
       } else {
         toast.error("Unknown Error");
       }
     } catch (error) {
-      console.log(`Error sending Subs : ${error.message}`);
+      toast.error(`Error sending Subs : ${error.message}`);
     }
   };
 

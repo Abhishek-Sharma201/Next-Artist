@@ -22,7 +22,6 @@ const Contacts = () => {
         setContacts(data.data);
         setFilteredContacts(data.data);
       }
-      console.log(`From FrontEnd: `, data);
     } catch (error) {
       console.error("Error fetching contacts: ", error);
     } finally {

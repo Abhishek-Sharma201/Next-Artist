@@ -16,10 +16,6 @@ const ShopBtn = ({
   paddingRight,
   paddingLeft,
 }) => {
-  const handleClick = () => {
-    toast.info(`Card id : ${id}`);
-  };
-
   return (
     <Link
       href={redirect ? redirect : ""}

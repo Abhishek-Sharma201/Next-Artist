@@ -68,7 +68,6 @@ const LikesPage = () => {
       }
 
       const data = await res.json();
-      console.log(data.message);
 
       // Remove the drawing from localStorage
       const existingLikes = JSON.parse(localStorage.getItem("likes")) || [];

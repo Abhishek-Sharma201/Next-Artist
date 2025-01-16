@@ -23,7 +23,6 @@ const ReviewProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      console.log("Fetched Reviews:", data); // Log to debug
       setReviews(Array.isArray(data) ? data : data.reviews || []); // Handle various formats
     } catch (error) {
       console.error("Error fetching reviews:", error);

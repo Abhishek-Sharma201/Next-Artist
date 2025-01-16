@@ -35,12 +35,7 @@ const AlbumDetails = ({ params }) => {
 
   useEffect(() => {
     fetchReviews(id);
-    console.log(`Review Data: ${JSON.stringify(reviews)}`);
   }, [id]);
-
-  // if (isLoading || !card) {
-  //   return <Loader />;
-  // }
 
   return (
     <div className="flex flex-col items-start justify-center">

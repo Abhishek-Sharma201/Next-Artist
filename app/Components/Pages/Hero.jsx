@@ -63,8 +63,6 @@ const Hero = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsOpen(true);
-    console.log("Email:", formData.email);
-    console.log("Preferences:", formData.preferences);
   };
 
   return (
@@ -120,7 +118,11 @@ const Hero = () => {
                 expressions,emotions, and moments through pencil and charcoal
                 artistry.
               </p>
-              <ShopBtn value={"View all"} width={"120px"} redirect={"/routes/Album"} />
+              <ShopBtn
+                value={"View all"}
+                width={"120px"}
+                redirect={"/routes/Pricing"}
+              />
             </div>
             <div className="imgs">
               {myAlbumSectionsImgs.map((data) => {
