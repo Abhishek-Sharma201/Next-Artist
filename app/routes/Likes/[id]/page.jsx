@@ -115,7 +115,7 @@ const LikesPage = () => {
                       {drawing?.type || "Untitled"}
                     </h3>
                     <p className="text-sm text-gray-500">
-                      Price: ${drawing?.price}
+                      Price: ₹{drawing?.price}
                     </p>
                     <div className="w-full h-[max-content] flex gap-4">
                       <button

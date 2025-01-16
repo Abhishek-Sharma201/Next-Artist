@@ -74,7 +74,7 @@ const AlbumCard = ({ text, price, img, cardId, metaData, onShare, onLike }) => {
       <div className="content">
         <div className="price">
           current price
-          <h3>{price}</h3>
+          <h3>₹{price}</h3>
         </div>
         <h2 className="text">{text}</h2>
         <ShopBtn
