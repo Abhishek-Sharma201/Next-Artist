@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import SideNav from "../../Componants/Nav/SideNav";
+import SideNav from "../../Components/Nav/SideNav";
 import Dashboard from "./Dashboard/Dashboard";
 import Emails from "./Emails/Emails";
 import ContactWrapper from "./Contacts/ContactWrapper";
@@ -12,25 +12,23 @@ import { useRouter } from "next/navigation";
 const Admin = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("Dashboard");
-  const [isSideNavOpen, setIsSideNavOpen] = useState(true); // Initially open for large screens
+  const [isSideNavOpen, setIsSideNavOpen] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setIsSmallScreen(true);
-        setIsSideNavOpen(false); // Close sidenav on small screens by default
+        setIsSideNavOpen(false);
       } else {
         setIsSmallScreen(false);
-        setIsSideNavOpen(true); // Keep sidenav open on large screens
+        setIsSideNavOpen(true);
       }
     };
 
-    // Initial check and event listener
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Cleanup listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -43,7 +41,7 @@ const Admin = () => {
   };
 
   const toggleSideNav = () => {
-    setIsSideNavOpen((prev) => !prev); // Toggle the sidenav state
+    setIsSideNavOpen((prev) => !prev);
   };
 
   const renderComponent = () => {

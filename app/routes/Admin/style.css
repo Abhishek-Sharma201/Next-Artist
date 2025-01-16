@@ -24,16 +24,19 @@
 
 .toggle-button {
   position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 100;
-  background: #007bff;
-  color: #fff;
+  top: 10px;
+  left: 10px;
+  z-index: 101; /* Above sidenav */
+  background-color: #007bff;
+  color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  padding: 10px 15px;
   cursor: pointer;
-  display: none; /* Hidden on large screens */
+  border-radius: 4px;
+}
+
+.toggle-button:focus {
+  outline: none;
 }
 
 @media (max-width: 768px) {
