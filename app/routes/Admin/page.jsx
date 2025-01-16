@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import SideNav from "../../Componants/Nav/SideNav";
+import SideNav from "../../Components/Nav/SideNav";
 import Dashboard from "./Dashboard/Dashboard";
 import Emails from "./Emails/Emails";
 import ContactWrapper from "./Contacts/ContactWrapper";
