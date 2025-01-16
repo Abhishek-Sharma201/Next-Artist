@@ -1,23 +1,19 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 
-const SideNav = ({ initialTab, handleTabChange }) => {
-  const [activeTab, setActiveTab] = useState(initialTab);
-  const [isOpen, setIsOpen] = useState(false);
-
+const SideNav = ({ initialTab, handleTabChange, isOpen, onClose }) => {
   const changeTab = (tabName) => {
-    setActiveTab(tabName);
     handleTabChange(tabName);
+    onClose();
   };
 
   const isActive = (tabName) =>
-    activeTab === tabName
+    initialTab === tabName
       ? "bg-blue-500 text-white font-bold"
       : "hover:bg-gray-100";
 
   return (
     <div
-      className={`fixed top-0 left-0 h-screen w-64 bg-white shadow-md border-r transition-transform duration-300 ${
+      className={`fixed top-0 left-0 h-screen w-64 bg-white shadow-md border-r transition-transform duration-300 ease-in-out z-50 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >

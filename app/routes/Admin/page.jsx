@@ -1,35 +1,28 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import SideNav from "../../Components/Nav/SideNav";
 import Dashboard from "./Dashboard/Dashboard";
 import Emails from "./Emails/Emails";
 import ContactWrapper from "./Contacts/ContactWrapper";
 import SubscribersWrapper from "./Subscribers/SubscribersWrapper";
 import AdminAlbum from "./AdminAlbum/AdminAlbum";
-import { useRouter } from "next/navigation";
 
 const Admin = () => {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState("Dashboard");
-  const [isSideNavOpen, setIsSideNavOpen] = useState(true); // Initially open for large screens
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [activeTab, setActiveTab] = useState < string > "Dashboard";
+  const [isSideNavOpen, setIsSideNavOpen] = useState < boolean > false;
+  const [isSmallScreen, setIsSmallScreen] = useState < boolean > false;
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsSmallScreen(true);
-        setIsSideNavOpen(false); // Close sidenav on small screens by default
-      } else {
-        setIsSmallScreen(false);
-        setIsSideNavOpen(true); // Keep sidenav open on large screens
-      }
+      const smallScreen = window.innerWidth <= 768;
+      setIsSmallScreen(smallScreen);
+      setIsSideNavOpen(!smallScreen);
     };
 
-    // Initial check and event listener
     handleResize();
     window.addEventListener("resize", handleResize);
-
-    // Cleanup listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -42,7 +35,13 @@ const Admin = () => {
   };
 
   const toggleSideNav = () => {
-    setIsSideNavOpen((prev) => !prev); // Toggle the sidenav state
+    setIsSideNavOpen((prev) => !prev);
+  };
+
+  const closeSideNav = () => {
+    if (isSmallScreen) {
+      setIsSideNavOpen(false);
+    }
   };
 
   const renderComponent = () => {
@@ -64,28 +63,23 @@ const Admin = () => {
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
-      {isSmallScreen && (
-        <button
-          className="fixed top-2 left-2 z-50 bg-blue-500 text-white px-4 py-2 rounded shadow-md focus:outline-none"
-          onClick={toggleSideNav}
-        >
-          {isSideNavOpen ? "Close" : "Menu"}
-        </button>
-      )}
+      <button
+        className="fixed top-2 left-2 z-50 bg-blue-500 text-white px-4 py-2 rounded shadow-md focus:outline-none md:hidden"
+        onClick={toggleSideNav}
+      >
+        {isSideNavOpen ? "Close" : "Menu"}
+      </button>
+
       <SideNav
-        className={`transition-transform duration-300 ${
-          isSideNavOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
         initialTab={activeTab}
         handleTabChange={handleTabChange}
+        isOpen={isSideNavOpen}
+        onClose={closeSideNav}
       />
       <div
         className={`flex-grow p-4 transition-all duration-300 ${
           isSideNavOpen && !isSmallScreen ? "ml-64" : "ml-0"
         }`}
-        onClick={() =>
-          isSmallScreen && isSideNavOpen && setIsSideNavOpen(false)
-        }
       >
         {renderComponent()}
       </div>
