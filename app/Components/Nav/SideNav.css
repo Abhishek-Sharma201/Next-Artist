@@ -16,7 +16,7 @@
   left: 0; /* Visible on toggle */
 }
 
-.sideNav.hidden {
+.sideNav.close {
   left: -250px; /* Completely hidden */
 }
 

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import SideNav from "../../Components/Nav/SideNav";
+import SideNav from "../../Componants/Nav/SideNav";
 import Dashboard from "./Dashboard/Dashboard";
 import Emails from "./Emails/Emails";
 import ContactWrapper from "./Contacts/ContactWrapper";
@@ -12,23 +12,25 @@ import { useRouter } from "next/navigation";
 const Admin = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("Dashboard");
-  const [isSideNavOpen, setIsSideNavOpen] = useState(true);
+  const [isSideNavOpen, setIsSideNavOpen] = useState(true); // Initially open for large screens
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setIsSmallScreen(true);
-        setIsSideNavOpen(false);
+        setIsSideNavOpen(false); // Close sidenav on small screens by default
       } else {
         setIsSmallScreen(false);
-        setIsSideNavOpen(true);
+        setIsSideNavOpen(true); // Keep sidenav open on large screens
       }
     };
 
+    // Initial check and event listener
     handleResize();
     window.addEventListener("resize", handleResize);
 
+    // Cleanup listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -41,7 +43,7 @@ const Admin = () => {
   };
 
   const toggleSideNav = () => {
-    setIsSideNavOpen((prev) => !prev);
+    setIsSideNavOpen((prev) => !prev); // Toggle the sidenav state
   };
 
   const renderComponent = () => {
@@ -69,12 +71,12 @@ const Admin = () => {
         </button>
       )}
       <SideNav
-        className={`sideNav ${isSideNavOpen ? "open" : "hidden"}`}
+        className={`sideNav ${isSideNavOpen ? "open" : "close"}`}
         initialTab={activeTab}
         handleTabChange={handleTabChange}
       />
       <div
-        className={`content ${isSideNavOpen ? "" : "full-width"}`}
+        className={`content ${isSideNavOpen ? "" : "w-full"}`}
         onClick={() =>
           isSmallScreen && isSideNavOpen && setIsSideNavOpen(false)
         }
