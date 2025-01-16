@@ -11,8 +11,8 @@ import AdminAlbum from "./AdminAlbum/AdminAlbum";
 const Admin = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("Dashboard");
-  const [isSideNavOpen, setIsSideNavOpen] = useState < boolean > false;
-  const [isSmallScreen, setIsSmallScreen] = useState < boolean > false;
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
