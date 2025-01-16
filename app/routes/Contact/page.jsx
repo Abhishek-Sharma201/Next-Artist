@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import "./style.css";
-import Nav from "@/app/Componants/Nav/Nav";
-import Footer from "@/app/Componants/Footer/Footer";
+import Nav from "@/app/Components/Nav/Nav";
+import Footer from "@/app/Components/Footer/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { apiURL } from "@/app/constants";

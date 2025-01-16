@@ -3,11 +3,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AlbumContext from "@/app/context/AlbumContext";
 import Image from "next/image";
-import Loader from "@/app/Componants/Loader/Loader";
-import Nav from "@/app/Componants/Nav/Nav";
-import Footer from "@/app/Componants/Footer/Footer";
-import Container from "@/app/Componants/Banner/Container";
-import ReviewBox from "@/app/Componants/Banner/ReviewBox";
+import Loader from "@/app/Components/Loader/Loader";
+import Nav from "@/app/Components/Nav/Nav";
+import Footer from "@/app/Components/Footer/Footer";
+import Container from "@/app/Components/Banner/Container";
+import ReviewBox from "@/app/Components/Banner/ReviewBox";
 import { ReviewContext } from "@/app/context/ReviewContext";
 import { ToastContainer } from "react-toastify";
 

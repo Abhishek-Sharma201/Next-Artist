@@ -2,13 +2,13 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
-import Nav from "../../Componants/Nav/Nav";
-import AlbumCard from "@/app/Componants/Cards/AlbumCard";
-import Footer from "@/app/Componants/Footer/Footer";
+import Nav from "../../Components/Nav/Nav";
+import AlbumCard from "@/app/Components/Cards/AlbumCard";
+import Footer from "@/app/Components/Footer/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AlbumContext from "@/app/context/AlbumContext";
-import Loader from "@/app/Componants/Loader/Loader";
+import Loader from "@/app/Components/Loader/Loader";
 import { apiURL } from "@/app/constants";
 import { useAuth } from "@clerk/nextjs";
 

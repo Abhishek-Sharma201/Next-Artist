@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { apiURL } from "@/app/constants";
-import Loader from "@/app/Componants/Loader/Loader";
+import Loader from "@/app/Components/Loader/Loader";
 import { useAuth } from "@clerk/nextjs";
-import Nav from "@/app/Componants/Nav/Nav";
-import Footer from "@/app/Componants/Footer/Footer";
+import Nav from "@/app/Components/Nav/Nav";
+import Footer from "@/app/Components/Footer/Footer";
 import { useRouter } from "next/navigation";
 
 const LikesPage = () => {

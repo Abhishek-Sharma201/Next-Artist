@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
 import { AlbumContext } from "@/app/context/AlbumContext";
-import AdminAlbumCard from "@/app/Componants/Cards/AdminAlbumCard";
-import Loader from "@/app/Componants/Loader/Loader";
+import AdminAlbumCard from "@/app/Components/Cards/AdminAlbumCard";
+import Loader from "@/app/Components/Loader/Loader";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { apiURL } from "@/app/constants";

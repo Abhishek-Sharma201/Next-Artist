@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
-import Nav from '@/app/Componants/Nav/Nav'
-import Footer from '@/app/Componants/Footer/Footer'
+import Nav from '@/app/Components/Nav/Nav'
+import Footer from '@/app/Components/Footer/Footer'
 
 const page = () => {
     return (

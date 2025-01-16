@@ -1,13 +1,13 @@
 "use client";
 
-import Nav from "@/app/Componants/Nav/Nav";
+import Nav from "@/app/Components/Nav/Nav";
 import { imageCollection } from "@/app/utils";
 import Image from "next/image";
 import React, { useContext } from "react";
 import "./style.css";
-import Footer from "@/app/Componants/Footer/Footer";
+import Footer from "@/app/Components/Footer/Footer";
 import AlbumContext from "@/app/context/AlbumContext";
-import Loader from "@/app/Componants/Loader/Loader";
+import Loader from "@/app/Components/Loader/Loader";
 
 const page = () => {
   const { album, fetchAlbum, isLoading } = useContext(AlbumContext);

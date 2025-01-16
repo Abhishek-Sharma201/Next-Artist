@@ -1,8 +1,8 @@
 import React from 'react'
-import Banner from './Componants/Banner/Banner'
-import Hero from './Componants/Pages/Hero'
-import Footer from './Componants/Footer/Footer'
-import Nav from './Componants/Nav/Nav'
+import Banner from './Components/Banner/Banner'
+import Hero from './Components/Pages/Hero'
+import Footer from './Components/Footer/Footer'
+import Nav from './Components/Nav/Nav'
 
 const page = () => {
   return (

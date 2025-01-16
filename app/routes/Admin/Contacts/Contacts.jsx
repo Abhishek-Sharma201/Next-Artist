@@ -3,7 +3,7 @@ import Masonry from "masonry-layout";
 import "./style.css";
 import { apiURL } from "@/app/constants";
 import ContactCard from "./Card/contactCard";
-import Loader from "@/app/Componants/Loader/Loader";
+import Loader from "@/app/Components/Loader/Loader";
 
 const Contacts = () => {
   const [contacts, setContacts] = useState([]);
