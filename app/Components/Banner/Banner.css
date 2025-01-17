@@ -42,7 +42,7 @@
 
 .page-1 .container .right {
   width: calc(100% - 75%);
-  height: 90%;
+  height: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -184,11 +184,11 @@
   }
 
   .page-1 .container .right {
-    width: 40%;
+    width: 30%;
     /* height: 80%; */
     align-self: flex-end;
     justify-content: flex-end;
-    /* height: auto; */
+    height: auto;
     position: absolute;
     left: 50%;
     bottom: 0;
