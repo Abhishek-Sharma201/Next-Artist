@@ -1,21 +1,21 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./AlbumCard.css";
 import ShopBtn from "../Buttons/ShopBtn";
 
-const AlbumCard = ({ text, price, img, cardId, metaData, onShare, onLike }) => {
-  const [isLiked, setIsLiked] = useState(false);
-
-  useEffect(() => {
-    // Check if the drawing is already in localStorage
-    const existingLikes = JSON.parse(localStorage.getItem("likes")) || [];
-    setIsLiked(existingLikes.includes(cardId)); // Set isLiked to true if cardId is in localStorage
-  }, [cardId]);
-
+const AlbumCard = ({
+  text,
+  price,
+  img,
+  cardId,
+  metaData,
+  onShare,
+  onLike,
+  isLiked,
+}) => {
   const handleLike = () => {
-    onLike(cardId);
-    setIsLiked(!isLiked); // Toggle like status on local state change
+    onLike(cardId); // Trigger the like function passed as a prop
   };
 
   return (

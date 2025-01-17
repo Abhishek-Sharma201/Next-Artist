@@ -18,9 +18,30 @@ const AlbumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
-    // Only call fetchAlbum once on component mount
     fetchAlbum();
-  }, []); // Empty dependency array ensures this runs only once on mount
+    if (userId) {
+      fetchUserLikes(); // Fetch likes from the database on component mount
+    }
+  }, [userId]); // Refetch likes when userId changes
+
+  const fetchUserLikes = async () => {
+    try {
+      const res = await fetch(`${apiURL}/api/like/getLikes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user: userId }),
+      });
+
+      if (res.ok) {
+        const result = await res.json();
+        setLikes(result.likes || []); // Assuming the API returns an array of liked drawing IDs
+      } else {
+        console.error("Failed to fetch likes");
+      }
+    } catch (error) {
+      console.error(`Error fetching likes: ${error.message}`);
+    }
+  };
 
   const handleShare = async (data) => {
     const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
@@ -62,19 +83,13 @@ const AlbumPage = () => {
       if (res.ok) {
         toast.success(result.message || "Liked successfully!");
 
-        // Get existing likes from localStorage
-        const existingLikes = JSON.parse(localStorage.getItem("likes")) || [];
-
-        // Add the new like to the array
-        if (!existingLikes.includes(id)) {
-          existingLikes.push(id);
-        }
-
-        // Save the updated array back to localStorage
-        localStorage.setItem("likes", JSON.stringify(existingLikes));
-
-        // Update the state to reflect the changes
-        setLikes(existingLikes);
+        // Update the state to reflect the like
+        setLikes(
+          (prevLikes) =>
+            prevLikes.includes(id)
+              ? prevLikes.filter((likeId) => likeId !== id) // Unlike
+              : [...prevLikes, id] // Like
+        );
       } else {
         toast.error(result.message || "Failed to like the sketch!");
       }
@@ -122,6 +137,7 @@ const AlbumPage = () => {
                       })
                     }
                     onLike={() => handleLike(card._id)}
+                    isLiked={likes.includes(card._id)} // Pass liked state
                   />
                 ))}
               </div>
