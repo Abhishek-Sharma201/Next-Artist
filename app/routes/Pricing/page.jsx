@@ -30,7 +30,7 @@ const AlbumPage = () => {
     try {
       console.log("Making API call to fetch likes...");
       const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
-        method: "POST",
+        method: "GET",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user: userId }),
       });
