@@ -15,6 +15,7 @@ import { useAuth } from "@clerk/nextjs";
 const AlbumPage = () => {
   const { userId } = useAuth();
   const [likes, setLikes] = useState([]);
+  const [filter, setFilter] = useState("");
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
@@ -97,6 +98,10 @@ const AlbumPage = () => {
     }
   };
 
+  const filteredAlbum = album.filter((card) =>
+    card.type.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <>
       <Nav background={true} />
@@ -114,13 +119,15 @@ const AlbumPage = () => {
                 id="filter"
                 placeholder="Filter"
                 className="h-[5dvh] w-[250px] p-2 border-[.5px] bg-[#fff] border-zinc-700 text-zinc-900 font-medium text-[.8rem] placeholder:text-zinc-900 rounded-md"
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
               />
             </div>
             {isLoading ? (
               <Loader />
             ) : (
               <div className="cards">
-                {album.map((card) => (
+                {filteredAlbum.map((card) => (
                   <AlbumCard
                     key={card._id}
                     price={card.price}
