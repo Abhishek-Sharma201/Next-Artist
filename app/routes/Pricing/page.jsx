@@ -81,9 +81,9 @@ const AlbumPage = () => {
 
       const result = await res.json();
       if (res.ok) {
-        toast.success(result.message || "Liked successfully!");
+        toast.success(result.message || "Added to likes!");
 
-        // Update the state to reflect the like
+        // Update the likes state
         setLikes(
           (prevLikes) =>
             prevLikes.includes(id)
@@ -91,7 +91,7 @@ const AlbumPage = () => {
               : [...prevLikes, id] // Like
         );
       } else {
-        toast.error(result.message || "Failed to like the sketch!");
+        toast.error(result.message || "Failed to update like!");
       }
     } catch (error) {
       console.error(`Error liking sketch: ${error.message}`);
