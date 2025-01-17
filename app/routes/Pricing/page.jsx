@@ -26,7 +26,7 @@ const AlbumPage = () => {
 
   const fetchUserLikes = async () => {
     try {
-      const res = await fetch(`${apiURL}/api/like/getLikes/${userId}`, {
+      const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user: userId }), // Pass the logged-in user ID
