@@ -32,7 +32,6 @@ const AlbumPage = () => {
       const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user: userId }),
       });
 
       if (res.ok) {
