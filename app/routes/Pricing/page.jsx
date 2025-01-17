@@ -37,7 +37,7 @@ const AlbumPage = () => {
       if (res.ok) {
         const result = await res.json();
         console.log("Fetched likes data:", result);
-        setLikes(result?.drawings || []);
+        setLikes(result?.likes?.drawings || []);
       } else {
         console.error("Failed to fetch likes:", res.status);
       }
