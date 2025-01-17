@@ -18,25 +18,29 @@ const AlbumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
+    console.log("Fetching albums...");
     fetchAlbum();
     if (userId) {
-      fetchUserLikes(); // Fetch likes from the database on component mount
+      console.log("Fetching user likes for userId:", userId);
+      fetchUserLikes();
     }
-  }, [userId]); // Refetch likes when userId changes
+  }, [userId]); // Triggered on `userId` change
 
   const fetchUserLikes = async () => {
     try {
+      console.log("Making API call to fetch likes...");
       const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user: userId }), // Pass the logged-in user ID
+        body: JSON.stringify({ user: userId }),
       });
 
       if (res.ok) {
         const result = await res.json();
-        setLikes(result?.drawings || []); // Set the `drawings` array in the state
+        console.log("Fetched likes data:", result);
+        setLikes(result?.drawings || []);
       } else {
-        console.error("Failed to fetch likes");
+        console.error("Failed to fetch likes:", res.status);
       }
     } catch (error) {
       console.error(`Error fetching likes: ${error.message}`);
@@ -44,7 +48,9 @@ const AlbumPage = () => {
   };
 
   const handleShare = async (data) => {
-    const message = `Check out this amazing sketch: ${data.text}, priced at $${data.price}.`;
+    console.log("Sharing sketch data:", data);
+
+    const message = `Check out this amazing sketch: ${data.text}, priced at ₹${data.price}.`;
 
     if (navigator.share) {
       try {
@@ -69,6 +75,8 @@ const AlbumPage = () => {
       return;
     }
 
+    console.log("Handling like for drawingId:", id);
+
     try {
       const res = await fetch(`${apiURL}/api/like/postLike`, {
         method: "POST",
@@ -81,17 +89,21 @@ const AlbumPage = () => {
 
       const result = await res.json();
       if (res.ok) {
+        console.log("Like API response:", result);
+
         toast.success(result.message || "Action successful!");
 
         // Update the likes state
-        setLikes(
-          (prevLikes) =>
-            prevLikes.includes(id)
-              ? prevLikes.filter((likeId) => likeId !== id) // Unlike
-              : [...prevLikes, id] // Like
-        );
+        setLikes((prevLikes) => {
+          const updatedLikes = prevLikes.includes(id)
+            ? prevLikes.filter((likeId) => likeId !== id) // Unlike
+            : [...prevLikes, id]; // Like
+          console.log("Updated likes array:", updatedLikes);
+          return updatedLikes;
+        });
       } else {
         toast.error(result.message || "Failed to update like!");
+        console.error("Error response from like API:", result);
       }
     } catch (error) {
       console.error(`Error liking sketch: ${error.message}`);
