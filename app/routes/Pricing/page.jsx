@@ -29,12 +29,12 @@ const AlbumPage = () => {
       const res = await fetch(`${apiURL}/api/like/getLikes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user: userId }),
+        body: JSON.stringify({ user: userId }), // Pass the logged-in user ID
       });
 
       if (res.ok) {
         const result = await res.json();
-        setLikes(result.likes || []); // Assuming the API returns an array of liked drawing IDs
+        setLikes(result?.drawings || []); // Set the `drawings` array in the state
       } else {
         console.error("Failed to fetch likes");
       }
@@ -81,7 +81,7 @@ const AlbumPage = () => {
 
       const result = await res.json();
       if (res.ok) {
-        toast.success(result.message || "Added to likes!");
+        toast.success(result.message || "Action successful!");
 
         // Update the likes state
         setLikes(
@@ -90,7 +90,6 @@ const AlbumPage = () => {
               ? prevLikes.filter((likeId) => likeId !== id) // Unlike
               : [...prevLikes, id] // Like
         );
-        console.log(`setLikes: ${likes}`);
       } else {
         toast.error(result.message || "Failed to update like!");
       }
