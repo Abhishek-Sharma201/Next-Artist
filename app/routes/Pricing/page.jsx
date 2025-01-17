@@ -90,6 +90,7 @@ const AlbumPage = () => {
               ? prevLikes.filter((likeId) => likeId !== id) // Unlike
               : [...prevLikes, id] // Like
         );
+        console.log(`setLikes: ${likes}`);
       } else {
         toast.error(result.message || "Failed to update like!");
       }
