@@ -23,9 +23,9 @@ const Banner = () => {
             <h2>Hey I am,</h2>
             <h1>RAJ NARALKAR</h1>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit
-              repudiandae sunt unde expedita debitis molestiae enim blanditiis
-              voluptates assumenda repellat?
+              A talented sketch artist specializes in creating 100% realistic
+              handmade sketches, capturing every detail with stunning precision.
+              Their art transforms moments into timeless masterpieces.
             </p>
             <Link href={"/routes/Pricing"}>
               <button>Get Now</button>
