@@ -74,32 +74,34 @@ const AlbumPage = () => {
       return;
     }
 
-    console.log("Handling like for drawingId:", id);
+    const isAlreadyLiked = likes.includes(id); // Check if it's already liked
 
     try {
-      const res = await fetch(`${apiURL}/api/like/postLike`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user: userId,
-          drawingId: id,
-        }),
-      });
+      const res = await fetch(
+        isAlreadyLiked
+          ? `${apiURL}/api/like/deleteLike` // Endpoint for removing like
+          : `${apiURL}/api/like/postLike`, // Endpoint for adding like
+        {
+          method: isAlreadyLiked ? "DELETE" : "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: userId,
+            drawingId: id,
+          }),
+        }
+      );
 
       const result = await res.json();
       if (res.ok) {
-        console.log("Like API response:", result);
-
         toast.success(result.message || "Action successful!");
 
-        // Update the likes state
-        setLikes((prevLikes) => {
-          const updatedLikes = prevLikes.includes(id)
-            ? prevLikes.filter((likeId) => likeId !== id) // Unlike
-            : [...prevLikes, id]; // Like
-          console.log("Updated likes array:", updatedLikes);
-          return updatedLikes;
-        });
+        // Toggle likes state
+        setLikes(
+          (prevLikes) =>
+            isAlreadyLiked
+              ? prevLikes.filter((likeId) => likeId !== id) // Remove from likes
+              : [...prevLikes, id] // Add to likes
+        );
       } else {
         toast.error(result.message || "Failed to update like!");
         console.error("Error response from like API:", result);

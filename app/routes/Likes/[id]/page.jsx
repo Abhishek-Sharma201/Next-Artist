@@ -69,15 +69,6 @@ const LikesPage = () => {
 
       const data = await res.json();
 
-      // Remove the drawing from localStorage
-      const existingLikes = JSON.parse(localStorage.getItem("likes")) || [];
-
-      // Filter out the drawingId from the list of likes
-      const updatedLikes = existingLikes.filter((id) => id !== drawingId);
-
-      // Save the updated likes back to localStorage
-      localStorage.setItem("likes", JSON.stringify(updatedLikes));
-
       // Refresh likes after deletion
       fetchLikes();
     } catch (error) {
