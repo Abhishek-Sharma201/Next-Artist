@@ -150,7 +150,7 @@ const AlbumPage = () => {
                       })
                     }
                     onLike={() => handleLike(card._id)}
-                    isLiked={likes.includes(card._id)} // Pass liked state
+                    isLiked={likes.includes(card._id)} // Dynamically determine if liked
                   />
                 ))}
               </div>
