@@ -7,6 +7,7 @@ import { useAuth } from "@clerk/nextjs";
 import Nav from "@/app/Components/Nav/Nav";
 import Footer from "@/app/Components/Footer/Footer";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const LikesPage = () => {
   const router = useRouter();

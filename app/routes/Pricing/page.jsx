@@ -18,17 +18,14 @@ const AlbumPage = () => {
   const { isLoading, album, fetchAlbum } = useContext(AlbumContext);
 
   useEffect(() => {
-    console.log("Fetching albums...");
     fetchAlbum();
     if (userId) {
-      console.log("Fetching user likes for userId:", userId);
       fetchUserLikes();
     }
-  }, [userId]); // Triggered on `userId` change
+  }, [userId]);
 
   const fetchUserLikes = async () => {
     try {
-      console.log("Making API call to fetch likes...");
       const res = await fetch(`${apiURL}/api/like/getLike/${userId}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -36,7 +33,6 @@ const AlbumPage = () => {
 
       if (res.ok) {
         const result = await res.json();
-        console.log("Fetched likes data:", result);
         setLikes(result?.likes?.drawings || []);
       } else {
         console.error("Failed to fetch likes:", res.status);
@@ -47,8 +43,6 @@ const AlbumPage = () => {
   };
 
   const handleShare = async (data) => {
-    console.log("Sharing sketch data:", data);
-
     const message = `Check out this amazing sketch: ${data.text}, priced at ₹${data.price}.`;
 
     if (navigator.share) {
@@ -58,7 +52,6 @@ const AlbumPage = () => {
           text: message,
           url: window.location.href,
         });
-        toast.success("Content shared successfully!");
       } catch (error) {
         console.error("Error sharing content:", error);
         toast.error("Failed to share content!");
@@ -74,34 +67,26 @@ const AlbumPage = () => {
       return;
     }
 
-    const isAlreadyLiked = likes.includes(id); // Check if it's already liked
-
     try {
-      const res = await fetch(
-        isAlreadyLiked
-          ? `${apiURL}/api/like/deleteLike` // Endpoint for removing like
-          : `${apiURL}/api/like/postLike`, // Endpoint for adding like
-        {
-          method: isAlreadyLiked ? "DELETE" : "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            user: userId,
-            drawingId: id,
-          }),
-        }
-      );
+      const res = await fetch(`${apiURL}/api/like/postLike`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: userId,
+          drawingId: id,
+        }),
+      });
 
       const result = await res.json();
       if (res.ok) {
-        toast.success(result.message || "Action successful!");
-
-        // Toggle likes state
-        setLikes(
-          (prevLikes) =>
-            isAlreadyLiked
-              ? prevLikes.filter((likeId) => likeId !== id) // Remove from likes
-              : [...prevLikes, id] // Add to likes
-        );
+        toast.success(result.message || "Added to Likes");
+        // Update the likes state
+        setLikes((prevLikes) => {
+          const updatedLikes = prevLikes.includes(id)
+            ? prevLikes.filter((likeId) => likeId !== id) // Unlike
+            : [...prevLikes, id]; // Like
+          return updatedLikes;
+        });
       } else {
         toast.error(result.message || "Failed to update like!");
         console.error("Error response from like API:", result);
@@ -150,7 +135,7 @@ const AlbumPage = () => {
                       })
                     }
                     onLike={() => handleLike(card._id)}
-                    isLiked={likes.includes(card._id)} // Dynamically determine if liked
+                    isLiked={likes.includes(card._id)} // Pass liked state
                   />
                 ))}
               </div>

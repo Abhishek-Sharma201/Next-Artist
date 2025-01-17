@@ -15,9 +15,7 @@ const AlbumCard = ({
   isLiked,
 }) => {
   const handleLike = () => {
-    onLike(cardId); // Trigger the like function passed as a prop
-    console.log(`cardId: ${cardId}`);
-    console.log(`isLiked: ${isLiked}`);
+    onLike(cardId); 
   };
 
   return (
