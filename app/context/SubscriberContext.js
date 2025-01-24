@@ -39,9 +39,12 @@ const SubscriberProvider = ({ children }) => {
     }
   };
 
-  if (user) {
-    checkSubscription();
-  }
+  // Call checkSubscription when the user changes
+  useEffect(() => {
+    if (user) {
+      checkSubscription();
+    }
+  }, [user]); // Dependency on `user`
 
   return (
     <SubscriberContext.Provider
