@@ -36,7 +36,7 @@
 
 .navLogo {
   height: 100%;
-  width: 5dvw;
+  width: max-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,15 +48,15 @@
 
 .navLogo .logoImage {
   object-fit: cover;
-  height: 30dvh;
-  width: 30dvw;
+  height: 20dvh;
+  width: 100px;
 }
 
 .navList {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 80dvh;
+  width: 55dvw;
   height: 100%;
 }
 
@@ -198,7 +198,7 @@
   .navBarOpened .navLogo .logoImage {
     object-fit: cover;
     height: 10dvh;
-    width: 20dvw;
+    width: 100px;
   }
 
   .navLogo .logoImage {
