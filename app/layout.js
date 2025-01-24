@@ -5,6 +5,7 @@ import { AlbumProvider } from "./context/AlbumContext";
 import ReviewProvider from "./context/ReviewContext";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ToastContainer } from "react-toastify";
+import SubscriberProvider from "./context/SubscriberContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,10 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={inter.className} suppressHydrationWarning={true}>
           <AlbumProvider>
             <ReviewProvider>
-              {children}
+              <SubscriberProvider>{children}</SubscriberProvider>
               <ToastContainer />
             </ReviewProvider>
           </AlbumProvider>
