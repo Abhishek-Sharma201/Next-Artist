@@ -8,6 +8,7 @@ import "./style.css";
 import Footer from "@/app/Components/Footer/Footer";
 import AlbumContext from "@/app/context/AlbumContext";
 import Loader from "@/app/Components/Loader/Loader";
+import Link from "next/link";
 
 const page = () => {
   const { album, fetchAlbum, isLoading } = useContext(AlbumContext);
@@ -29,14 +30,14 @@ const page = () => {
           <div className="collection-gallery">
             {album.map((v, i) => {
               return (
-                <div className="box" key={i}>
+                <Link className="box" key={i} href={`/routes/Pricing/${v._id}`}>
                   <Image
                     src={v.image?.url || ""}
                     loading="lazy"
                     alt="collection-img"
                     className="collection-image"
                   />
-                </div>
+                </Link>
               );
             })}
           </div>

@@ -121,6 +121,9 @@ const Nav = ({ background }) => {
             <Link href="/routes/Pricing">Pricing</Link>
           </li>
           <li className="navItem">
+            <Link href="/routes/Collection">Collection</Link>
+          </li>
+          <li className="navItem">
             <Link href="/routes/Contact">Contact</Link>
           </li>
           <li className="navItem">

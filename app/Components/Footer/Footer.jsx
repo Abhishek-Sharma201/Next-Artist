@@ -199,7 +199,7 @@ const Footer = ({ width }) => {
           {/*  */}
         </div>
         <h4 className="footerName">
-          &copy; {new Date().getFullYear()} Raj Artist All rights reserved.
+          &copy; {new Date().getFullYear()} Raj Sketch Artist
         </h4>
       </div>
     </footer>
