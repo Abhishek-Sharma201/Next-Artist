@@ -25,7 +25,6 @@ const Banner = () => {
             <p>
               A talented sketch artist specializes in creating 100% realistic
               handmade sketches, capturing every detail with stunning precision.
-              Their art transforms moments into timeless masterpieces.
             </p>
             <Link href={"/routes/Pricing"}>
               <button>Get Now</button>
