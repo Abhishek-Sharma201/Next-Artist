@@ -99,6 +99,19 @@ export default function RootLayout({ children }) {
               }),
             }}
           />
+          {/* Google Tag Manager Code */}
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-GY6G3JN45Y"
+          ></script>
+          <script>
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-GY6G3JN45Y');
+            `}
+          </script>
         </head>
         <body
           className={inter?.className || ""}
