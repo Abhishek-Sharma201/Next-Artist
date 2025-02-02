@@ -13,7 +13,29 @@ export const metadata = {
   title: "Raj Artist - Portfolio & Artwork Showcase",
   description:
     "Discover stunning artwork and creative projects by Raj Artist. Explore the portfolio now!",
-  keywords: ["art", "artist portfolio", "creative work", "Raj Artist"],
+  keywords: [
+    "art",
+    "artist portfolio",
+    "creative work",
+    "Raj Artist",
+    "digital art",
+    "traditional art",
+    "painting",
+    "illustration",
+    "art showcase",
+    "artist website",
+    "art gallery",
+    "contemporary art",
+    "fine art",
+    "art portfolio",
+    "commissioned artwork",
+    "artistic creations",
+    "modern artist",
+    "artistic projects",
+    "art designs",
+    "digital paintings",
+    "art exhibition",
+  ],
   applicationName: "Raj Artist Portfolio",
   authors: [{ name: "Raj Artist", url: "https://raj-artist.vercel.app" }],
   robots: "index, follow",
@@ -44,6 +66,9 @@ export const metadata = {
   alternates: {
     canonical: "https://raj-artist.vercel.app",
   },
+  verification: {
+    google: "KHj_Hw-S-B16KcqJl17oBG2pe04n2QSlATOrAbW82Fw",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -54,6 +79,10 @@ export default function RootLayout({ children }) {
         <head>
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <meta name="theme-color" content="#ffffff" />
+          <meta
+            name="google-site-verification"
+            content="KHj_Hw-S-B16KcqJl17oBG2pe04n2QSlATOrAbW82Fw"
+          />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
