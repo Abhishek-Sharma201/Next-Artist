@@ -86,32 +86,29 @@ const AdminAlbum = () => {
 
   return (
     <React.Fragment>
-      <div className="album-container">
-        <div className="head flex flex-col lg:flex-row">
-          <h2>AdminAlbum {">>"}</h2>
-          <button className="add" onClick={openForm}>
+      <div className="album-container px-6  ">
+        <div className=" min-h-[10dvh] h-[max-content] w-full flex flex-col md:flex-row lg:flex-row items-center justify-between">
+          <h2 className="text-[2rem]">AdminAlbum {">>"}</h2>
+          <button
+            className="bg-zinc-900 text-[white] outline-none border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 w-[max-content] h-[max-content] px-4 py-2 rounded-md "
+            onClick={openForm}
+          >
             + Add
           </button>
         </div>
         {isLoading ? (
           <Loader />
         ) : (
-          <div className="album-section">
-            <div className="container">
-              <section className="trending">
-                <div className="cards">
-                  {album.map((albumItem, index) => (
-                    <AdminAlbumCard
-                      key={index}
-                      onDelete={() => deleteCard(albumItem._id)}
-                      price={albumItem.price}
-                      type={albumItem.type}
-                      imgSrc={albumItem.image.url}
-                    />
-                  ))}
-                </div>
-              </section>
-            </div>
+          <div className="cards">
+            {album.map((albumItem, index) => (
+              <AdminAlbumCard
+                key={index}
+                onDelete={() => deleteCard(albumItem._id)}
+                price={albumItem.price}
+                type={albumItem.type}
+                imgSrc={albumItem.image.url}
+              />
+            ))}
           </div>
         )}
       </div>

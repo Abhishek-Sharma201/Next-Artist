@@ -78,7 +78,7 @@ const Admin = () => {
         isSideNavOpen={isSideNavOpen}
       />
       <div
-        className={`flex-grow p-2 transition-all duration-300 ${
+        className={`flex-grow transition-all duration-300 ${
           isSideNavOpen && !isSmallScreen ? "ml-64" : "ml-0"
         }`}
       >
