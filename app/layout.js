@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ToastContainer } from "react-toastify";
 import SubscriberProvider from "./context/SubscriberContext";
 import { logoImage } from "./utils";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,32 +14,8 @@ export const metadata = {
   title: "Raj Artist - Portfolio & Artwork Showcase",
   description:
     "Discover stunning artwork and creative projects by Raj Artist. Explore the portfolio now!",
-  keywords: [
-    "art",
-    "artist portfolio",
-    "creative work",
-    "Raj Artist",
-    "digital art",
-    "traditional art",
-    "painting",
-    "illustration",
-    "art showcase",
-    "artist website",
-    "art gallery",
-    "contemporary art",
-    "fine art",
-    "art portfolio",
-    "commissioned artwork",
-    "artistic creations",
-    "modern artist",
-    "artistic projects",
-    "art designs",
-    "digital paintings",
-    "art exhibition",
-  ],
-  applicationName: "Raj Artist Portfolio",
-  authors: [{ name: "Raj Artist", url: "https://raj-artist.vercel.app" }],
-  robots: "index, follow",
+  keywords:
+    "art, artist portfolio, creative work, Raj Artist, digital art, traditional art, painting, illustration, art showcase, artist website, art gallery, contemporary art, fine art, art portfolio, commissioned artwork, artistic creations, modern artist, artistic projects, art designs, digital paintings, art exhibition",
   openGraph: {
     title: "Raj Artist - Portfolio & Artwork Showcase",
     description:
@@ -63,60 +40,17 @@ export const metadata = {
     images: [logoImage.src],
     creator: "@RajArtist",
   },
-  alternates: {
-    canonical: "https://raj-artist.vercel.app",
-  },
-  verification: {
-    google: "KHj_Hw-S-B16KcqJl17oBG2pe04n2QSlATOrAbW82Fw",
-  },
 };
 
 export default function RootLayout({ children }) {
-  console.log(logoImage.src);
   return (
     <ClerkProvider>
       <html lang="en">
-        <head>
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <meta name="theme-color" content="#ffffff" />
-          <meta
-            name="google-site-verification"
-            content="KHj_Hw-S-B16KcqJl17oBG2pe04n2QSlATOrAbW82Fw"
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Person",
-                name: "Raj Artist",
-                url: "https://raj-artist.vercel.app",
-                sameAs: [
-                  "https://www.linkedin.com/in/raj-naralkar-824855313",
-                  "https://twitter.com/RajArtist",
-                  "https://www.instagram.com/raj_artist3095",
-                ],
-              }),
-            }}
-          />
-          {/* Google Tag Manager Code */}
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-GY6G3JN45Y"
-          ></script>
-          <script>
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-GY6G3JN45Y');
-            `}
-          </script>
-        </head>
         <body
           className={inter?.className || ""}
           suppressHydrationWarning={true}
         >
+          <GoogleAnalytics />
           <AlbumProvider>
             <ReviewProvider>
               <SubscriberProvider>{children}</SubscriberProvider>
